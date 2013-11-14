@@ -15,7 +15,7 @@ File.open("txt/main.txt").each_with_index do |line, index|
 
     line = line.gsub(/\p{Z}/, ' ').gsub(/\s+/, ' ')
     tmp1 = line.split('</def>')
-    definition = tmp1[0].split('<def>')[1]
+    definition = tmp1[0].split('<def>')[1].strip
 
     data[lemma] = {
       "strongs" => strongs,
