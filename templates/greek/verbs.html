@@ -1,0 +1,94 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Forms of the verb <strong>{{selectedWord.versions.lemma}}</strong> in the New Testament</div>
+  <div class="panel-body">
+    <div ng-repeat="mood in moods">
+      <div ng-repeat="voice in voices">
+        <div class="panel panel-default" ng-repeat="number in numbers" ng-show="verbCharts[mood.code + voice.code + number.code]">
+          <div class="panel-heading">{{voice.label}} {{mood.label | lowercase}} {{number.label | lowercase}}</div>
+          <table class="table table-condensed table-bordered fixed-table-layout">
+            <thead>
+              <tr>
+                <th style="width:14.2%"></th>
+                <th style="width:14.2%" ng-repeat="tense in tenses">{{tense.label}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="person in persons">
+                <th>{{person.label}}</th>
+                <td ng-repeat="tense in tenses"
+                    ng-class="{success: selectedWord.parsingCode == person.code + tense.code + voice.code + mood.code + '-' + number.code + '--'}"
+                    ng-click="showVerbMorph(wordData,'V-' + person.code + tense.code + voice.code + mood.code + '-' + number.code + '--')">
+                  {{wordData.forms['V-' + person.code + tense.code + voice.code + mood.code + '-' + number.code + '--'][0][1]}}
+                  <div style="float: right;color: #ddd;" ng-show="wordData.forms['V-' + person.code + tense.code + voice.code + mood.code + '-' + number.code + '--'].length">
+                    {{wordData.forms['V-' + person.code + tense.code + voice.code + mood.code + '-' + number.code + '--'].length}}<span ng-show="wordData.forms['V-' + person.code + tense.code + voice.code + mood.code + '-' + number.code + '--'].length === 100">+</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-info" ng-show="participleCharts.length">
+      <div class="panel-heading">Participles</div>
+      <div class="panel-body">
+        <div ng-repeat="tense in tenses">
+          <div ng-repeat="voice in voices">
+            <div class="panel panel-default" ng-repeat="number in numbers" ng-show="participleCharts[tense.code + voice.code + number.code]">
+              <div class="panel-heading">{{tense.label}} {{voice.label | lowercase}} {{number.label | lowercase}}</div>
+              <table class="table table-condensed table-bordered fixed-table-layout">
+                <thead>
+                  <th style="width:25%"></th>
+                  <th style="width:25%" ng-repeat="gender in genders">{{gender.label}}</th>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="case in cases">
+                    <th>{{case.label}}</th>
+                    <td ng-repeat="gender in genders"
+                        ng-class="{success: selectedWord.parsingCode == '-' + tense.code + voice.code + 'P' + case.code + number.code + gender.code + '-'}">
+                      {{wordData.forms['V--' + tense.code + voice.code + 'P' + case.code + number.code + gender.code + '-'][0][1]}}
+                      <div style="float: right;color: #ddd;" ng-show="wordData.forms['V--' + tense.code + voice.code + 'P' + case.code + number.code + gender.code + '-'].length">
+                        {{wordData.forms['V--' + tense.code + voice.code + 'P' + case.code + number.code + gender.code + '-'].length}}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- table class="table">
+      <tbody>
+        <tr ng-repeat="(form,occurence) in wordData.forms">
+          <td ng-class="{success: form == selectedWord.partOfSpeechCode + selectedWord.parsingCode}">{{form}}</td>
+        </tr>
+      </tbody>
+    </table -->
+  </div>
+</div>
+
+<div ng-show="showVerbMorphModal" ng-click="hideVerbMorph()">
+  <div class="modal-backdrop fade in"></div>
+  <div class="modal fade in" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">{{modal.data[0][1]}}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="verse" ng-repeat="verse in modal.data">
+            {{verse[0]}}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

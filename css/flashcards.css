@@ -1,0 +1,34 @@
+body {
+  background-image: url(../img/background.png);
+  background-size:100% 100%;
+  height: 100%;
+  background-repeat:no-repeat;
+  padding: 0;
+  margin: 0;
+}
+
+textarea.form-control {
+  height: 200px;
+}
+
+.verse {
+  font-size: 2.75em;
+  left: 12%;
+  right: 12%;
+}
+
+.verse.inSecondLanguage {
+  position: fixed;
+  top: 22%;
+}
+
+.verse.inFirstLanguage {
+  position: fixed;
+  bottom: 22%;
+  color: #7C5839;
+}
+
+.verse.inFirstLanguage .reference {
+  color: #B8966C;
+  font-size: .7em;
+}

@@ -1,0 +1,137 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Indefinite Pronouns</div>
+  <table class="table table-bordered table-condensed fixed-table-layout">
+    <thead>
+      <tr>
+        <th style="width: 25%;"></th>
+        <th style="width: 25%;">Masculine</th>
+        <th style="width: 25%;">Feminine</th>
+        <th style="width: 25%;">Neuter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Nominative singular</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'NSM-'}">
+          {{wordData.forms['RI----NSM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'NSF-'}">
+          {{wordData.forms['RI----NSF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'NSN-'}">
+          {{wordData.forms['RI----NSN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Genitive singular</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'GSM-'}">
+          {{wordData.forms['RI----GSM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'GSF-'}">
+          {{wordData.forms['RI----GSF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'GSN-'}">
+          {{wordData.forms['RI----GSN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Dative singular</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'DSM-'}">
+          {{wordData.forms['RI----DSM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'DSF-'}">
+          {{wordData.forms['RI----DSF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'DSN-'}">
+          {{wordData.forms['RI----DSN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Accusative singular</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'ASM-'}">
+          {{wordData.forms['RI----ASM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'ASF-'}">
+          {{wordData.forms['RI----ASF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'ASN-'}">
+          {{wordData.forms['RI----ASN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Vocative singular</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'VSM-'}">
+          {{wordData.forms['RI----VSM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'VSF-'}">
+          {{wordData.forms['RI----VSF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,4) == 'VSN-'}">
+          {{wordData.forms['RI----VSN-'][0][1]}}
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <th>Nominative plural</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'NPM'}">
+          {{wordData.forms['RI----NPM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'NPF'}">
+          {{wordData.forms['RI----NPF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'NPN'}">
+          {{wordData.forms['RI----NPN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Genitive plural</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'GPM'}">
+          {{wordData.forms['RI----GPM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'GPF'}">
+          {{wordData.forms['RI----GPF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'GPN'}">
+          {{wordData.forms['RI----GPN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Dative plural</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'DPM'}">
+          {{wordData.forms['RI----DPM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'DPF'}">
+          {{wordData.forms['RI----DPF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'DPN'}">
+          {{wordData.forms['RI----DPN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Accusative plural</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'APM'}">
+          {{wordData.forms['RI----APM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'APF'}">
+          {{wordData.forms['RI----APF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'APN'}">
+          {{wordData.forms['RI----APN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Vocative plural</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'VPM'}">
+          {{wordData.forms['RI----VPM-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'VPF'}">
+          {{wordData.forms['RI----VPF-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,3) == 'VPN'}">
+          {{wordData.forms['RI----VPN-'][0][1]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,20 @@
+<html ng-app="app">
+  <head>
+    <title>New Testament Greek Study</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="css/flashcards.css"></link>
+    <script type="text/javascript" src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/lodash/lodash.min.js"></script>
+    <script type="text/javascript" src="vendor/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="js/nt-flashcards.js"></script>
+  </head>
+  <body ng-controller="LanguageStudyController" ng-keyup="triggerKeyupEvent($event)" ng-tap="triggerTraversal()">
+    <div class="container">
+      <div class="verse inSecondLanguage">{{verseInSecondLanguage}}</div>
+      <div class="verse inFirstLanguage" ng-show="showFirstLanguage">
+        {{verseInFirstLanguage}}
+        <div class="reference" ng-show="currentBook && currentPassage">{{currentBook}} {{currentPassage}}</div>
+      </div>
+    </div>
+  </body>
+</html>

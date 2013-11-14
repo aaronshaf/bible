@@ -1,0 +1,87 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Forms of the noun
+    <strong>
+      {{wordData.forms['N-----NSM-'][0][1]}}  
+      {{wordData.forms['N-----NSF-'][0][1]}}
+      {{wordData.forms['N-----NSN-'][0][1]}}
+    </strong>
+    in the New Testament
+  </div>
+  <table class="table table-condensed table-bordered table-fixed-layout">
+    <thead>
+      <tr>
+        <th style="width: 33%;"></th>
+        <th style="width: 33%;">Singular</th>
+        <th style="width: 33%;">Plural</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Nominative</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'NS'}">
+          {{wordData.forms['N-----NSM-'][0][1]}}
+          {{wordData.forms['N-----NSF-'][0][1]}}
+          {{wordData.forms['N-----NSN-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'NP'}">
+          {{wordData.forms['N-----NPM-'][0][1]}}
+          {{wordData.forms['N-----NPF-'][0][1]}}
+          {{wordData.forms['N-----NPN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Genitive</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'GS'}">
+          {{wordData.forms['N-----GSM-'][0][1]}}
+          {{wordData.forms['N-----GSF-'][0][1]}}
+          {{wordData.forms['N-----GSN-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'GP'}">
+          {{wordData.forms['N-----GPM-'][0][1]}}
+          {{wordData.forms['N-----GPF-'][0][1]}}
+          {{wordData.forms['N-----GPN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Dative</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'DS'}">
+          {{wordData.forms['N-----DSM-'][0][1]}}
+          {{wordData.forms['N-----DSF-'][0][1]}}
+          {{wordData.forms['N-----DSN-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'DP'}">
+          {{wordData.forms['N-----DPM-'][0][1]}}
+          {{wordData.forms['N-----DPF-'][0][1]}}
+          {{wordData.forms['N-----DPN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Accusative</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'AS'}">
+          {{wordData.forms['N-----ASM-'][0][1]}}
+          {{wordData.forms['N-----ASF-'][0][1]}}
+          {{wordData.forms['N-----ASN-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'AP'}">
+          {{wordData.forms['N-----APM-'][0][1]}}
+          {{wordData.forms['N-----APF-'][0][1]}}
+          {{wordData.forms['N-----APN-'][0][1]}}
+        </td>
+      </tr>
+      <tr>
+        <th>Vocative</th>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'VS'}">
+          {{wordData.forms['N-----VSM-'][0][1]}}
+          {{wordData.forms['N-----VSF-'][0][1]}}
+          {{wordData.forms['N-----VSN-'][0][1]}}
+        </td>
+        <td ng-class="{success: selectedWord.parsingCode.substr(4,2) == 'VP'}">
+          {{wordData.forms['N-----VPM-'][0][1]}}
+          {{wordData.forms['N-----VPF-'][0][1]}}
+          {{wordData.forms['N-----VPN-'][0][1]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

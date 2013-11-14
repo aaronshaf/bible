@@ -1,0 +1,59 @@
+.fixed-table-layout {
+   table-layout:fixed;
+}
+
+.word.active,.word:active {
+  background-color: #dff0d8;
+  -webkit-transition: background-color 0.1s;
+}
+
+.parsing td.active span {
+  opacity: 1;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+}
+.parsing td:not(.active) span {
+  opacity: .2;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+}
+
+.transition {
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s; /* Safari */
+}
+
+.list-group-item.active span {
+  opacity: 1;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s; /* Safari */
+}
+.list-group-item:not(.active) span {
+  opacity: .2;
+  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s; /* Safari */
+}
+
+.table tr > th:first-of-type {
+  border-right-width: 2px;
+}
+
+.table > thead + tbody {
+  border-top: 2px solid #ddd;
+}
+
+.parse-info {
+  float: right;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s; /* Safari */
+}
+
+th:hover .parse-info, td:hover .parse-info {
+  opacity: .2;
+  -webkit-transition: opacity 0.2s; /* Safari */
+}
+
+th .parse-info:hover, td .parse-info:hover {
+  -webkit-transition: opacity 1; /* Safari */
+  opacity: 1;
+}

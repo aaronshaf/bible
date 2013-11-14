@@ -1,0 +1,43 @@
+<div>
+  <!-- pre>{{selectedWord | json}}</pre -->
+  <!-- blockquote>
+    <p>A conjunction (from Lat. coniugo, “I join together”) is a word whose function is to join together words, phrases, clauses, and sentences: “the apostle and the slave”; “the law or the gift”; “he goes but they come”; etc. Conjunctions are classified either as coordinate (from Lat. cum, “with,” plus ordinatus, “placed in order”) or as subordinate (from Lat. sub, “under”). Coordinate conjunctions connect parallel words or clauses. They may show such relationships as connection (“and”), contrast (“but”), or consequence (“therefore”). Subordinate conjunctions introduce clauses that are dependent on some other clause. Subordinate clauses may be conditional (“if”), concessive (“although”), temporal (“when”), causal (“because”), final (“in order that”), or consecutive (“that”)...</p>
+    <p>καί is the basic or “unmarked” means of conjoining sentences and implies continuity with the preceding context. δέ marks the introduction of a new and significant development in the story or argument. ἀλλά marks a contrast between sentences and bears more semantic weight than either δέ or καί.</p>
+    <small><cite>Black, D. A. (2009). <em>Learn to Read New Testament Greek</em> (3rd ed) (30). Nashville, TN: B&H Publishing Group.</cite></small>
+  </blockquote -->
+  <div class="panel panel-default">
+    <div class="panel-heading">Coordinating Conjunctions</div>
+    <table class="table table-fixed-layout table-bordered table-fixed-layout">
+      <tbody>
+        <tr>
+          <td style="width: 12%" ng-repeat="conjunction in conjunctions.coordinating.slice(0,8)" ng-class="{success: selectedWord.versions.lemma == conjunction}">
+            {{conjunction}}
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 12%" ng-repeat="conjunction in conjunctions.coordinating.slice(8)" ng-class="{success: selectedWord.versions.lemma == conjunction}">
+            {{conjunction}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  {{Math.ceil(conjunctions.subordinating.length / 2)}}
+  <div class="panel panel-default">
+    <div class="panel-heading">Subordinating Conjunctions</div>
+    <table class="table table-fixed-layout table-bordered table-fixed-layout">
+      <tbody>
+        <tr>
+          <td style="width: 7.6%" ng-repeat="conjunction in conjunctions.subordinating.slice(0,13)" ng-class="{success: selectedWord.versions.lemma == conjunction || selectedWord.versions.text == conjunction}">
+            {{conjunction}}
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 7.6%" ng-repeat="conjunction in conjunctions.subordinating.slice(13)" ng-class="{success: selectedWord.versions.lemma == conjunction}">
+            {{conjunction}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
