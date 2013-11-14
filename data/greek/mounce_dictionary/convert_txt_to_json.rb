@@ -1,6 +1,30 @@
-# GK G1592 | S G1458   ἐγκαλέω   enkaleō   7x
-# <def>can be followed by a dative, to bring a charge against, accuse; to institute judicial proceedings, Acts 19:38, 40; 23:28, 29; 26:2, 7; Rom. 8:33 </def>→ accuse.
+# encoding: UTF-8
+require 'json'
 
-File.open(file, "r") do |file|
+lastLine = []
+data = {}
 
+File.open("txt/main.txt").each_with_index do |line, index|
+  if line[0..1] == "GK"
+    line = line.gsub(/\p{Z}/, ' ').gsub(/\s+/, ' ')
+    lastLine = line.split(' ')
+  elsif line[0..4] == "<def>"
+    strongs = lastLine[1].split('G')[1]
+    gk = lastLine[4].split('G')[1]
+    lemma = lastLine[5]
+
+    line = line.gsub(/\p{Z}/, ' ').gsub(/\s+/, ' ')
+    tmp1 = line.split('</def>')
+    definition = tmp1[0].split('<def>')[1]
+
+    data[lemma] = {
+      "strongs" => strongs,
+      "gk" => gk,
+      "definition" => definition
+    }
+  end
+end
+
+File.open("json/main.json","w") do |fileToWrite|
+  fileToWrite.write(JSON.pretty_generate(data))
 end
