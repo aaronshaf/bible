@@ -67,5 +67,8 @@
       ]
     ]
   },
-  "occurences": 15
+  "occurences": 15,
+  "definitions": {
+    "mounce": "Lazarus, pr. name"
+  }
 }

@@ -29,5 +29,8 @@
       ]
     ]
   },
-  "occurences": 5
+  "occurences": 5,
+  "definitions": {
+    "mounce": "Egyptian"
+  }
 }

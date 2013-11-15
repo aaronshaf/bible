@@ -8,6 +8,18 @@ onRecentEvergreenBrowser = (function () {
 
 app = angular.module('app', []);
 
+cache = {}
+setCache = function(key,value) {
+  if(Object.keys(cache).length > 250) {
+    delete cache[Object.keys(cache)[0]];
+    delete cache[Object.keys(cache)[0]];
+  }
+  cache[key] = value;
+}
+getCache = function(key) {
+  return typeof cache[key] === 'undefined' ? false : cache[key];
+}
+
 parsing = [
   {
     key: 'person',
@@ -83,10 +95,17 @@ function StudyGreek($scope) {
 
   function fetchVerse(book,chapter,verse) {
     var ntBookOrder = bcv_parser.prototype.translations.default.order[book] - 39;
-    $.getJSON('data/morphs/json/' + pad(ntBookOrder,2) + '/' + pad(chapter,2) + '/' + pad(verse + 1,2) + '.json',function(data) {
+    var file = 'data/morphs/json/' + pad(ntBookOrder,2) + '/' + pad(chapter,2) + '/' + pad(verse + 1,2) + '.json';
+    var data;
+    if(data = getCache(file)) {
       $scope.secondLanguage = importVerse(data);
-      $scope.$apply('secondLanguage');
-    });
+    } else {
+      $.getJSON(file,function(data) {
+        setCache(file, data);
+        $scope.secondLanguage = importVerse(data);
+        $scope.$apply('secondLanguage');
+      });      
+    }
   };
   
   $scope.$watch('referenceQuery', function(newValue) {
@@ -101,12 +120,18 @@ function StudyGreek($scope) {
   $scope.getWordData = function(word) {
     var firstCharacter = word.versions.lemma.substr(0,1);
     var lemmaCodes = convertToCharCodes(word.versions.lemma);
-    $.getJSON('data/words/json/' + lemmaCodes.split('-')[0] + '/' + lemmaCodes + '.json',function(data) {
-      if($scope.selectedWord !== word) return;
+    var file = 'data/words/json/' + lemmaCodes.split('-')[0] + '/' + lemmaCodes + '.json';
+    var data;
+    if(data = getCache(file)) {
       $scope.wordData = data;
-
-      $scope.$apply('wordData');
-    });
+    } else {
+      $.getJSON(file,function(data) {
+        setCache(file, data);
+        if($scope.selectedWord !== word) return;
+        $scope.wordData = data;
+        $scope.$apply('wordData');
+      });      
+    }
   };
 
   $scope.selectWord = function(word) {
