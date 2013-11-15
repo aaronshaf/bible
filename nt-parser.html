@@ -38,6 +38,9 @@
             <input type="text" class="form-control input-lg" placeholder="John 3:16" ng-model="referenceQuery" ng-keydown="handleReferenceQueryKeydown($event)" autofocus>
           </div>
         </form>
+        <div class="pull-right" style="font-size: 1.8em;vertical-align: middle;line-height: 60px;color: #444;">
+          <i class="fa fa-cog"></i>
+        </div>
       </div>
     </nav>
     <div class="container">
@@ -57,7 +60,7 @@
                     <i class="fa fa-spinner fa-spin"></i>
                   </div>
                   <span ng-repeat="word in secondLanguage">
-                    <span class="word" ng-class="{active: selectedWord === word}" ng-mouseenter="selectWord(word)" ng-click="stickySelectWord(word)" ng-keydown="handleKeydown($event,word)" ng-keypress="handleKeypress($event,word)" tabindex="0">{{word.versions.text}}</span>
+                    <span class="word" ng-class="{active: selectedWord === word}" ng-mouseenter="selectWord(word)" ng-click="stickySelectWord($event,word)" ng-keydown="handleKeydown($event,word)" ng-keypress="handleKeypress($event,word)" tabindex="0">{{word.versions.text}}</span>
                     <span class="space"> </span>
                   </span>
                 </div>
@@ -68,61 +71,63 @@
         <div class="form-group" ng-show="selectedWord && selectedWord.parsingCode != '--------'">
           <parsing selected-word=selectedWord parsing=parsing />
         </div>
-        <div class="form-group" ng-show="selectedWord && wordData.definitions.mounce">
-          <definitions selected-word=selectedWord word-data=wordData />
-        </div>
-        <div class="form-group" ng-show="selectedWord">
-          <div class="row">
-            <div class="col-sm-12">
-              <!-- pre>
-              person: {{selectedWord.parsingCode[0]}}
-              tense: {{selectedWord.parsingCode[1]}}
-              voice: {{selectedWord.parsingCode[2]}}
-              mood: {{selectedWord.parsingCode[3]}}
-              case: {{selectedWord.parsingCode[4]}}
-              number: {{selectedWord.parsingCode[5]}}
-              gender: {{selectedWord.parsingCode[6]}}
-              degree: {{selectedWord.parsingCode[7]}}
-              </pre-->
+        <div ng-show="sticky">
+          <div class="form-group" ng-show="selectedWord && wordData.definitions.mounce">
+            <definitions selected-word=selectedWord word-data=wordData />
+          </div>
+          <div class="form-group" ng-show="selectedWord">
+            <div class="row">
+              <div class="col-sm-12">
+                <!-- pre>
+                person: {{selectedWord.parsingCode[0]}}
+                tense: {{selectedWord.parsingCode[1]}}
+                voice: {{selectedWord.parsingCode[2]}}
+                mood: {{selectedWord.parsingCode[3]}}
+                case: {{selectedWord.parsingCode[4]}}
+                number: {{selectedWord.parsingCode[5]}}
+                gender: {{selectedWord.parsingCode[6]}}
+                degree: {{selectedWord.parsingCode[7]}}
+                </pre-->
 
-              <div ng-show="selectedWord.partOfSpeech == 'Article'">
-                <articles selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Article'">
+                  <articles selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Adjective'">
-                <adjectives selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Adjective'">
+                  <adjectives selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Noun'">
-                <nouns selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Noun'">
+                  <nouns selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Adverb'">
-                <adverbs selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Adverb'">
+                  <adverbs selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Conjunction'">
-                <conjunctions selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Conjunction'">
+                  <conjunctions selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Preposition'">
-                <prepositions selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Preposition'">
+                  <prepositions selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Verb'">
-                <verbs selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Verb'">
+                  <verbs selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Relative Pronoun'">
-                <relative-pronouns selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Relative Pronoun'">
+                  <relative-pronouns selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeech == 'Indefinite Pronoun'">
-                <indefinite-pronouns selected-word=selectedWord word-data=wordData />
-              </div>
+                <div ng-show="selectedWord.partOfSpeech == 'Indefinite Pronoun'">
+                  <indefinite-pronouns selected-word=selectedWord word-data=wordData />
+                </div>
 
-              <div ng-show="selectedWord.partOfSpeechCode == '--'">
-                <pre>{{selectedWord | json}}</pre>  
+                <div ng-show="selectedWord.partOfSpeechCode == '--'">
+                  <pre>{{selectedWord | json}}</pre>  
+                </div>
               </div>
             </div>
           </div>

@@ -141,9 +141,10 @@ function StudyGreek($scope) {
     $scope.getWordData(word);
   };
 
-  $scope.stickySelectWord = function(word) {
+  $scope.stickySelectWord = function(event,word) {
     if($scope.sticky && $scope.selectedWord === word) {
       $scope.sticky = false;
+      $(event.target).blur();
       return;
     }
     $scope.selectedWord = word;
@@ -153,7 +154,7 @@ function StudyGreek($scope) {
 
   $scope.handleKeypress = function(event,word) {
     if(event.which === 13) {
-      $scope.stickySelectWord(word);
+      $scope.stickySelectWord(event,word);
       return false;
     }
   };
@@ -163,13 +164,13 @@ function StudyGreek($scope) {
     if(event.which === 37) {
       index = $scope.secondLanguage.indexOf(word);
       if(index > 0) {
-        $scope.stickySelectWord($scope.secondLanguage[index - 1]);  
+        $scope.stickySelectWord(event,$scope.secondLanguage[index - 1]);  
         $(event.target).parent('span').prev('span').find('span').focus();
       }
     } else if(event.which === 39) {
       index = $scope.secondLanguage.indexOf(word);
       if(index + 1 < $scope.secondLanguage.length) {
-        $scope.stickySelectWord($scope.secondLanguage[index + 1]);
+        $scope.stickySelectWord(event,$scope.secondLanguage[index + 1]);
         $(event.target).parent('span').next('span').find('span').focus();
       }
     }

@@ -2,6 +2,10 @@
    table-layout:fixed;
 }
 
+.word {
+  cursor: pointer;
+}
+
 .word.active,.word:active {
   background-color: #dff0d8;
   -webkit-transition: background-color 0.1s;
@@ -56,4 +60,9 @@ th:hover .parse-info, td:hover .parse-info {
 th .parse-info:hover, td .parse-info:hover {
   -webkit-transition: opacity 1; /* Safari */
   opacity: 1;
+}
+
+.muted-link {
+  color: rgb(51, 51, 51);
+  text-decoration: none;
 }
