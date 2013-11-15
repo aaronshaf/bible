@@ -78,6 +78,7 @@ function StudyGreek($scope) {
   }
 
   $scope.secondLanguage = undefined;
+  $scope.showSettings = false;
   var bcv = new bcv_parser;
 
   $scope.setReference = function(reference) {

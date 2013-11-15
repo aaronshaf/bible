@@ -52,12 +52,16 @@
   -webkit-transition: opacity 0.2s; /* Safari */
 }
 
-th:hover .parse-info, td:hover .parse-info {
+div:hover > .parse-info,
+th:hover .parse-info,
+td:hover .parse-info {
   opacity: .2;
   -webkit-transition: opacity 0.2s; /* Safari */
 }
 
-th .parse-info:hover, td .parse-info:hover {
+div > .parse-info:hover,
+th .parse-info:hover,
+td .parse-info:hover {
   -webkit-transition: opacity 1; /* Safari */
   opacity: 1;
 }
@@ -65,4 +69,8 @@ th .parse-info:hover, td .parse-info:hover {
 .muted-link {
   color: rgb(51, 51, 51);
   text-decoration: none;
+}
+
+.panel-body > .panel:last-of-type {
+  margin-bottom: 0;
 }

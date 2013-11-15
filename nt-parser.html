@@ -9,6 +9,8 @@
   <script src="vendor/angularjs/angular.min.js"></script>
   <script src="vendor/Bible-Passage-Reference-Parser/en_bcv_parser.min.js"></script>
   <script src="js/nt-parser.js"></script>
+  <script src="js/directives/settings.js"></script>
+
   <script src="js/directives/greek/debug.js"></script>
   <script src="js/directives/greek/parsing.js"></script>
   <script src="js/directives/greek/definitions.js"></script>
@@ -38,12 +40,16 @@
             <input type="text" class="form-control input-lg" placeholder="John 3:16" ng-model="referenceQuery" ng-keydown="handleReferenceQueryKeydown($event)" autofocus>
           </div>
         </form>
-        <div class="pull-right" style="font-size: 1.8em;vertical-align: middle;line-height: 60px;color: #444;">
+        <div ng-click="showSettings = !showSettings" class="pull-right" style="font-size: 1.8em;vertical-align: middle;line-height: 60px;color: #444;">
           <i class="fa fa-cog"></i>
         </div>
       </div>
     </nav>
     <div class="container">
+      <div ng-show="showSettings">
+        <settings settings=settings ></settings>
+      </div>
+
       <form role="form" class="form-horizontal" style="margin-top: 14px">
         <div class="form-group">
           <div class="row">
@@ -51,9 +57,9 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                   κοινή
-                  <!-- div>
+                  <div class="parse-info">
                     <i class="glyphicon glyphicon-question-sign"></i>
-                  </div -->
+                  </div>
                 </div>
                 <div class="panel-body" style="font-size: 2.4em">
                   <div ng-hide="secondLanguage.length" style="color: #ddd;">
@@ -68,7 +74,7 @@
             </div>
           </div>
         </div>
-        <div class="form-group" ng-show="selectedWord && selectedWord.parsingCode != '--------'">
+        <div class="form-group" ng-show="selectedWord">
           <parsing selected-word=selectedWord parsing=parsing />
         </div>
         <div ng-show="sticky">
