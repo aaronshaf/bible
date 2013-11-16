@@ -1,4 +1,5 @@
 require 'json'
+require 'unicode'
 
 books = nil
 
