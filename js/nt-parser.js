@@ -52,16 +52,16 @@ parsing = [
     options: ['Nominative','Genitive','Dative','Accusative','Vocative']
   },
   {
-    key: 'gender',
-    label: 'Gender',
-    order: 5,
-    options: ['Masculine','Feminine','Neuter'],
-  },
-  {
     key: 'number',
     label: 'Number',
-    order: 6,
+    order: 5,
     options: ['Singular','Plural']
+  },
+  {
+    key: 'gender',
+    label: 'Gender',
+    order: 6,
+    options: ['Masculine','Feminine','Neuter'],
   },
   {
     key: 'degree',
