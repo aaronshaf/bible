@@ -1,1 +1,3 @@
-Currently this is merely a tool for studying New Testament Greek, but there are bigger plans...
+*aaronshaf/bible* is a tool for reading the Bible and studying its languages.
+
+It depends on [aaronshaf/bible-data](https://github.com/aaronshaf/bible-data).

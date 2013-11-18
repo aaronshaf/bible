@@ -1,0 +1,27 @@
+{
+  "name": "aaronshaf/bible",
+  "version": "0.0.1",
+  "homepage": "https://github.com/aaronshaf/bible",
+  "authors": [
+    "Aaron Shafovaloff <aaronshaf@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "Public domain",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js",
+    "bible-data": "https://github.com/aaronshaf/bible-data.git",
+    "bible-passage-reference-parser": "https://raw.github.com/openbibleinfo/Bible-Passage-Reference-Parser/master/js/en_bcv_parser.min.js",
+    "bootstrap": "https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css",
+    "font-awesome": "~4.0.3",
+    "jquery": "http://code.jquery.com/jquery-2.0.3.min.js",
+    "lodash": "https://raw.github.com/lodash/lodash/2.3.0/dist/lodash.min.js",
+    "sblgnt": "https://github.com/morphgnt/sblgnt.git"
+  }
+}
