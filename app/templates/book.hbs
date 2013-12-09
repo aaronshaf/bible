@@ -1,4 +1,10 @@
 <div>
   {{name}}
+  {{#each chapterNumber in chapterNumbers}}
+    {{#link-to 'chapter.index' chapterNumber}}
+      {{chapterNumber}}
+    {{/link-to}}
+  {{/each}}
+  
   {{outlet}}
 </div>

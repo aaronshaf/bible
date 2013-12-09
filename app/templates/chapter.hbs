@@ -1,7 +1,13 @@
 <div>
   {{chapter}}
 
-  {{model.passages}}
+  {{#each paragraph in paragraphs}}
+  	<p>
+  		{{#each verseNumber in paragraph}}
+  			{{verseNumber}}
+  		{{/each}}
+  	</p>
+  {{/each}}
 
   {{outlet}}
 </div>
