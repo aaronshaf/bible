@@ -3,8 +3,10 @@
 
   {{#each paragraph in paragraphs}}
   	<p>
-  		{{#each verseNumber in paragraph}}
-  			{{verseNumber}}
+  		{{#each verse in paragraph}}
+  			{{#each word in verse}}
+  				{{word}}
+  			{{/each}}
   		{{/each}}
   	</p>
   {{/each}}

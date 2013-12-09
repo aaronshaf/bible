@@ -10,8 +10,14 @@ App.ChapterRoute = Ember.Route.extend({
         "chapter": chapter,
         "paragraphs": []
       });
-      Ember.$.getJSON('../vendor/sblgnt/json/' + bookOsisId + '/' + paddedChapter + '-paragraphs.json').then(function(data) {
-        model.set('paragraphs',data);
+      Ember.$.getJSON('../vendor/bible-data/greek/sblgnt/json/' + bookOsisId + '/' + paddedChapter + '.json').then(function(data) {
+        model.set('paragraphs',data.paragraphs.map(function(verses) {
+          var stuff = verses.map(function(verse){
+            return data.verses[parseInt(verse) - 1];
+          });
+          console.log(stuff)
+          return stuff;
+        }));
       });
     } catch(e) {}
 
