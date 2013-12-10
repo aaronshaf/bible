@@ -1,0 +1,151 @@
+* { box-sizing: border-box }
+
+body {
+  background-color: #F9F6ED;
+}
+
+layout {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.paragraphs {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.7em;
+  font-size: 1.8em;
+}
+
+input[type=search] {
+  font-size: 16px;
+  line-height: 1.2em;
+  outline: none;
+  margin: 4px;
+}
+
+.paragraphs a {
+  text-decoration: none;
+  color: black;
+}
+
+.paragraphs a:hover {
+  background-color: #efefef;
+}
+
+books {
+  font-size: .82em;
+  overflow: scroll;
+}
+
+#books-menu {
+  width: 160px;
+  background-color: #2B3956;
+  color: white;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
+}
+
+#books-menu a {
+  text-decoration: none;
+  display: block;
+  padding: 5px 8px;
+  color: #AFBED1;
+}
+
+#books-menu a:first-of-type {
+  padding-top: 8px;
+}
+
+#books-menu a:last-of-type {
+  padding-bottom: 8px;
+}
+
+#books-menu a:hover {
+  color: white;
+  
+}
+
+#books-menu a.active,
+#books-menu a:active {
+  color: white;
+}
+
+article {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  overflow-y: scroll;
+  font-family: Cambria,"Times New Roman",Times,serif;
+}
+
+article p:first-of-type {
+  margin-top: 12px;
+}
+
+article p:last-of-type {
+  margin-bottom: 12px;
+}
+
+.flex {
+display: -webkit-flex;
+display: flex;
+}
+
+.flex-row {
+-webkit-flex-direction: row;
+flex-direction: row;
+}
+
+.flex-column {
+-webkit-flex-direction: column;
+flex-direction: column;
+}
+
+.flex-wrap {
+-webkit-flex-wrap: wrap;
+flex-wrap: wrap;
+}
+
+.align-items-center {
+-webkit-align-items: center;
+align-items: center;
+}
+
+.justify-content-center {
+-webkit-justify-content: center;
+justify-content: center;
+}
+
+.flex-1 { flex: 1; -webkit-flex: 1; }
+.flex-2 { flex: 2; -webkit-flex: 2; }
+.flex-3 { flex: 3; -webkit-flex: 3; }
+.flex-4 { flex: 4; -webkit-flex: 4; }
+.flex-5 { flex: 5; -webkit-flex: 5; }
+.flex-6 { flex: 6; -webkit-flex: 6; }
+.flex-7 { flex: 7; -webkit-flex: 7; }
+.flex-8 { flex: 8; -webkit-flex: 8; }
+.flex-9 { flex: 9; -webkit-flex: 9; }
+.flex-10 { flex: 10; -webkit-flex: 10; }
+.flex-11 { flex: 11; -webkit-flex: 11; }
+.flex-12 { flex: 12; -webkit-flex: 12; }
+.flex-13 { flex: 13; -webkit-flex: 13; }
+.flex-14 { flex: 14; -webkit-flex: 14; }
+.flex-15 { flex: 15; -webkit-flex: 15; }
+.flex-16 { flex: 16; -webkit-flex: 16; }
+.flex-17 { flex: 17; -webkit-flex: 17; }
+.flex-18 { flex: 18; -webkit-flex: 18; }
+.flex-19 { flex: 19; -webkit-flex: 19; }
+.flex-20 { flex: 20; -webkit-flex: 20; }
+
+/* http://stackoverflow.com/a/16771693/176758 */
+
+.spinner {
+    height: 32px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

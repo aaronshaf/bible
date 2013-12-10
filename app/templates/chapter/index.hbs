@@ -1,0 +1,17 @@
+<div class="paragraphs">
+  {{#unbound each paragraph in paragraphs}}
+    <p>
+      {{#unbound each verse in paragraph}}
+        {{#unbound each word in verse}}
+          <a href="{{unbound word.raw}}">{{unbound word.raw}}</a>
+        {{/unbound}}
+      {{/unbound}}
+    </p>
+  {{/unbound}}
+
+  {{#unless paragraphs.length}}
+    <div style="text-align: center;">
+      Loading
+    </div>
+  {{/unless}}
+</div>

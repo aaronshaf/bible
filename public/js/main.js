@@ -5,19 +5,70 @@ var bcv = new bcv_parser;
 App = Ember.Application.create({
   // LOG_TRANSITIONS: true,
   // LOG_TRANSITIONS_INTERNAL: true,
-  LOG_ACTIVE_GENERATION: true,
-  LOG_VIEW_LOOKUPS: true
+  // LOG_ACTIVE_GENERATION: true,
+  // LOG_VIEW_LOOKUPS: true
 });
 
 App.Router.map(function() {
   this.resource('book', { path: '/:id' }, function() {
     this.resource('chapter', { path: '/:chapter' }, function() {
-      this.resource('verse', { path: '/:id' }, function() {
+      this.resource('verse', { path: '/:verse' }, function() {
+        this.resource('greekWord', { path: '/greek/:word' }, function() {
 
+        });
       });
     });
   });
 });
+
+App.ApplicationController = Ember.Controller.extend({
+  searchQueryObserver: function() {
+    if(this.get('searchQuery.length') < 4) return;
+
+    try {
+      var parsedReferenceQuery = bcv.parse(this.get('searchQuery')).parsed_entities();
+      var book = parsedReferenceQuery[0].entities[0].start.b;
+      var chapter = parsedReferenceQuery[0].entities[0].start.c;
+      var verse = parsedReferenceQuery[0].entities[0].start.v;
+      
+      this.transitionToRoute('chapter',book,chapter);
+    } catch(e) {}
+  }.observes('searchQuery')
+});
+
+// http://stackoverflow.com/a/10073764/176758
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+App.SearchFieldView = Ember.TextField.extend({
+    attributeBindings: ['results','autofocus']
+});
+
+/*
+Ember.subscribe('render', {
+  before: function(name, start, payload){
+    return start
+  },
+  after: function(name, end, payload, start){
+    var duration = Math.round(end - start)
+    console.log(payload)
+    var template = payload.template
+    // if (template){ // this is to filter out anonymous templates
+      // console.log('rendered', template, 'took', duration, 'ms')
+    // }
+  }
+})
+*/
+
+// Ember.Handlebars.helper('logTime', function(someField){
+//   var d = new Date,
+//     timestamp = d.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1") + "." + d.getMilliseconds();
+//   console.log(timestamp + " - " + someField);
+//   return "";
+//  });
 App.BookRoute = Ember.Route.extend({
   model: function(params) {
     var model = Ember.Object.create({
@@ -45,39 +96,77 @@ App.BookRoute = Ember.Route.extend({
     return model;
   }
 });
+App.BookIndexRoute = Ember.Route.extend({
+  beforeModel: function() {
+    this.transitionTo('chapter',1);
+  }
+});
 App.ChapterRoute = Ember.Route.extend({
   model: function(params) {
-  	var model = {};
+    var model = {};
     try {
       var bookOsisId = this.modelFor('book').osisID;
       var parsedReferenceQuery = bcv.parse(bookOsisId + ' ' + params.chapter).parsed_entities();
       var chapter = parsedReferenceQuery[0].entities[0].start.c;
-      var paddedChapter = pad(chapter,3);
+      
       model = Ember.Object.create({
-        "chapter": chapter,
-        "paragraphs": []
+        "chapter": chapter
       });
-      Ember.$.getJSON('../vendor/bible-data/greek/sblgnt/json/' + bookOsisId + '/' + paddedChapter + '.json').then(function(data) {
-        model.set('paragraphs',data.paragraphs.map(function(verses) {
-          var stuff = verses.map(function(verse){
-            return data.verses[parseInt(verse) - 1];
-          });
-          console.log(stuff)
-          return stuff;
-        }));
-      });
+
     } catch(e) {}
 
     return model;
   }
 });
+App.ChapterIndexRoute = Ember.Route.extend({
+  model: function(params) {
+    var book = this.modelFor('book');
+    var chapter = this.modelFor('chapter');
+    var paddedChapter = pad(chapter.chapter,3);
+        
+    return new Ember.RSVP.Promise(function(resolve,reject) {
+      Ember.run.later(function() {
+        Ember.$.getJSON('../vendor/bible-data/greek/sblgnt/json/' + book.get('osisID') + '/' + paddedChapter + '.json').then(function(data) {
+          var model = Ember.Object.create({
+            "verses": Ember.Object.create(),
+            "paragraphs": []
+          });
 
-// http://stackoverflow.com/a/10073764/176758
-function pad(n, width, z) {
-  z = z || '0';
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-}
+          console.timeEnd('xhr')
+
+          console.time('process data 1')
+          data.verses.forEach(function(verse,index) {
+            verse = verse.map(function(word) {
+              return {
+                partOfSpeech: word[0],
+                morph: word[1],
+                raw: word[2],
+                lemma: word[5]
+              }
+            });
+            model.get('verses').set(String(index + 1), verse);
+          });
+
+          model.set('paragraphs',data.paragraphs.map(function(verses) {
+            var stuff = verses.map(function(verseNumber) {
+              // console.log('verse' + verseNumber,model.get('verses').get(verseNumber))
+              return model.get('verses').get(verseNumber)
+            });
+            // console.log(stuff)
+            return stuff;
+          }));
+
+          resolve(model);
+        });
+      });
+    });
+  }
+});
+App.GreekWordRoute = Ember.Route.extend({
+  model: function(params) {
+    console.log('GreekWordRoute params',params);
+  }
+});
 App.IndexRoute = Ember.Route.extend({
   model: function() {
     

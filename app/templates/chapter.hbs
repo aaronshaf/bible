@@ -1,15 +1,3 @@
-<div>
-  {{chapter}}
-
-  {{#each paragraph in paragraphs}}
-  	<p>
-  		{{#each verse in paragraph}}
-  			{{#each word in verse}}
-  				{{word}}
-  			{{/each}}
-  		{{/each}}
-  	</p>
-  {{/each}}
-
+<div class="chapter">
   {{outlet}}
 </div>
