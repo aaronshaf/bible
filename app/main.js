@@ -22,6 +22,7 @@ App.Router.map(function() {
 });
 
 App.ApplicationController = Ember.Controller.extend({
+  lastQueryResult: {},
   searchQueryObserver: function() {
     if(this.get('searchQuery.length') < 4) return;
 
@@ -30,8 +31,17 @@ App.ApplicationController = Ember.Controller.extend({
       var book = parsedReferenceQuery[0].entities[0].start.b;
       var chapter = parsedReferenceQuery[0].entities[0].start.c;
       var verse = parsedReferenceQuery[0].entities[0].start.v;
+
+      if(this.get('lastQueryResult.book') === book &&
+          this.get('lastQueryResult.chapter') === chapter) {
+        return
+      }
       
       this.transitionToRoute('chapter',book,chapter);
+
+      this.set('lastQueryResult.book',book);
+      this.set('lastQueryResult.chapter',chapter);
+      this.set('lastQueryResult.verse',verse);
     } catch(e) {}
   }.observes('searchQuery')
 });
