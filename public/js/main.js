@@ -10,7 +10,7 @@ App = Ember.Application.create({
 });
 
 App.Router.map(function() {
-  this.resource('book', { path: '/:id' }, function() {
+  this.resource('book', { path: '/:osisID' }, function() {
     this.resource('chapter', { path: '/:chapter' }, function() {
       this.resource('verse', { path: '/:verse' }, function() {
         this.resource('greekWord', { path: '/greek/:word' }, function() {
@@ -69,36 +69,61 @@ Ember.subscribe('render', {
 //   console.log(timestamp + " - " + someField);
 //   return "";
 //  });
+App.ApplicationRoute = Ember.Route.extend({
+  model: function(params) {
+    return new Ember.RSVP.Promise(function(resolve,reject) {
+      Ember.run.later(function() {
+        Ember.$.getJSON('../vendor/bible-data/books/index.json').then(function(data) {
+          resolve(data.slice(39).map(function(book) {
+            return Ember.Object.create(book);
+          }));
+        });
+      });
+    });
+  }
+});
+
 App.BookRoute = Ember.Route.extend({
   model: function(params) {
-    var model = Ember.Object.create({
-      id: params.id
-    });
-    try {
-      var parsedReferenceQuery = bcv.parse(params.id + ' 1:1').parsed_entities();
-      var book = parsedReferenceQuery[0].entities[0].start.b;
-      var chapterNumbers = [];
-      bcv_parser.prototype.translations.default.chapters[book].forEach(function(verseCount,index) {
-        chapterNumbers.push(String(index + 1));
-      });
-      model.setProperties({
-        "name": book, // todo: replace this with full name
-        "osisID": book,
-        "order": bcv_parser.prototype.translations.default.order[book],
-        "chapters": bcv_parser.prototype.translations.default.chapters[book],
-        "chapterNumbers": chapterNumbers
-      });
-      Ember.$.getJSON('../vendor/lexham-english-bible/json/' + book + '.json').then(function(data) {
-        model.setProperties(data);
-      });
-    } catch(e) {}
-    
-    return model;
+    return this.modelFor('application').findBy('osisID',params.osisID);
+
+    // return new Ember.RSVP.Promise(function(resolve,reject) {
+    //   try {
+    //     var model = Ember.Object.create({
+    //       book: params.book
+    //     });
+
+    //     var parsedReferenceQuery = bcv.parse(params.book + ' 1:1').parsed_entities();
+    //     var book = parsedReferenceQuery[0].entities[0].start.b;
+    //     var chapterNumbers = [];
+
+    //     bcv_parser.prototype.translations.default.chapters[book].forEach(function(verseCount,index) {
+    //       chapterNumbers.push(String(index + 1));
+    //     });
+    //     model.setProperties({
+    //       "name": book, // todo: replace this with full name
+    //       "osisID": book,
+    //       "order": bcv_parser.prototype.translations.default.order[book],
+    //       "chapters": bcv_parser.prototype.translations.default.chapters[book],
+    //       "chapterNumbers": chapterNumbers
+    //     });
+    //     // Ember.run.later(function() {
+    //     //   Ember.$.getJSON('../vendor/lexham-english-bible/json/' + book + '.json').then(function(data) {
+    //     //     model.setProperties(data);
+        
+    //     //   });
+    //     // });
+    //     resolve(model);
+    //   } catch(e) {
+    //     reject();
+    //   }
+    // });
   }
 });
 App.BookIndexRoute = Ember.Route.extend({
   beforeModel: function() {
     this.transitionTo('chapter',1);
+    // return false;
   }
 });
 App.ChapterRoute = Ember.Route.extend({
@@ -156,7 +181,9 @@ App.ChapterIndexRoute = Ember.Route.extend({
             return stuff;
           }));
 
+
           resolve(model);
+
         });
       });
     });
@@ -168,8 +195,8 @@ App.GreekWordRoute = Ember.Route.extend({
   }
 });
 App.IndexRoute = Ember.Route.extend({
-  model: function() {
-    
+  beforeModel: function() {
+    // this.transitionTo('chapter','Matthew',1);
   }
 });
 App.VerseRoute = Ember.Route.extend({

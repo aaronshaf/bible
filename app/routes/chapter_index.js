@@ -36,7 +36,9 @@ App.ChapterIndexRoute = Ember.Route.extend({
             return stuff;
           }));
 
+
           resolve(model);
+
         });
       });
     });

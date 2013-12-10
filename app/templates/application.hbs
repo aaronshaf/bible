@@ -4,33 +4,9 @@
       {{view App.SearchFieldView type="search" value=searchQuery placeholder="John 3:16" autofocus="autofocus"}}
     </div>
     <books class="flex-1">
-      {{#link-to 'book' 'Matthew'}}Matthew{{/link-to}}
-      {{#link-to 'book' 'Mark'}}Mark{{/link-to}}
-      {{#link-to 'book' 'Luke'}}Luke{{/link-to}}
-      {{#link-to 'book' 'John'}}John{{/link-to}}
-      {{#link-to 'book' 'Acts'}}Acts{{/link-to}}
-      {{#link-to 'book' 'Romans'}}Romans{{/link-to}}
-      {{#link-to 'book' '1Corinthians'}}1 Corinthians{{/link-to}}
-      {{#link-to 'book' '2Corinthians'}}2 Corinthians{{/link-to}}
-      {{#link-to 'book' 'Galatians'}}Galatians{{/link-to}}
-      {{#link-to 'book' 'Ephesians'}}Ephesians{{/link-to}}
-      {{#link-to 'book' 'Philippians'}}Philippians{{/link-to}}
-      {{#link-to 'book' 'Colossians'}}Colossians{{/link-to}}
-      {{#link-to 'book' '1Thessalonians'}}1 Thessalonians{{/link-to}}
-      {{#link-to 'book' '2Thessalonians'}}2 Thessalonians{{/link-to}}
-      {{#link-to 'book' '1Timothy'}}1 Timothy{{/link-to}}
-      {{#link-to 'book' '2Timothy'}}2 Timothy{{/link-to}}
-      {{#link-to 'book' 'Titus'}}Titus{{/link-to}}
-      {{#link-to 'book' 'Philemon'}}Philemon{{/link-to}}
-      {{#link-to 'book' 'Hebrews'}}Hebrews{{/link-to}}
-      {{#link-to 'book' 'James'}}James{{/link-to}}
-      {{#link-to 'book' '1Peter'}}1 Peter{{/link-to}}
-      {{#link-to 'book' '2Peter'}}2 Peter{{/link-to}}
-      {{#link-to 'book' '1John'}}1 John{{/link-to}}
-      {{#link-to 'book' '2John'}}2 John{{/link-to}}
-      {{#link-to 'book' '3John'}}3 John{{/link-to}}
-      {{#link-to 'book' 'Jude'}}Jude{{/link-to}}
-      {{#link-to 'book' 'Revelation'}}Revelation{{/link-to}}
+      {{#each book in model}}
+        {{#link-to 'book' book}}{{book.names.english}}{{/link-to}}
+      {{/each}}
     </books>
   </nav>
 

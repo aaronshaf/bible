@@ -1,5 +1,5 @@
 App.IndexRoute = Ember.Route.extend({
-  model: function() {
-    
+  beforeModel: function() {
+    // this.transitionTo('chapter','Matthew',1);
   }
 });

@@ -10,7 +10,7 @@ App = Ember.Application.create({
 });
 
 App.Router.map(function() {
-  this.resource('book', { path: '/:id' }, function() {
+  this.resource('book', { path: '/:osisID' }, function() {
     this.resource('chapter', { path: '/:chapter' }, function() {
       this.resource('verse', { path: '/:verse' }, function() {
         this.resource('greekWord', { path: '/greek/:word' }, function() {
