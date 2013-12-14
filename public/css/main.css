@@ -2,6 +2,28 @@
 
 body {
   background-color: #F9F6ED;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.go-previous-button {
+  padding-top: 28px;
+}
+
+.go-next-button {
+  padding-bottom: 28px;
+}
+
+.go-previous-button,
+.go-next-button {
+  opacity: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.go-previous-button:hover,
+.go-next-button:hover {
+  opacity: 1;
 }
 
 layout {
@@ -13,17 +35,18 @@ layout {
 }
 
 .paragraphs {
-  max-width: 700px;
+  max-width: 650px;
   margin: auto;
-  line-height: 1.7em;
-  font-size: 1.8em;
+  line-height: 1.8em;
+  font-size: 1.75em;
 }
 
 input[type=search] {
   font-size: 16px;
   line-height: 1.2em;
   outline: none;
-  margin: 4px;
+  margin-top: 5px;
+  width:90%;
 }
 
 .paragraphs a {
@@ -36,7 +59,8 @@ input[type=search] {
 }
 
 books {
-  font-size: .82em;
+  padding-bottom: 20px;
+  font-size: .9em;
   overflow: scroll;
 }
 
@@ -44,7 +68,6 @@ books {
   width: 160px;
   background-color: #2B3956;
   color: white;
-  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
 }
 
 #books-menu a {
@@ -72,19 +95,26 @@ books {
   color: white;
 }
 
-article {
-  padding-top: 28px;
-  padding-bottom: 28px;
+.audio-container {
+  text-align: center;
+}
+
+audio {
+  margin-top: 4px;
+  width: 100%;
+  max-width: 650px;
+}
+
+.chapter {
   overflow-y: scroll;
-  font-family: Cambria,"Times New Roman",Times,serif;
 }
 
 article p:first-of-type {
-  margin-top: 12px;
+  margin-top: 6px;
 }
 
 article p:last-of-type {
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .flex {

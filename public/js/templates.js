@@ -38,27 +38,11 @@ function program2(depth0,data) {
   hashContexts = {};
   stack1 = helpers.each.call(depth0, "book", "in", "model", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    </books>\n  </nav>\n\n  <article class=\"flex-1\">\n    ");
+  data.buffer.push("\n    </books>\n  </nav>\n\n  <article class=\"flex flex-column flex-1\">\n    <div class=\"chapter flex-1\">\n      ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n  </article>\n</layout>");
-  return buffer;
-  
-});
-
-Ember.TEMPLATES["chapter"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
-/**/) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
-
-
-  data.buffer.push("<div class=\"chapter\">\n  ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>");
+  data.buffer.push("\n    </div>\n  </article>\n</layout>");
   return buffer;
   
 });
@@ -94,7 +78,7 @@ function program2(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\n          <a href=\"");
+  data.buffer.push("\n          <a href-not-yet=\"");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.unbound.call(depth0, "word.raw", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
@@ -106,23 +90,12 @@ function program3(depth0,data) {
   return buffer;
   }
 
-function program5(depth0,data) {
-  
-  
-  data.buffer.push("\n    <div style=\"text-align: center;\">\n      Loading\n    </div>\n  ");
-  }
-
-  data.buffer.push("<div class=\"paragraphs\">\n  ");
+  data.buffer.push("<div class=\"go-previous-button\">\n  <img src=\"../img/arrow-up.svg\" style=\"width: 32px;height:32px;opacity: 0.1\" />\n</div>\n\n<div class=\"paragraphs\">\n  ");
   hashTypes = {};
   hashContexts = {};
   stack1 = helpers.unbound.call(depth0, "each", "paragraph", "in", "paragraphs", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0,depth0],types:["ID","ID","ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n  ");
-  hashTypes = {};
-  hashContexts = {};
-  stack1 = helpers.unless.call(depth0, "paragraphs.length", {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n</div>\n");
+  data.buffer.push("\n</div>\n\n<div class=\"go-next-button\">\n  <img src=\"../img/arrow-down.svg\" style=\"width: 32px;height:32px;opacity: 0.1\" />\n</div>");
   return buffer;
   
 });
@@ -146,6 +119,17 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 
   data.buffer.push("[Greek word template]");
+  
+});
+
+Ember.TEMPLATES["index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
+/**/) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("<div>\n	<img src=\"../img/book.svg\" style=\"margin: 16px;width:36px;height:36px;opacity: 0.05\" />\n</div>\n\n<div>\n	<img src=\"../img/play.svg\" style=\"margin: 16px;margin-top:0;width:36px;height:36px;opacity: 0.05\" />\n</div>");
   
 });
 

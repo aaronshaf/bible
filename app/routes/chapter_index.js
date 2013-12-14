@@ -2,19 +2,15 @@ App.ChapterIndexRoute = Ember.Route.extend({
   model: function(params) {
     var book = this.modelFor('book');
     var chapter = this.modelFor('chapter');
-    var paddedChapter = pad(chapter.chapter,3);
         
     return new Ember.RSVP.Promise(function(resolve,reject) {
       Ember.run.later(function() {
-        Ember.$.getJSON('../vendor/bible-data/greek/sblgnt/json/' + book.get('osisID') + '/' + paddedChapter + '.json').then(function(data) {
+        Ember.$.getJSON('http://api.bible.theopedia.com/greek/sblgnt/json/' + book.get('osisID') + '/' + chapter.chapter + '.json').then(function(data) {
           var model = Ember.Object.create({
             "verses": Ember.Object.create(),
             "paragraphs": []
           });
 
-          console.timeEnd('xhr')
-
-          console.time('process data 1')
           data.verses.forEach(function(verse,index) {
             verse = verse.map(function(word) {
               return {
