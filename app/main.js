@@ -1,5 +1,3 @@
-// Calm down. We can split these into different files later.
-
 var bcv = new bcv_parser;
 
 App = Ember.Application.create({
@@ -10,7 +8,7 @@ App = Ember.Application.create({
 });
 
 App.Router.map(function() {
-  this.resource('book', { path: '/:osisID' }, function() {
+  this.resource('book', { path: '/:path' }, function() {
     this.resource('chapter', { path: '/:chapter' }, function() {
       this.resource('verse', { path: '/:verse' }, function() {
         this.resource('greekWord', { path: '/greek/:word' }, function() {
@@ -21,6 +19,10 @@ App.Router.map(function() {
   });
 });
 
+App.Router.reopen({
+  location: 'history'
+});
+
 App.ApplicationController = Ember.Controller.extend({
   lastQueryResult: {},
   searchQueryObserver: function() {
@@ -28,9 +30,11 @@ App.ApplicationController = Ember.Controller.extend({
 
     try {
       var parsedReferenceQuery = bcv.parse(this.get('searchQuery')).parsed_entities();
-      var book = parsedReferenceQuery[0].entities[0].start.b;
+      var bookOsisID = parsedReferenceQuery[0].entities[0].start.b;
       var chapter = parsedReferenceQuery[0].entities[0].start.c;
       var verse = parsedReferenceQuery[0].entities[0].start.v;
+
+      var book = this.get('model').findBy('osisID',bookOsisID);
 
       if(this.get('lastQueryResult.book') === book &&
           this.get('lastQueryResult.chapter') === chapter) {

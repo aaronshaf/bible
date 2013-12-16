@@ -2,10 +2,17 @@ App.ChapterIndexRoute = Ember.Route.extend({
   model: function(params) {
     var book = this.modelFor('book');
     var chapter = this.modelFor('chapter');
+    var API_HOST;
+
+    if(window.location.host.indexOf('localhost') > -1) {
+      API_HOST = 'http://localhost:8081/';
+    } else {
+      API_HOST = 'http://api.bible.theopedia.com/';
+    }
         
     return new Ember.RSVP.Promise(function(resolve,reject) {
       Ember.run.later(function() {
-        Ember.$.getJSON('http://api.bible.theopedia.com/greek/sblgnt/json/' + book.get('osisID') + '/' + chapter.chapter + '.json').then(function(data) {
+        Ember.$.getJSON(API_HOST + 'greek/sblgnt/json/' + book.get('osisID') + '/' + chapter.chapter + '.json').then(function(data) {
           var model = Ember.Object.create({
             "verses": Ember.Object.create(),
             "paragraphs": []

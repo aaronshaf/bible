@@ -19,6 +19,10 @@ App.Router.map(function() {
   });
 });
 
+App.Router.reopen({
+  location: 'history'
+});
+
 var bcv = new bcv_parser;
 
 App.IndexRoute = Ember.Route.extend({

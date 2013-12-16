@@ -1,6 +1,6 @@
 App.BookRoute = Ember.Route.extend({
   model: function(params) {
-    return this.modelFor('application').findBy('osisID',params.osisID);
+    return this.modelFor('application').findBy('path',params.path);
 
     // return new Ember.RSVP.Promise(function(resolve,reject) {
     //   try {

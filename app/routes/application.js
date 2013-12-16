@@ -5,13 +5,15 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Genesis"
         },
+        "path": "genesis",
         "osisID": "Gen",
-        "totalChapters": 50
+        "totalChapters": 50,
       },
       {
         "names": {
           "english": "Exodus"
         },
+        "path": "exodus",
         "osisID": "Exod",
         "totalChapters": 40
       },
@@ -19,6 +21,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Leviticus"
         },
+        "path": "leviticus",
         "osisID": "Lev",
         "totalChapters": 27
       },
@@ -26,6 +29,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Numbers"
         },
+        "path": "numbers",
         "osisID": "Num",
         "totalChapters": 36
       },
@@ -33,6 +37,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Deuteronomy"
         },
+        "path": "deuteronomy",
         "osisID": "Deut",
         "totalChapters": 34
       },
@@ -40,6 +45,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Joshua"
         },
+        "path": "joshua",
         "osisID": "Josh",
         "totalChapters": 24
       },
@@ -47,6 +53,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Judges"
         },
+        "path": "judges",
         "osisID": "Judg",
         "totalChapters": 21
       },
@@ -54,6 +61,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Ruth"
         },
+        "path": "ruth",
         "osisID": "Ruth",
         "totalChapters": 4
       },
@@ -61,6 +69,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 Samuel"
         },
+        "path": "1samuel",
         "osisID": "1Sam",
         "totalChapters": 31
       },
@@ -68,6 +77,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 Samuel"
         },
+        "path": "2samuel",
         "osisID": "2Sam",
         "totalChapters": 24
       },
@@ -75,6 +85,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 Kings"
         },
+        "path": "1kings",
         "osisID": "1Kgs",
         "totalChapters": 22
       },
@@ -82,6 +93,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 Kings"
         },
+        "path": "2kings",
         "osisID": "2Kgs",
         "totalChapters": 25
       },
@@ -89,6 +101,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 Chronicles"
         },
+        "path": "1chronicles",
         "osisID": "1Chr",
         "totalChapters": 29
       },
@@ -96,6 +109,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 Chronicles"
         },
+        "path": "2chronicles",
         "osisID": "2Chr",
         "totalChapters": 36
       },
@@ -103,6 +117,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Ezra"
         },
+        "path": "ezra",
         "osisID": "Ezra",
         "totalChapters": 10
       },
@@ -110,6 +125,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Nehemiah"
         },
+        "path": "nehemiah",
         "osisID": "Neh",
         "totalChapters": 13
       },
@@ -117,6 +133,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Esther"
         },
+        "path": "esther",
         "osisID": "Esth",
         "totalChapters": 10
       },
@@ -124,6 +141,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Job"
         },
+        "path": "job",
         "osisID": "Job",
         "totalChapters": 42
       },
@@ -131,6 +149,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Psalms"
         },
+        "path": "psalm",
         "osisID": "Ps",
         "totalChapters": 150
       },
@@ -138,6 +157,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Proverbs"
         },
+        "path": "proverbs",
         "osisID": "Prov",
         "totalChapters": 31
       },
@@ -145,6 +165,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Ecclesiastes"
         },
+        "path": "ecclesiastes",
         "osisID": "Eccl",
         "totalChapters": 12
       },
@@ -152,6 +173,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Song of Solomon"
         },
+        "path": "songofsolomon",
         "osisID": "Song",
         "totalChapters": 8
       },
@@ -159,6 +181,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Isaiah"
         },
+        "path": "isaiah",
         "osisID": "Isa",
         "totalChapters": 66
       },
@@ -166,6 +189,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Jeremiah"
         },
+        "path": "jeremiah",
         "osisID": "Jer",
         "totalChapters": 52
       },
@@ -173,6 +197,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Lamentations"
         },
+        "path": "lamentations",
         "osisID": "Lam",
         "totalChapters": 5
       },
@@ -180,6 +205,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Ezekiel"
         },
+        "path": "ezekiel",
         "osisID": "Ezek",
         "totalChapters": 48
       },
@@ -187,6 +213,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Daniel"
         },
+        "path": "daniel",
         "osisID": "Dan",
         "totalChapters": 12
       },
@@ -194,6 +221,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Hosea"
         },
+        "path": "hosea",
         "osisID": "Hos",
         "totalChapters": 14
       },
@@ -201,6 +229,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Joel"
         },
+        "path": "joel",
         "osisID": "Joel",
         "totalChapters": 3
       },
@@ -208,6 +237,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Amos"
         },
+        "path": "amos",
         "osisID": "Amos",
         "totalChapters": 9
       },
@@ -215,6 +245,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Obadiah"
         },
+        "path": "obadiah",
         "osisID": "Obad",
         "totalChapters": 1
       },
@@ -222,6 +253,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Jonah"
         },
+        "path": "jonah",
         "osisID": "Jonah",
         "totalChapters": 4
       },
@@ -229,6 +261,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Micah"
         },
+        "path": "micah",
         "osisID": "Mic",
         "totalChapters": 7
       },
@@ -236,6 +269,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Nahum"
         },
+        "path": "nahum",
         "osisID": "Nah",
         "totalChapters": 3
       },
@@ -243,6 +277,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Habakkuk"
         },
+        "path": "habakkuk",
         "osisID": "Hab",
         "totalChapters": 3
       },
@@ -250,6 +285,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Zephaniah"
         },
+        "path": "zephaniah",
         "osisID": "Zeph",
         "totalChapters": 3
       },
@@ -257,6 +293,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Haggai"
         },
+        "path": "haggai",
         "osisID": "Hag",
         "totalChapters": 2
       },
@@ -264,6 +301,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Zechariah"
         },
+        "path": "zechariah",
         "osisID": "Zech",
         "totalChapters": 14
       },
@@ -271,6 +309,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Malachi"
         },
+        "path": "malachi",
         "osisID": "Mal",
         "totalChapters": 4
       },
@@ -279,6 +318,7 @@ App.ApplicationRoute = Ember.Route.extend({
           "english": "Matthew",
           "greek": "ΚΑΤΑ ΜΑΘΘΑΙΟΝ"
         },
+        "path": "matthew",
         "osisID": "Matt",
         "totalChapters": 28,
         "abbreviations": [
@@ -289,6 +329,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Mark"
         },
+        "path": "mark",
         "osisID": "Mark",
         "totalChapters": 16,
         "abbreviations": [
@@ -299,6 +340,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Luke"
         },
+        "path": "luke",
         "osisID": "Luke",
         "totalChapters": 24,
         "abbreviations": [
@@ -309,6 +351,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "John"
         },
+        "path": "john",
         "osisID": "John",
         "totalChapters": 21,
         "abbreviations": [
@@ -319,6 +362,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Acts"
         },
+        "path": "acts",
         "osisID": "Acts",
         "totalChapters": 28,
         "abbreviations": [
@@ -329,6 +373,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Romans"
         },
+        "path": "romans",
         "osisID": "Rom",
         "totalChapters": 16,
         "abbreviations": [
@@ -339,6 +384,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 Corinthians"
         },
+        "path": "1corinthians",
         "osisID": "1Cor",
         "totalPassages": 437,
         "totalChapters": 16,
@@ -350,6 +396,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 Corinthians"
         },
+        "path": "2corinthians",
         "osisID": "2Cor",
         "totalChapters": 13,
         "abbreviations": [
@@ -360,6 +407,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Galatians"
         },
+        "path": "galatians",
         "osisID": "Gal",
         "totalChapters": 6,
         "abbreviations": [
@@ -370,6 +418,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Ephesians"
         },
+        "path": "ephesians",
         "osisID": "Eph",
         "totalChapters": 6,
         "abbreviations": [
@@ -380,6 +429,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Philippians"
         },
+        "path": "philippians",
         "osisID": "Phil",
         "totalChapters": 4,
         "abbreviations": [
@@ -390,6 +440,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Colossians"
         },
+        "path": "colossians",
         "osisID": "Col",
         "totalChapters": 4,
         "abbreviations": [
@@ -400,6 +451,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 Thessalonians"
         },
+        "path": "1thessalonians",
         "osisID": "1Thess",
         "totalChapters": 5,
         "abbreviations": [
@@ -410,6 +462,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 Thessalonians"
         },
+        "path": "2thessalonians",
         "osisID": "2Thess",
         "totalChapters": 3,
         "abbreviations": [
@@ -420,6 +473,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 Timothy"
         },
+        "path": "1timothy",
         "osisID": "1Tim",
         "totalChapters": 6,
         "abbreviations": [
@@ -430,6 +484,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 Timothy"
         },
+        "path": "2timothy",
         "osisID": "2Tim",
         "totalChapters": 4,
         "abbreviations": [
@@ -440,6 +495,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Titus"
         },
+        "path": "titus",
         "osisID": "Titus",
         "totalChapters": 3,
         "abbreviations": [
@@ -450,6 +506,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Philemon"
         },
+        "path": "philemon",
         "osisID": "Phlm",
         "totalChapters": 1,
         "abbreviations": [
@@ -460,6 +517,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Hebrews"
         },
+        "path": "hebrews",
         "osisID": "Heb",
         "totalChapters": 13,
         "abbreviations": [
@@ -470,6 +528,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "James"
         },
+        "path": "james",
         "osisID": "Jas",
         "totalChapters": 5,
         "abbreviations": [
@@ -480,6 +539,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 Peter"
         },
+        "path": "1peter",
         "osisID": "1Pet",
         "totalChapters": 5,
         "abbreviations": [
@@ -490,6 +550,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 Peter"
         },
+        "path": "2peter",
         "osisID": "2Pet",
         "totalChapters": 3,
         "abbreviations": [
@@ -500,6 +561,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "1 John"
         },
+        "path": "1john",
         "osisID": "1John",
         "totalChapters": 5,
         "abbreviations": [
@@ -510,6 +572,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "2 John"
         },
+        "path": "2john",
         "osisID": "2John",
         "totalChapters": 1,
         "abbreviations": [
@@ -520,6 +583,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "3 John"
         },
+        "path": "3john",
         "osisID": "3John",
         "totalChapters": 1,
         "abbreviations": [
@@ -530,6 +594,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Jude"
         },
+        "path": "jude",
         "osisID": "Jude",
         "totalChapters": 1,
         "abbreviations": [
@@ -540,6 +605,7 @@ App.ApplicationRoute = Ember.Route.extend({
         "names": {
           "english": "Revelation"
         },
+        "path": "revelation",
         "osisID": "Rev",
         "totalChapters": 22,
         "abbreviations": [
