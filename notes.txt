@@ -1,0 +1,35 @@
+parts
+  augment
+  dedupe...
+  stem
+  morpheme connecter?
+  person-ending
+
+switch person
+  case '1st'
+    'ω'
+    'μεν'
+    'μαι'
+  case '3rd'
+    'ει'
+
+'middle'
+  'εται'
+
+'aorist'
+  '1st person'
+    'ην'
+  '3rd person'
+    'η'
+
+'perfect'
+  '1st person'
+    'κα'
+  '3rd person'
+    'κε(ν)'
+
+# precomposed vs decomposed characters?
+# polytonic vs monotonic?
+# lexemes
+# crossover adjectives
+
