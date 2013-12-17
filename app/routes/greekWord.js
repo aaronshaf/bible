@@ -1,5 +1,5 @@
 App.GreekWordRoute = Ember.Route.extend({
   model: function(params) {
-    console.log('GreekWordRoute params',params);
+  	return this.modelFor('verse').get('words').findBy("position",params.position);
   }
 });

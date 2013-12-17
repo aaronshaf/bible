@@ -23,6 +23,7 @@
     "lodash": "https://raw.github.com/lodash/lodash/2.3.0/dist/lodash.min.js",
     "ember-debug": "http://builds.emberjs.com/tags/v1.2.0/ember.js",
     "ember": "http://builds.emberjs.com/tags/v1.2.0/ember.min.js",
-    "handlebars": "http://builds.emberjs.com/handlebars-1.0.0.js"
+    "handlebars": "http://builds.emberjs.com/handlebars-1.0.0.js",
+    "ember-canary": "http://builds.emberjs.com/canary/ember.prod.js"
   }
 }

@@ -1,13 +1,13 @@
 <div class="go-previous-button">
-  <img src="../img/arrow-up.svg" style="width: 32px;height:32px;opacity: 0.1" />
+  <img src="/img/arrow-up.svg" style="width: 32px;height:32px;opacity: 0.1" />
 </div>
 
 <div class="paragraphs">
   {{#unbound each paragraph in paragraphs}}
     <p>
       {{#unbound each verse in paragraph}}
-        {{#unbound each word in verse}}
-          <a href-not-yet="{{unbound word.raw}}">{{unbound word.raw}}</a>
+        {{#unbound each word in verse.words}}
+          {{#link-to 'greekWord' verse word}}{{unbound word.raw}}{{/link-to}}
         {{/unbound}}
       {{/unbound}}
     </p>

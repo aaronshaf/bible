@@ -1,6 +1,11 @@
-<div>
-	[Verse template]
-  {{verse}}
-  
-  {{outlet}}
+<div class="go-previous-button">
+  <img src="/img/arrow-up.svg" style="width: 32px;height:32px;opacity: 0.1" />
 </div>
+
+<div class="paragraphs">
+  {{#unbound each word in words}}
+    {{unbound word.raw}}
+  {{/unbound}}
+</div>
+
+{{outlet}}

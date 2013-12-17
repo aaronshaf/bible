@@ -10,8 +10,8 @@ App = Ember.Application.create({
 App.Router.map(function() {
   this.resource('book', { path: '/:path' }, function() {
     this.resource('chapter', { path: '/:chapter' }, function() {
-      this.resource('verse', { path: '/:verse' }, function() {
-        this.resource('greekWord', { path: '/greek/:word' }, function() {
+      this.resource('verse', { path: '/:number' }, function() {
+        this.resource('greekWord', { path: '/sblgnt/:position' }, function() {
 
         });
       });
@@ -750,27 +750,9 @@ App.BookIndexRoute = Ember.Route.extend({
 });
 App.ChapterRoute = Ember.Route.extend({
   model: function(params) {
-    var model = {};
-    try {
-      var bookOsisId = this.modelFor('book').osisID;
-      var parsedReferenceQuery = bcv.parse(bookOsisId + ' ' + params.chapter).parsed_entities();
-      var chapter = parsedReferenceQuery[0].entities[0].start.c;
-      
-      model = Ember.Object.create({
-        "chapter": chapter
-      });
-
-    } catch(e) {}
-
-    return model;
-  }
-});
-App.ChapterIndexRoute = Ember.Route.extend({
-  model: function(params) {
     var book = this.modelFor('book');
-    var chapter = this.modelFor('chapter');
-    var API_HOST;
 
+    var API_HOST;
     if(window.location.host.indexOf('localhost') > -1) {
       API_HOST = 'http://localhost:8081/';
     } else {
@@ -779,20 +761,28 @@ App.ChapterIndexRoute = Ember.Route.extend({
         
     return new Ember.RSVP.Promise(function(resolve,reject) {
       Ember.run.later(function() {
-        Ember.$.getJSON(API_HOST + 'greek/sblgnt/json/' + book.get('osisID') + '/' + chapter.chapter + '.json').then(function(data) {
+        Ember.$.getJSON(API_HOST + 'greek/sblgnt/json/' + book.get('osisID') + '/' + params.chapter + '.json').then(function(data) {
           var model = Ember.Object.create({
+            "chapter": params.chapter,
             "verses": Ember.Object.create(),
             "paragraphs": []
           });
 
           data.verses.forEach(function(verse,index) {
-            verse = verse.map(function(word) {
-              return {
+            words = verse.map(function(word) {
+              return Ember.Object.create({
+                position: String(verse.indexOf(word) + 1),
                 partOfSpeech: word[0],
                 morph: word[1],
                 raw: word[2],
+                word: word[3], // with punctuation stripped
+                normalized_word: word[4],
                 lemma: word[5]
-              }
+              });
+            });
+            verse = Ember.Object.create({
+              number: String(index + 1),
+              words: Ember.ArrayProxy.create({content: words})
             });
             model.get('verses').set(String(index + 1), verse);
           });
@@ -814,9 +804,17 @@ App.ChapterIndexRoute = Ember.Route.extend({
     });
   }
 });
+App.ChapterIndexRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.modelFor('chapter');
+  }
+});
+App.ChapterLoadingRoute = Ember.Route.extend({});
+
+App.ChapterIndexLoadingRoute = Ember.Route.extend({});
 App.GreekWordRoute = Ember.Route.extend({
   model: function(params) {
-    console.log('GreekWordRoute params',params);
+  	return this.modelFor('verse').get('words').findBy("position",params.position);
   }
 });
 App.IndexRoute = Ember.Route.extend({
@@ -826,14 +824,6 @@ App.IndexRoute = Ember.Route.extend({
 });
 App.VerseRoute = Ember.Route.extend({
   model: function(params) {
-    var model = {};
-    try {
-      var parsedReferenceQuery = bcv.parse(this.modelFor('book').osisID + ' ' + this.modelFor('chapter').chapter + ' ' + params.verse).parsed_entities();
-      model = {
-        "verse": parsedReferenceQuery[0].entities[0].start.v
-      };
-    } catch(e) {}
-
-    return model;
+    return this.modelFor('chapter').get('verses').get(params.number);
   }
 });

@@ -10,8 +10,8 @@ App = Ember.Application.create({
 App.Router.map(function() {
   this.resource('book', { path: '/:path' }, function() {
     this.resource('chapter', { path: '/:chapter' }, function() {
-      this.resource('verse', { path: '/:verse' }, function() {
-        this.resource('greekWord', { path: '/greek/:word' }, function() {
+      this.resource('verse', { path: '/:number' }, function() {
+        this.resource('greekWord', { path: '/sblgnt/:position' }, function() {
 
         });
       });
