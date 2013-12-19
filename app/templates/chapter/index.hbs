@@ -2,16 +2,32 @@
   <img src="/img/arrow-up.svg" style="width: 32px;height:32px;opacity: 0.1" />
 </div>
 
-<div class="paragraphs">
-  {{#unbound each paragraph in paragraphs}}
-    <p>
-      {{#unbound each verse in paragraph}}
-        {{#unbound each word in verse.words}}
-          {{#link-to 'greekWord' verse word}}{{unbound word.raw}}{{/link-to}}
+<div class="paragraphs reading-width">
+  {{#if ready}}
+    {{#unbound each paragraph in paragraphs}}
+      <p>
+        {{#unbound each verse in paragraph}}
+          <verse>
+            {{#unbound each word in verse.words}}
+              {{#link-to 'greekWord' verse word}}<word>{{unbound word.raw}}</word>{{/link-to}}
+            {{/unbound}}
+          </verse>
         {{/unbound}}
-      {{/unbound}}
-    </p>
-  {{/unbound}}
+      </p>
+    {{/unbound}}
+  {{else}}
+    {{#unbound each paragraph in previewParagraphs}}
+      <p>
+        {{#unbound each verse in paragraph}}
+          <verse>
+            {{#unbound each word in verse.words}}
+              <word>{{unbound word.raw}}</word>
+            {{/unbound}}
+          </verse>
+        {{/unbound}}
+      </p>
+    {{/unbound}}
+  {{/if}}
 </div>
 
 <div class="go-next-button">

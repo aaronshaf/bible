@@ -33,3 +33,38 @@ switch person
 # lexemes
 # crossover adjectives
 
+verbal stem or tense stem
+verbal suffix
+reduplication
+tense formative - sigma in πιστεύσομεν, κα in πεπιστεύκαμεν
+connecting vowel - omicron in πιστεύσομεν
+suffix ending
+"perfective aspect morpheme"
+
+
+tense formative - second σ in πιστεύσω
+
+lengthened / elongated
+
+inflected forms
+
+generativist
+vs 
+analogical modeling
+
+exemplar
+
+tense vs time
+
+aorist tense vs aorist time
+
+aspect - kind of action. three types:
+
+imperfective: durative, habitual, ongoing 
+perfective: happened, not ongoing
+aoristic aspect: it happened
+
+"stan porter makes this confusing"
+
+"constantine cambell"
+

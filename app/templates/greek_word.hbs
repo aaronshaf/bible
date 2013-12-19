@@ -1,1 +1,80 @@
-[Greek word template]
+<div class="reading-width">
+  <parse-categories class="panel" style="font-size: 0.85em;">
+    <part-of-speech class="panel-heading">{{partOfSpeech.label}} &nbsp;</part-of-speech>
+    <content class="panel-body flex flex-row" style="justify-content: space-between;">
+      <persons class="flex flex-column">
+        <header>Person</header>
+        {{#unbound each person in persons}}
+          <voice {{bind-attr class="person.active:active :opaque-by-default"}}>{{unbound person.label}}</voice>
+        {{/unbound}}
+      </persons>
+
+      <tenses class="flex flex-column">
+        <header>Tense</header>
+        {{#unbound each tense in tenses}}
+          <tense {{bind-attr class="tense.active:active :opaque-by-default"}}>{{unbound tense.label}}</tense>
+        {{/unbound}}
+      </tenses>
+
+      <voices class="flex flex-column">
+        <header>Voice</header>
+        {{#unbound each voice in voices}}
+          <voice {{bind-attr class="voice.active:active :opaque-by-default"}}>{{unbound voice.label}}</voice>
+        {{/unbound}}
+      </voices>
+
+      <moods class="flex flex-column">
+        <header>Mood</header>
+        {{#unbound each mood in moods}}
+          <mood {{bind-attr class="mood.active:active :opaque-by-default"}}>{{unbound mood.label}}</mood>
+        {{/unbound}}
+      </moods>
+
+      <cases class="flex flex-column">
+        <header>Case</header>
+        {{#unbound each case in cases}}
+          <case {{bind-attr class="case.active:active :opaque-by-default"}}>{{unbound case.label}}</case>
+        {{/unbound}}
+      </cases>
+
+      <genders class="flex flex-column">
+        <header>Gender</header>
+        {{#unbound each gender in genders}}
+          <gender {{bind-attr class="gender.active:active :opaque-by-default"}}>{{unbound gender.label}}</gender>
+        {{/unbound}}
+      </genders>
+
+      <numbers class="flex flex-column">
+        <header>Number</header>
+        {{#unbound each number in numbers}}
+          <number {{bind-attr class="number.active:active :opaque-by-default"}}>{{unbound number.label}}</number>
+        {{/unbound}}
+      </numbers>
+
+      <degrees class="flex flex-column">
+        <header>Degree</header>
+        {{#unbound each degree in degrees}}
+          <degree {{bind-attr class="degree.active:active :opaque-by-default"}}>{{unbound degree.label}}</degree>
+        {{/unbound}}
+      </degrees>
+    </content>
+  </parse-categories>
+
+  {{#if definitions.mounce}}
+    <definitions>
+      <definition class="panel">
+        <author class="panel-heading">Mounce</author>
+        <content class="panel-body">{{definitions.mounce}}</content>
+      </definition>
+    </definitions>
+  {{/if}}
+
+  <forms class="panel">
+    <author class="panel-heading">Forms of <strong>{{lemma}}</strong></author>
+    <content class="panel-body">
+      {{#each verbChart in verbCharts}}
+        {{verb-chart code=verbChart forms=forms}}
+      {{/each}}
+    </content>
+  </forms>
+</div>

@@ -10,9 +10,9 @@ App.ChapterRoute = Ember.Route.extend({
     }
         
     return new Ember.RSVP.Promise(function(resolve,reject) {
-      Ember.run.later(function() {
+      Ember.run.next(function() {
         Ember.$.getJSON(API_HOST + 'greek/sblgnt/json/' + book.get('osisID') + '/' + params.chapter + '.json').then(function(data) {
-          var model = Ember.Object.create({
+          var model = App.Chapter.create({
             "chapter": params.chapter,
             "verses": Ember.Object.create(),
             "paragraphs": []
@@ -20,9 +20,9 @@ App.ChapterRoute = Ember.Route.extend({
 
           data.verses.forEach(function(verse,index) {
             words = verse.map(function(word) {
-              return Ember.Object.create({
+              return App.GreekWord.create({
                 position: String(verse.indexOf(word) + 1),
-                partOfSpeech: word[0],
+                partOfSpeechCode: word[0],
                 morph: word[1],
                 raw: word[2],
                 word: word[3], // with punctuation stripped
@@ -30,7 +30,7 @@ App.ChapterRoute = Ember.Route.extend({
                 lemma: word[5]
               });
             });
-            verse = Ember.Object.create({
+            verse = App.Verse.create({
               number: String(index + 1),
               words: Ember.ArrayProxy.create({content: words})
             });
@@ -45,7 +45,6 @@ App.ChapterRoute = Ember.Route.extend({
             // console.log(stuff)
             return stuff;
           }));
-
 
           resolve(model);
 

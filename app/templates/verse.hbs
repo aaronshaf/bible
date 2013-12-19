@@ -2,9 +2,9 @@
   <img src="/img/arrow-up.svg" style="width: 32px;height:32px;opacity: 0.1" />
 </div>
 
-<div class="paragraphs">
+<div class="paragraphs reading-width">
   {{#unbound each word in words}}
-    {{unbound word.raw}}
+    {{#link-to 'greekWord' word}}<word>{{unbound word.raw}}</word>{{/link-to}}
   {{/unbound}}
 </div>
 

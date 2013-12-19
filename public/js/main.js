@@ -1,18 +1,42 @@
+App.VerbChartComponent = Ember.Component.extend({
+	persons: function() {
+		var code = this.get('code');
+		var forms = this.get('forms');
+
+		var mood_code = this.get('code')[0];
+		var voice_code = this.get('code')[1];
+		var number_code = this.get('code')[2];
+
+		var persons = App.persons.map(function(person) {
+			return App.tenses.map(function(tense) {
+				if(typeof forms['V-' + person.code + tense.code + voice_code + mood_code + '-' + number_code + '--'] !== 'undefined') {
+					return {
+						raw: forms['V-' + person.code + tense.code + voice_code + mood_code + '-' + number_code + '--'][0][1],
+						frequency: forms['V-' + person.code + tense.code + voice_code + mood_code + '-' + number_code + '--'].length
+					}
+				} else {
+					return {};
+				}
+			});
+		});
+
+		// console.log('persons',persons);
+
+		return persons;
+
+		// // {{wordData.forms['V-' + person.code + tense.code + voice.code + mood.code + '-' + number.code + '--'][0][1]}}
+	}.property('code','forms')
+});
 var bcv = new bcv_parser;
 
-App = Ember.Application.create({
-  // LOG_TRANSITIONS: true,
-  // LOG_TRANSITIONS_INTERNAL: true,
-  // LOG_ACTIVE_GENERATION: true,
-  // LOG_VIEW_LOOKUPS: true
-});
+
 
 App.Router.map(function() {
   this.resource('book', { path: '/:path' }, function() {
     this.resource('chapter', { path: '/:chapter' }, function() {
       this.resource('verse', { path: '/:number' }, function() {
         this.resource('greekWord', { path: '/sblgnt/:position' }, function() {
-
+          
         });
       });
     });
@@ -83,6 +107,201 @@ Ember.subscribe('render', {
 //   console.log(timestamp + " - " + someField);
 //   return "";
 //  });
+App.Book = Ember.Object.extend({
+  
+});
+App.Chapter = Ember.Object.extend({
+  
+});
+App.GreekWord = Ember.Object.extend({
+  partOfSpeech: function() {
+    return App.partsOfSpeech.findBy('code',this.get('partOfSpeechCode'));
+  }.property('partOfSpeechCode'),
+
+  persons: function() {
+    var activeCode = this.get('morph').substr(0,1);
+    return App.persons.map(function(person) {
+      return {
+        label: person.label,
+        active: person.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  voices: function() {
+    var activeCode = this.get('morph').substr(2,1);
+    return App.voices.map(function(voice) {
+      return {
+        label: voice.label,
+        active: voice.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  numbers: function() {
+    var activeCode = this.get('morph').substr(5,1);
+    return App.numbers.map(function(number) {
+      return {
+        label: number.label,
+        active: number.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  genders: function() {
+    var activeCode = this.get('morph').substr(6,1);
+    return App.genders.map(function(gender) {
+      return {
+        label: gender.label,
+        active: gender.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  degrees: function() {
+    var activeCode = this.get('morph').substr(7,1);
+    return App.degrees.map(function(degree) {
+      return {
+        label: degree.label,
+        active: degree.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  tenses: function() {
+    var activeCode = this.get('morph').substr(1,1);
+    return App.tenses.map(function(tense) {
+      return {
+        label: tense.label,
+        active: tense.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  moods: function() {
+    var activeCode = this.get('morph').substr(3,1);
+    return App.moods.map(function(mood) {
+      return {
+        label: mood.label,
+        active: mood.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  cases: function() {
+    var activeCode = this.get('morph').substr(4,1);
+    return App.cases.map(function(_case) {
+      return {
+        label: _case.label,
+        active: _case.code === activeCode
+      }
+    });
+  }.property('morph'),
+
+  verbCharts: function() {
+    var charts = {};
+    var morph = this.get('morph');
+    var forms = this.get('forms');
+    console.log('forms',forms)
+    if(!morph || !forms) return;
+
+    App.moods.forEach(function(mood) {
+      App.voices.forEach(function(voice) {
+        App.numbers.forEach(function(number) {
+          App.persons.forEach(function(person) {
+            App.tenses.forEach(function(tense) {
+              var code = 'V-' + person.code + tense.code + voice.code + mood.code + '-' + number.code + '--';
+              if(typeof forms[code] !== 'undefined') {
+                charts[mood.code + voice.code + number.code] = true;
+              }
+            });
+          });
+        });
+      });
+    });
+
+    charts = Object.keys(charts);
+    console.log('charts',charts)
+
+    return charts;
+  }.property('forms','morph')
+});
+
+App.voices = [
+  {label: 'Active', code: 'A'},
+  {label: 'Middle', code: 'M'},
+  {label: 'Passive', code: 'P'}    
+];
+
+App.partsOfSpeech = [
+  {label: 'Noun', code: 'N-'},
+  {label: 'Verb', code: 'V-'},
+  {label: 'Adjective', code: 'A-'},
+  {label: 'Conjunction', code: 'C-'},
+  {label: 'Article', code: 'RA'},
+  {label: 'Adverb', code: 'D-'},
+  {label: 'Preposition', code: 'P-'},
+  {label: 'Relative Pronoun', code: 'RP'},
+  {label: 'Indefinite Pronoun', code: 'RI'}
+];
+
+App.numbers = [
+  {label: 'Singular', code: 'S'},
+  {label: 'Plural', code: 'P'}
+];
+
+App.persons = [
+  {label: '1st person', code: '1'},
+  {label: '2nd person', code: '2'},
+  {label: '3rd person', code: '3'}
+];
+
+App.genders = [
+  {label: 'Masculine', code: 'M'},
+  {label: 'Feminine', code: 'F'},
+  {label: 'Neuter', code: 'N'}
+];
+
+App.tenses = [
+  {label: 'Present', code: 'P'},
+  {label: 'Imperfect', code: 'I'},
+  {label: 'Aorist', code: 'A'},
+  {label: 'Future', code: 'F'},
+  {label: 'Perfect', code: 'X'},
+  {label: 'Pluperfect', code: 'Y'}
+];
+
+App.moods = [
+  {label: 'Indicative', code: 'I'},
+  {label: 'Subjunctive', code: 'S'},
+  {label: 'Optative', code: 'O'},
+  {label: 'Imperative', code: 'D'},
+  {label: 'Infinitive', code: 'N'},
+  {label: 'Participle', code: 'P'}
+];
+
+App.cases = [
+  {label: 'Nominative', code: 'N'},
+  {label: 'Genitive', code: 'G'},
+  {label: 'Dative', code: 'D'},
+  {label: 'Accusative', code: 'A'},
+  {label: 'Vocative', code: 'V'}
+];
+
+App.voices = [
+  {label: 'Active', code: 'A'},
+  {label: 'Middle', code: 'M'},
+  {label: 'Passive', code: 'P'}
+];
+
+App.degrees = [
+  // {label: 'Positive', code: '-'},
+  {label: 'Comparative', code: 'C'},
+  {label: 'Superlative', code: 'S'}
+];
+App.Verse = Ember.Object.extend({
+  
+});
 App.ApplicationRoute = Ember.Route.extend({
   model: function(params) {
     var books = [
@@ -760,9 +979,9 @@ App.ChapterRoute = Ember.Route.extend({
     }
         
     return new Ember.RSVP.Promise(function(resolve,reject) {
-      Ember.run.later(function() {
+      Ember.run.next(function() {
         Ember.$.getJSON(API_HOST + 'greek/sblgnt/json/' + book.get('osisID') + '/' + params.chapter + '.json').then(function(data) {
-          var model = Ember.Object.create({
+          var model = App.Chapter.create({
             "chapter": params.chapter,
             "verses": Ember.Object.create(),
             "paragraphs": []
@@ -770,9 +989,9 @@ App.ChapterRoute = Ember.Route.extend({
 
           data.verses.forEach(function(verse,index) {
             words = verse.map(function(word) {
-              return Ember.Object.create({
+              return App.GreekWord.create({
                 position: String(verse.indexOf(word) + 1),
-                partOfSpeech: word[0],
+                partOfSpeechCode: word[0],
                 morph: word[1],
                 raw: word[2],
                 word: word[3], // with punctuation stripped
@@ -780,7 +999,7 @@ App.ChapterRoute = Ember.Route.extend({
                 lemma: word[5]
               });
             });
-            verse = Ember.Object.create({
+            verse = App.Verse.create({
               number: String(index + 1),
               words: Ember.ArrayProxy.create({content: words})
             });
@@ -796,7 +1015,6 @@ App.ChapterRoute = Ember.Route.extend({
             return stuff;
           }));
 
-
           resolve(model);
 
         });
@@ -806,17 +1024,235 @@ App.ChapterRoute = Ember.Route.extend({
 });
 App.ChapterIndexRoute = Ember.Route.extend({
   model: function(params) {
-    return this.modelFor('chapter');
+    var chapter = this.modelFor('chapter');
+    return new Ember.RSVP.Promise(function(resolve,reject) {
+      Ember.run.next(function() {
+        resolve(chapter);
+      });
+    });
+  },
+
+  afterModel: function(chapter) {
+    chapter.set('ready',false);
+    chapter.set('previewParagraphs',chapter.get('paragraphs').slice(0,2));
+    Ember.run.later(function() {
+      chapter.set('ready',true);
+    },10);
   }
 });
-App.ChapterLoadingRoute = Ember.Route.extend({});
-
-App.ChapterIndexLoadingRoute = Ember.Route.extend({});
 App.GreekWordRoute = Ember.Route.extend({
   model: function(params) {
-  	return this.modelFor('verse').get('words').findBy("position",params.position);
+    var API_HOST;
+    if(window.location.host.indexOf('localhost') > -1) {
+      API_HOST = 'http://localhost:8081/';
+    } else {
+      API_HOST = 'http://api.bible.theopedia.com/';
+    }
+    
+    var word = this.modelFor('verse').get('words').findBy("position",params.position);
+    return new Ember.RSVP.Promise(function(resolve,reject) {
+      var firstCharacter = word.get('lemma').substr(0,1);
+
+      Ember.$.getJSON(API_HOST + 'words/sblgnt/json/' + firstCharacter + '/' + word.get('lemma') + '.json').then(function(data) {
+        word.setProperties(data);
+        console.log(word);
+        resolve(word);
+      });
+    });
   }
 });
+
+var parsingCategories = [
+  {
+    key: 'person',
+    label: 'Person',
+    order: 0,
+    options: ['1st person','2nd person','3rd person']
+  },
+  {
+    key: 'tense',
+    label: 'Tense',
+    order: 1,
+    options: ['Present','Imperfect','Aorist','Future','Perfect','Pluperfect']
+  },
+  {
+    key: 'voice',
+    label: 'Voice',
+    order: 2,
+    options: ['Active','Middle','Passive']
+  },
+  {
+    key: 'mood',
+    label: 'Mood',
+    order: 3,
+    options: ['Indicative','Subjunctive','Optative','Imperative','Infinitive','Participle']
+  },
+  {
+    key: 'case',
+    label: 'Case',
+    order: 4,
+    options: ['Nominative','Genitive','Dative','Accusative','Vocative']
+  },
+  {
+    key: 'number',
+    label: 'Number',
+    order: 5,
+    options: ['Singular','Plural']
+  },
+  {
+    key: 'gender',
+    label: 'Gender',
+    order: 6,
+    options: ['Masculine','Feminine','Neuter'],
+  },
+  {
+    key: 'degree',
+    label: 'Degree',
+    order: 7,
+    options: ['Comparative','Superlative'] // Default is 'Positive'
+  }
+];
+
+function partOfSpeech(input) {
+  switch(input) {
+    case 'N-':
+      return 'Noun';
+    case 'V-':
+      return 'Verb';
+    case 'A-':
+      return 'Adjective';
+    case 'C-':
+      return 'Conjunction';
+    case 'RA':
+      return 'Article';
+    case 'D-':
+      return 'Adverb';
+    case 'P-':
+      return 'Preposition';
+    // case 'RP':
+    //   return 'Interrogative Pronoun';
+    // case 'RR':
+      // return 'Relative Pronoun';
+    case 'RP':
+      return 'Relative Pronoun';
+    case 'RI':
+      return 'Indefinite Pronoun';
+    // case 'X-':
+    //   return 'Conditional Particle';
+  }
+  return undefined;
+}
+
+function number(input) {
+  switch(input) {
+    case 'S':
+      return 'Singular';
+    case 'P':
+      return 'Plural';
+  }
+  return undefined;
+}
+
+function person(input) {
+  switch(input) {
+    case '1':
+      return '1st person';
+    case '2':
+      return '2nd person';
+    case '3':
+      return '3rd person';
+  }
+  return undefined;
+}
+
+function gender(input) {
+  switch(input) {
+    case 'M':
+      return 'Masculine';
+    case 'F':
+      return 'Feminine';
+    case 'N':
+      return 'Neuter';
+  }
+  return undefined;
+}
+
+function tense(input) {
+  switch(input) {
+    case 'P':
+      return 'Present';
+    case 'I':
+      return 'Imperfect';
+    case 'A':
+      return 'Aorist';
+    case 'F':
+      return 'Future';
+    case 'X':
+      return 'Perfect';
+    case 'Y':
+      return 'Pluperfect';
+  }
+  return undefined;
+}
+
+function mood(input) {
+  switch(input) {
+    case 'I':
+      return 'Indicative';
+    case 'S':
+      return 'Subjunctive';
+    case 'O':
+      return 'Optative';
+    case 'D':
+      return 'Imperative';
+    case 'N':
+      return 'Infinitive';
+    case 'P':
+      return 'Participle';
+  }
+  return undefined;
+}
+
+// 'case' is a keyword in JavaScript
+function _case(input) {
+  switch(input) {
+    case 'N':
+      return 'Nominative';
+    case 'G':
+      return 'Genitive';
+    case 'D':
+      return 'Dative';
+    case 'A':
+      return 'Accusative';
+    case 'V':
+      return 'Vocative';
+  }
+  return undefined;
+}
+
+function voice(input) {
+  switch(input) {
+    case 'A':
+      return 'Active';
+    case 'M':
+      return 'Middle';
+    case 'P':
+      return 'Passive';
+  }
+  return undefined;
+}
+
+function degree(input) {
+  switch(input) {
+    // case '-':
+    //   return 'Positive';
+    case 'C':
+      return 'Comparative';
+    case 'S':
+      return 'Superlative';
+  }
+  return undefined;
+}
 App.IndexRoute = Ember.Route.extend({
   beforeModel: function() {
     // this.transitionTo('chapter','Matthew',1);

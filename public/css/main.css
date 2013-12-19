@@ -5,6 +5,47 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+.opaque-by-default {
+  opacity: 0.05;
+  margin-bottom: 6px; /* move this */
+}
+
+header {
+  display: block;
+  font-weight: bold;
+  opacity: 1;
+}
+
+parse-categories .active {
+  opacity: 1;
+}
+
+parse-categories header {
+  margin-bottom: 6px;
+}
+
+word {
+  padding: 2px;  
+}
+
+.paragraphs .active {
+  background-color: #1471D2;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #1470D2),
+    color-stop(1, #1453D1)
+  );
+  background-image: -o-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: -moz-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: -webkit-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: -ms-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: linear-gradient(to bottom, #1470D2 0%, #1453D1 100%);
+  color: white;
+  border-radius: 3px;
+}
+
 .go-previous-button {
   padding-top: 28px;
 }
@@ -34,9 +75,12 @@ layout {
   right: 0;
 }
 
-.paragraphs {
+.reading-width {
   max-width: 650px;
-  margin: auto;
+  margin: auto;  
+}
+
+.paragraphs {
   line-height: 1.8em;
   font-size: 1.75em;
 }
@@ -54,8 +98,9 @@ input[type=search] {
   color: black;
 }
 
-.paragraphs a:hover {
-  background-color: #efefef;
+.paragraphs a:not(.active):hover {
+  background-color: #EDE7DF;
+  border-radius: 3px;
 }
 
 books {

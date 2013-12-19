@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>The Bible</title>
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/panel.css">
 </head>
 <body>
   <!-- Calm down. We can concatenate later. -->
@@ -11,6 +12,15 @@
   <script src="/vendor/handlebars/index.js"></script>
   <script src="/vendor/ember/index.js"></script>
   <script src="/vendor/bible-passage-reference-parser/index.js"></script>
+  <script>
+    App = Ember.Application.create({
+      // LOG_TRANSITIONS: true,
+      // LOG_TRANSITIONS_INTERNAL: true,
+      // LOG_ACTIVE_GENERATION: true,
+      // LOG_VIEW_LOOKUPS: true
+    });
+    // Ember.STRUCTURED_PROFILE = true;
+  </script>
   <script src="/js/main.js"></script>
   <script src="/js/templates.js"></script>
   <!-- script src="vendor/ember-renderspeed/index.js"></script -->

@@ -1,0 +1,25 @@
+<div class="panel">
+  <div class="panel-heading">{{unbound voice.label}} {{unbound mood.label}} {{unbound number.label}}</div>
+  <div class="panel-body">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:14.2%"></th>
+          {{#unbound each tense in App.tenses}}
+            <th style="width:14.2%">{{unbound tense.label}}</th>
+          {{/unbound}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#unbound each person in App.persons}}
+          <tr>
+            <th>{{unbound person.label}}</th>
+            {{#unbound each person in persons}}
+              <td></td>
+            {{/unbound}}
+          </tr>
+        {{/unbound}}
+      </tbody>
+    </table>
+  </div>
+</div>
