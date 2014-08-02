@@ -1,15 +1,17 @@
 @import "reset";
 @import "x-flex";
 
+@import "word-info";
+
 * { box-sizing: border-box }
 
 body {
-  background-color: #F9F6ED;
+  background-color: #F6EDDF;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 body {
-  background-color: #eee;
+background-color: #FFFCF0;
 }
 
 .main {
@@ -22,23 +24,22 @@ body {
 }
 
 .bible-main {
-  @extend %flex-1;
-}
-
-.bible-chapter {
   @extend %flex;
 }
 
-.bible-paragraphs {
-  @extend %flex-3;
-  margin-top: 42px;
-  margin-bottom: 42px;
-  line-height: 1.8rem;
+.bible-chapter {
+  @extend %flex-1;
+  padding-top: 42px;
+  padding-bottom: 42px;
+  font-size: 1.2rem;
+  line-height: 2rem;
   overflow-y: scroll;
 }
 
-.bible-word-info {
-  @extend %flex-2;
+.bible-main-right-section {
+  @extend %flex;
+  @extend %flex-column;
+  @extend %flex-1;
 }
 
 .bible-paragraph {
@@ -53,7 +54,6 @@ body {
 }
 
 .bible-word {
-  font-size: 1.1rem;
   text-decoration: none;
   color: black;
 }
@@ -80,8 +80,11 @@ body {
   width: 160px;
   background-color: #2B3956;
   color: white;
-  line-style: none;
   overflow-y: scroll;
+}
+
+.bible-books-menu-list {
+  line-style: none;
 }
 
 .bible-books-menu a {

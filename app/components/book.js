@@ -43,12 +43,12 @@ module.exports = React.createClass({
     }.bind(this)).toArray()
 
     return (
-      <article className="bible-chapter">
-        <div className="bible-paragraphs">
+      <section className="bible-main-right-section">
+        <article className="bible-chapter">
           {paragraphs}
-        </div>
+        </article>
         <this.props.activeRouteHandler />
-      </article>
+      </section>
     )
   }
 })

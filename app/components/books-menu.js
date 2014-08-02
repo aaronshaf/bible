@@ -31,9 +31,11 @@ module.exports = React.createClass({
     })
 
     return (
-      <ol className="bible-books-menu">
-        {books}
-      </ol>
+      <nav className="bible-books-menu">
+        <ol className="bible-books-menu-list">
+          {books}
+        </ol>
+      </nav>
     )
   }
 })

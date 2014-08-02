@@ -6,7 +6,9 @@ module.exports = React.createClass({
   render: function () {
     return (
       <div className="bible-word-info">
-        Word: {this.props.params.word}
+        <div className="bible-word-info-inner">
+          Word: {this.props.params.word}
+        </div>
       </div>
     )
   }

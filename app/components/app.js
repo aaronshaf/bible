@@ -8,9 +8,7 @@ module.exports = React.createClass({
     return (
       <main className="main">
         <BooksMenu />
-        <div className="bible-main">
-          <this.props.activeRouteHandler />
-        </div>
+        <this.props.activeRouteHandler />
       </main>
     )
   }

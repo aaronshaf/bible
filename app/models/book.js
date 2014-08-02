@@ -613,5 +613,7 @@ var books = [
 ]
 
 exports.findAll = function findAll(callback) {
-  callback(null,{books:books});
+  // We don't support the OT yet
+  var newTestament = books.slice(39)
+  callback(null,{books:newTestament});
 }
