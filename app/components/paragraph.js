@@ -3,6 +3,7 @@
 var React = require('react')
 var Link = require('react-router').Link
 var Verse = require('./verse')
+var unorm = require('unorm')
 
 module.exports = React.createClass({
   propTypes: {
@@ -34,7 +35,7 @@ module.exports = React.createClass({
                 chapter="1"
                 paragraph={this.props.key}
                 verse={verseNumber}
-                word={word.get(3)}
+                word={unorm.nfc(word.get(5))}
                 className="bible-word">{displayWord}</Link>
             <span className="bible-word-divider"> </span>
           </span>
