@@ -23,14 +23,29 @@ body {
 
 .bible-main {
   @extend %flex-1;
-  overflow: auto;
-  padding: 16px;
 }
 
 .bible-chapter {
-  line-height: 1.6rem;
+  @extend %flex;
+}
+
+.bible-paragraphs {
+  @extend %flex-3;
+  margin-top: 42px;
+  margin-bottom: 42px;
+  line-height: 1.8rem;
+  overflow-y: scroll;
+}
+
+.bible-word-info {
+  @extend %flex-2;
+}
+
+.bible-paragraph {
   width: 600px;
   margin: auto;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .bible-verse-number {
@@ -39,6 +54,26 @@ body {
 
 .bible-word {
   font-size: 1.1rem;
+  text-decoration: none;
+  color: black;
+}
+
+.bible-word.active {
+  background-color: #1471D2;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #1470D2),
+    color-stop(1, #1453D1)
+  );
+  background-image: -o-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: -moz-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: -webkit-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: -ms-linear-gradient(bottom, #1470D2 0%, #1453D1 100%);
+  background-image: linear-gradient(to bottom, #1470D2 0%, #1453D1 100%);
+  color: white;
+  border-radius: 3px;
 }
 
 .bible-books-menu {
@@ -70,9 +105,4 @@ body {
 
 .bible-books-menu a.active {
   color: white;
-}
-
-.bible-paragraph {
-  margin-top: 16px;
-  margin-bottom: 16px;
 }

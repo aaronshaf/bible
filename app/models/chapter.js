@@ -1,9 +1,15 @@
 var request = require('superagent')
 var env = require('../config/env')
 var Immutable = require('immutable')
+var cache = require('./cache')
 
 exports.findByBookAndNumber = function(book, number, callback) {
   var url = env.API_HOST + 'greek/sblgnt/json/' + book + '/' + number + '.json'
+  var cachedResult
+
+  if (cachedResult = cache.get([url])) {
+    return callback(null, Immutable.fromJS(cachedResult))
+  }
 
   this.req = request
     .get(url)
@@ -11,7 +17,7 @@ exports.findByBookAndNumber = function(book, number, callback) {
     .end(function (error, result) {
       if (error) return callback(error)
 
-      // cache.set([url, query], result.body)
-      callback(null, Immutable.fromJS(result.body))
+      cache.set([url], result.body)
+      return callback(null, Immutable.fromJS(result.body))
     })
 }

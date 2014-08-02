@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
 
 var React = require('react')
-var Chapter = require('../models/chapter')
+var ChapterModel = require('../models/chapter')
+var Paragraph = require('./paragraph')
 var Immutable = require('immutable')
 
 module.exports = React.createClass({
@@ -15,7 +16,7 @@ module.exports = React.createClass({
   componentDidMount: function componentDidMount() {
     var book = this.props.params.book
     var number = 1
-    Chapter.findByBookAndNumber(book,number,function(err,res) {
+    ChapterModel.findByBookAndNumber(book,number,function(err,res) {
       this.setState({
         verses: res.get('verses'),
         paragraphs: res.get('paragraphs')
@@ -29,37 +30,24 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var paragraphs = this.state.paragraphs.map(function(paragraph){
-      var verses = paragraph.map(function(verseNumber) {
-        // TODO: Without this, itsbreaks on Jude, etc. Why?
-        if(this.state.verses.length < verseNumber) return null
-
-        var words = this.state.verses.get(verseNumber-1).map(function(word) {
-          var displayWord = word.get(2)
-          return (
-            <span>
-              <span className="bible-word">{displayWord}</span>
-              <span className="bible-word-divider"> </span>
-            </span>
-          )
-        }).toArray()
-        return (
-          <span className="bible-verse">
-            <span className="bible-verse-number">{verseNumber} </span>
-            {words}
-          </span>
-        )
-      }.bind(this)).toArray()
+    var paragraphKey = 0
+    var paragraphs = this.state.paragraphs.map(function(verseNumbers){
       return (
-        <p className="bible-paragraph">
-          {verses}
-        </p>
+        <Paragraph
+            key={'paragraph-'+paragraphKey++}
+            book={this.props.params.book}
+            chapter={this.props.params.chapter}
+            verseNumbers={verseNumbers}
+            verses={this.state.verses} />
       )
     }.bind(this)).toArray()
 
     return (
       <article className="bible-chapter">
-        {paragraphs}
+        <div className="bible-paragraphs">
+          {paragraphs}
+        </div>
+        <this.props.activeRouteHandler />
       </article>
     )
   }
