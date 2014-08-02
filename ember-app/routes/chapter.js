@@ -8,7 +8,7 @@ App.ChapterRoute = Ember.Route.extend({
     } else {
       API_HOST = 'http://api.bible.theopedia.com/';
     }
-        
+
     return new Ember.RSVP.Promise(function(resolve,reject) {
       Ember.run.next(function() {
         Ember.$.getJSON(API_HOST + 'greek/sblgnt/json/' + book.get('osisID') + '/' + params.chapter + '.json').then(function(data) {

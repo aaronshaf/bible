@@ -1,3 +1,6 @@
 IDEAS.txt
 vendor
 node_modules
+tmp
+dist
+*.log

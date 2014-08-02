@@ -1,16 +1,33 @@
 {
   "name": "bible",
   "version": "0.0.0",
-  "description": "For reading the Bible and studying its languages.",
-  "main": "index.js",
+  "description": "A tool for reading the Bible and studying its languages.",
+  "main": "main.js",
+  "scripts": {
+    "start": "rm -rf dist && node_modules/gulp/bin/gulp.js dev",
+    "build": "rm -rf dist && node_modules/gulp/bin/gulp.js"
+  },
+  "engines": {
+    "node": "~0.11.13",
+    "npm": "~1.5"
+  },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-ember-templates": "~0.4.17",
-    "matchdep": "~0.3.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-newer": "~0.6.0"
+    "browserify": "^5.9.1",
+    "exorcist": "^0.1.6",
+    "gulp": "^3.8.6",
+    "gulp-cached": "^1.0.1",
+    "gulp-connect": "^2.0.6",
+    "gulp-eslint": "^0.1.8",
+    "gulp-react": "^0.5.0",
+    "gulp-sass": "^0.7.2",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "^3.0.0",
+    "immutable": "^2.0.3",
+    "node-sass": "^0.9.3",
+    "react": "^0.11.1",
+    "react-router": "^0.5.0",
+    "superagent": "^0.18.2",
+    "vinyl-source-stream": "^0.1.1"
   },
   "repository": {
     "type": "git",
@@ -21,8 +38,5 @@
   "bugs": {
     "url": "https://github.com/aaronshaf/bible/issues"
   },
-  "homepage": "https://github.com/aaronshaf/bible",
-  "dependencies": {
-    "express": "~3.4.7"
-  }
+  "homepage": "https://github.com/aaronshaf/bible"
 }
