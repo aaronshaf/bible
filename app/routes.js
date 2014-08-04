@@ -18,7 +18,7 @@ var routes = (
         <Route
             name="verse"
             path="/:book/:chapter/:verse/:word"
-            handler={require('./components/greek-word')} />
+            handler={require('./components/word-info')} />
       </Route>
     </Route>
   </Routes>

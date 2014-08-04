@@ -28,7 +28,7 @@ background-color: #FFFCF0;
 }
 
 .bible-chapter {
-  @extend %flex-1;
+  @extend %flex-3;
   padding-top: 42px;
   padding-bottom: 42px;
   font-size: 1.2rem;
@@ -38,7 +38,6 @@ background-color: #FFFCF0;
 
 .bible-main-right-section {
   @extend %flex;
-  @extend %flex-column;
   @extend %flex-1;
 }
 
