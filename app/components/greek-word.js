@@ -20,7 +20,7 @@ module.exports = React.createClass({
   componentDidMount: function componentDidMount() {
     // var book = this.props.params.book
     // var number = 1
-    GreekWord.findByLemma(unorm.nfd(this.props.params.word),function(err,res) {
+    GreekWord.findByLemma(this.props.params.word,function(err,res) {
       if(err || !res) return
 
       this.setState({

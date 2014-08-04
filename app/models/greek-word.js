@@ -2,14 +2,15 @@ var request = require('superagent')
 var env = require('../config/env')
 var Immutable = require('immutable')
 var cache = require('./cache')
-
+var unaccented = require('../utils/unaccented')
 
 exports.findByLemma = function(word, callback) {
   // var firstCharacter = word.substr(0,1)
 
-  console.log('word',word)
-  var firstCharacter = word.substr(0,1)
-  var url = env.API_HOST + 'words/sblgnt/json/' + firstCharacter + '/' + word + '.json'
+  var unaccentedWord = unaccented(word)
+  var firstCharacter = unaccentedWord.substr(0,1)
+  var url = env.API_HOST + 'words/sblgnt/json/' + firstCharacter
+      + '/' + unaccentedWord + '.json'
 
   // var cachedResult
 

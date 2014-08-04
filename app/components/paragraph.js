@@ -3,20 +3,13 @@
 var React = require('react')
 var Link = require('react-router').Link
 var Verse = require('./verse')
-var unorm = require('unorm')
+var unaccented = require('../utils/unaccented')
 
 module.exports = React.createClass({
   propTypes: {
     book: React.PropTypes.any.isRequired,
     verseNumbers: React.PropTypes.any.isRequired,
     verses: React.PropTypes.any.isRequired
-  },
-
-  shouldComponentUpdate: function(nextProps) {
-    var shouldUpdate =
-      nextProps.key !== this.props.key ||
-      nextProps.book !== this.props.book
-    return shouldUpdate
   },
 
   render: function() {
@@ -33,9 +26,8 @@ module.exports = React.createClass({
                 to="verse"
                 book={this.props.book}
                 chapter="1"
-                paragraph={this.props.key}
                 verse={verseNumber}
-                word={unorm.nfc(word.get(5))}
+                word={unaccented(word.get(5))}
                 className="bible-word">{displayWord}</Link>
             <span className="bible-word-divider"> </span>
           </span>

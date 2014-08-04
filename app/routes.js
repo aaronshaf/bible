@@ -5,7 +5,7 @@ var Routes = require('react-router').Routes
 var App = require('./components/app')
 
 var routes = (
-  <Routes>
+  <Routes location="history">
     <Route handler={App}>
       <Route
           name="index"
@@ -13,11 +13,11 @@ var routes = (
           handler={require('./components/index')} />
       <Route
           name="book"
-          path="/books/:book"
+          path="/:book"
           handler={require('./components/book')}>
         <Route
             name="verse"
-            path="/books/:book/:chapter/:paragraph/:verse/:word"
+            path="/:book/:chapter/:verse/:word"
             handler={require('./components/greek-word')} />
       </Route>
     </Route>
