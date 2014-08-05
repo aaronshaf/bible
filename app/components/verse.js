@@ -11,20 +11,20 @@ module.exports = React.createClass({
   },
 
   shouldComponentUpdate: function(nextProps) {
-    return
-      nextProps.book !== this.props.book ||
-      nextProps.chapter !== this.props.chapter ||
-      nextProps.verseNumber !== this.props.verseNumber
+    return nextProps.book !== this.props.book||
+            nextProps.chapter !== this.props.chapter||
+            nextProps.verseNumber !== this.props.verseNumber
   },
 
   render: function() {
-    var words = this.props.words.map(function(word) {
+    var words = this.props.words.map(function(word,wordIndex) {
       return (
         <Word
           book={this.props.book}
-          chapter="1"
+          chapter={this.props.chapter}
           verseNumber={this.props.verseNumber}
           word={word}
+          wordIndex={wordIndex+1}
         />
       )
     }.bind(this)).toArray()

@@ -3,7 +3,7 @@ var env = require('../config/env')
 var Immutable = require('immutable')
 var cache = require('./cache')
 
-exports.findByBookAndNumber = function(book, number, callback) {
+exports.findByBookAndChapterNumber = function(book, number, callback) {
   var url = env.API_HOST + 'greek/sblgnt/json/' + book + '/' + number + '.json'
   var cachedResult
 
@@ -20,4 +20,12 @@ exports.findByBookAndNumber = function(book, number, callback) {
       cache.set([url], result.body)
       return callback(null, Immutable.fromJS(result.body))
     })
+}
+
+exports.findPreviousChapter = function() {
+
+}
+
+exports.findNextChapter = function() {
+
 }

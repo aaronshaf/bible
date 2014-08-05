@@ -17,9 +17,9 @@ module.exports = React.createClass({
 
       return (
         <Verse
-          key={'verse-'+this.props.book+'-'+this.props.chapter+'-'+verseNumber}
+          key={'verse-' + this.props.book + '-' + this.props.chapter + '-' + verseNumber}
           book={this.props.book}
-          chapter="1"
+          chapter={this.props.chapter}
           verseNumber={verseNumber}
           words={this.props.verses.get(verseNumber-1)}
         />

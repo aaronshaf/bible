@@ -1,0 +1,14 @@
+{
+  "name": "handlebars",
+  "_cacheHeaders": {
+    "ETag": "\"6f95155fd6469590d96c9651ee156795\"",
+    "Last-Modified": "Tue, 25 Jun 2013 16:01:52 GMT",
+    "Content-Length": "72766",
+    "Content-Type": "application/javascript"
+  },
+  "_release": "e-tag:6f95155fd",
+  "main": "index.js",
+  "_source": "http://builds.emberjs.com/handlebars-1.0.0.js",
+  "_target": "*",
+  "_originalSource": "http://builds.emberjs.com/handlebars-1.0.0.js"
+}

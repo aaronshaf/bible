@@ -16,9 +16,14 @@ var routes = (
           path="/:book"
           handler={require('./components/book')}>
         <Route
-            name="verse"
-            path="/:book/:chapter/:verse/:word"
-            handler={require('./components/word-info')} />
+            name="chapter"
+            path="/:book/:chapter"
+            handler={require('./components/chapter')}>
+          <Route
+              name="verse"
+              path="/:book/:chapter/:verse/:wordIndex/:word"
+              handler={require('./components/word-info')} />
+        </Route>
       </Route>
     </Route>
   </Routes>

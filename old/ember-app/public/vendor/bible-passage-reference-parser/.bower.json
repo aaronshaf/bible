@@ -1,0 +1,14 @@
+{
+  "name": "bible-passage-reference-parser",
+  "_cacheHeaders": {
+    "ETag": "\"eeaff9d7f16ae870ec1489020a27df72\"",
+    "Content-Length": "135231",
+    "Content-Type": "text/plain; charset=utf-8",
+    "Content-Disposition": "inline"
+  },
+  "_release": "e-tag:eeaff9d7f",
+  "main": "index.js",
+  "_source": "https://raw.github.com/openbibleinfo/Bible-Passage-Reference-Parser/master/js/en_bcv_parser.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.github.com/openbibleinfo/Bible-Passage-Reference-Parser/master/js/en_bcv_parser.min.js"
+}

@@ -9,7 +9,7 @@ const source = require('vinyl-source-stream')
 const sass = require('gulp-sass')
 const cache = require('gulp-cached')
 const exorcist = require('exorcist')
-const connect = require('gulp-connect')
+const staticServer = require('node-static')
 
 gulp.task('jsx', function() {
   return gulp.src(['app/**/*.js'])
@@ -61,11 +61,17 @@ gulp.task('lint', function () {
     .pipe(eslint.format())
 })
 
-gulp.task('server', function() {
-  connect.server({
-    root: ['dist'],
-    port: 4200
-  })
+gulp.task('server', function () {
+  var fileServer = new staticServer.Server('./dist')
+  require('http').createServer(function (request, response) {
+    request.addListener('end', function () {
+      fileServer.serve(request, response, function(err, res) {
+        if (err && (err.status === 404)) { // If the file wasn't found
+          fileServer.serveFile('/index.html', 200, {}, request, response);
+        }
+      })
+    }).resume()
+  }).listen(4200)
 })
 
 gulp.task('default', ['assets', 'sass', 'uglify'])

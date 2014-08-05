@@ -1,0 +1,14 @@
+{
+  "name": "lodash",
+  "_cacheHeaders": {
+    "ETag": "\"a2db316b1f8d61bf75b49d70c4476e9f\"",
+    "Content-Length": "27840",
+    "Content-Type": "text/plain; charset=utf-8",
+    "Content-Disposition": "inline"
+  },
+  "_release": "e-tag:a2db316b1",
+  "main": "index.js",
+  "_source": "https://raw.github.com/lodash/lodash/2.3.0/dist/lodash.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.github.com/lodash/lodash/2.3.0/dist/lodash.min.js"
+}

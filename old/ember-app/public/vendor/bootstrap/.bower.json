@@ -1,0 +1,14 @@
+{
+  "name": "bootstrap",
+  "_cacheHeaders": {
+    "ETag": "\"072e95329879934d29384b7a0b24345e\"",
+    "Last-Modified": "Wed, 06 Nov 2013 22:02:04 GMT",
+    "Content-Length": "102897",
+    "Content-Type": "text/css"
+  },
+  "_release": "e-tag:072e95329",
+  "main": "index.css",
+  "_source": "https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css",
+  "_target": "*",
+  "_originalSource": "https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+}

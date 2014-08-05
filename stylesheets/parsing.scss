@@ -1,0 +1,15 @@
+.parsingCategories {
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+}
+
+.parsingCategory {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.parsingCategoryLabel {
+  font-size: .8rem;
+  color: darken(#FFFCF0,60);
+}

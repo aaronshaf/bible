@@ -1,7 +1,9 @@
 @import "reset";
+@import "native";
 @import "x-flex";
 
 @import "word-info";
+@import "parsing";
 
 * { box-sizing: border-box }
 
@@ -25,6 +27,11 @@ background-color: #FFFCF0;
 
 .bible-main {
   @extend %flex;
+}
+
+.bible-chapter-container {
+  @extend %flex;
+  @extend %flex-1;
 }
 
 .bible-chapter {
