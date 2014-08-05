@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "rm -rf dist && node_modules/gulp/bin/gulp.js dev",
-    "build": "rm -rf dist && node_modules/gulp/bin/gulp.js"
+    "build": "rm -rf dist && node_modules/gulp/bin/gulp.js",
+    "test": "jest"
   },
   "engines": {
     "node": "~0.11.13",
@@ -26,6 +27,7 @@
     "gulp-util": "^3.0.0",
     "gulp-webserver": "^0.5.0",
     "immutable": "^2.0.3",
+    "jest-cli": "^0.1.18",
     "lodash-node": "^2.4.1",
     "lscache": "^1.0.2",
     "node-sass": "^0.9.3",
