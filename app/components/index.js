@@ -6,7 +6,7 @@ module.exports = React.createClass({
   render: function render() {
     return (
       <div className="bible-layout">
-        index.js
+        
       </div>
     )
   }
