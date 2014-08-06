@@ -4,7 +4,8 @@
   "description": "A tool for reading the Bible and studying its languages.",
   "main": "main.js",
   "scripts": {
-    "start": "rm -rf dist && node_modules/gulp/bin/gulp.js dev",
+    "start": "node main.js",
+    "dev": "rm -rf dist && node_modules/gulp/bin/gulp.js dev",
     "build": "rm -rf dist && node_modules/gulp/bin/gulp.js",
     "test": "jest"
   },
