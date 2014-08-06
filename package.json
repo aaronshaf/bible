@@ -13,6 +13,12 @@
     "node": "~0.11.13",
     "npm": "~1.5"
   },
+  "jest": {
+    "testDirectoryName": "tests/unit",
+    "unmockedModulePathPatterns": [
+      "../node_modules/react"
+    ]
+  },
   "devDependencies": {
     "array.prototype.find": "^0.1.1",
     "browserify": "^5.9.1",
