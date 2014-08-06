@@ -5,4 +5,4 @@ deployment:
   production:
     branch: master
     commands:
-      - ssh root@104.131.199.82 './deploy.sh'
+      - ssh $PRODUCTION_USER@$PRODUCTION_HOST './deploy.sh'
