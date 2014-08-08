@@ -33,8 +33,8 @@ module.exports = React.createClass({
             book={this.props.book}
             chapter={this.props.chapter}
             verse={this.props.verseNumber}
-            word={unaccented(this.props.word.get(5))}
             wordIndex={this.props.wordIndex}
+            word={unaccented(this.props.word.get(5))}
             className="bible-word">{displayWord}</Link>
         <span className="bible-word-divider"> </span>
       </span>

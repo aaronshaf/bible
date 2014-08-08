@@ -1,10 +1,13 @@
 /** @jsx React.DOM */
 
 var React = require('react')
+var BookModel = require('../models/book')
 var ChapterModel = require('../models/chapter')
 var GreekWordModel = require('../models/greek-word')
 var Immutable = require('immutable')
 var Parsing = require('../utils/parsing')
+var morphCodesToCategories = require('../utils/morph-codes-to-categories')
+
 require('array.prototype.find')
 
 module.exports = React.createClass({
@@ -16,21 +19,21 @@ module.exports = React.createClass({
       occurences: 0,
       definitions: Immutable.Map(),
       wordData: Immutable.Map(),
-      lemma: "",
-      partOfSpeech: "",
-      partOfSpeechCode: "",
-      parsingCode: ""
+      parseCategories: Immutable.Map(),
+      partOfSpeech: Immutable.Map(),
+      lemma: ''
     }
   },
 
   componentDidMount: function componentDidMount() {
-    var book = this.props.params.book
+    var book = BookModel.findByPath(this.props.params.book)
+    var bookOsisId = book.osisID
     var chapterNumber = this.props.params.chapter
 
-    ChapterModel.findByBookAndChapterNumber(book,chapterNumber,function(err,res) {
-      if(err || !res) return
+    // console.log(this.state.parseCategories.toJS())
 
-      // debugger
+    ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
+      if(err || !res) return
 
       var wordData = res
         .get('verses')
@@ -39,11 +42,10 @@ module.exports = React.createClass({
 
       this.setState({
         wordData: wordData,
-        partOfSpeech: Parsing.partsOfSpeech.find(function(partOfSpeech) {
-          return partOfSpeech.code === wordData.get(0)
+        partOfSpeech: Parsing.get('partOfSpeech').get('options').find(function(partOfSpeech) {
+          return partOfSpeech.get('code') === wordData.get(0)
         }),
-        partOfSpeechCode: wordData.get(0),
-        parsingCode: wordData.get(1),
+        parseCategories: morphCodesToCategories(wordData.get(1)),
         lemma: wordData.get(5)
       })
     }.bind(this))
@@ -60,14 +62,24 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    var parsingCategories = Parsing.categories.map(function(category) {
+    var parsingCategories = Parsing.map(function(category,key) {
+      var value
+      if(!this.state.parseCategories.length
+          || !this.state.parseCategories.get(key)) {
+        return null
+      }
+      value = this.state.parseCategories.get(key).get('label')
       return (
         <div className="parsingCategory">
-          <div className="parsingCategoryLabel">{category.label}</div>
-          <div className="parsingCategoryValue">{category.options[0]}</div>
+          <div className="parsingCategoryLabel">
+            {category.get('label')}
+          </div>
+          <div className="parsingCategoryValue">
+            {value}
+          </div>
         </div>
       )
-    })
+    }.bind(this)).toVector().toArray()
 
     var definition = null
     if(this.state.definitions.get('mounce')) {
@@ -96,7 +108,7 @@ module.exports = React.createClass({
                 Part of speech
               </div>
               <div className="parsingCategoryValue">
-                {this.state.partOfSpeech.label}
+                {this.state.partOfSpeech.get('label')}
               </div>
             </div>
 

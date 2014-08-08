@@ -23,7 +23,7 @@ module.exports = React.createClass({
     var books = this.state.books.map(function(book) {
       return (
         <li key={'bible-books-menu-' + book.osisID}>
-          <Link to="chapter" book={book.osisID} chapter="1">
+          <Link to="chapter" book={book.path} chapter="1">
             {book.names.english}
           </Link>
         </li>

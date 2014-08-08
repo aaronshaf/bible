@@ -1,3 +1,5 @@
+var find = require('lodash-node/modern/collections/find')
+
 var books = [
   {
     "names": {
@@ -612,8 +614,12 @@ var books = [
   }
 ]
 
-exports.findAll = function findAll(callback) {
+exports.findAll = function(callback) {
   // We don't support the OT yet
   var newTestament = books.slice(39)
   callback(null,{books:newTestament});
+}
+
+exports.findByPath = function(path) {
+  return find(books,{path:path.toLowerCase()})
 }

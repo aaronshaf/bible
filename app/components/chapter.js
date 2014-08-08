@@ -3,6 +3,7 @@
 var React = require('react')
 var Paragraph = require('./paragraph')
 var Immutable = require('immutable')
+var BookModel = require('../models/book')
 var ChapterModel = require('../models/chapter')
 // var Link = require('react-router').Link
 
@@ -22,9 +23,11 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function componentDidMount() {
-    var book = this.props.params.book
+    var book = BookModel.findByPath(this.props.params.book)
+    var bookOsisId = book.osisID
     var chapterNumber = this.props.params.chapter
-    ChapterModel.findByBookAndChapterNumber(book,chapterNumber,function(err,res) {
+
+    ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
       if(err) return
       this.setState({
         paragraphs: res.get('paragraphs'),

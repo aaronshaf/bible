@@ -34,7 +34,7 @@
     "gulp-uglify": "^0.3.1",
     "gulp-util": "^3.0.0",
     "gulp-webserver": "^0.5.0",
-    "immutable": "^2.0.3",
+    "immutable": "^2.0.4",
     "jest-cli": "^0.1.18",
     "lodash-node": "^2.4.1",
     "lscache": "^1.0.2",
