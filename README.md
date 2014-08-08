@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/aaronshaf/bible.svg?branch=master)](https://travis-ci.org/aaronshaf/bible) 
+
+
 A tool for reading the Bible and studying its languages.
 
 ## Heartfelt Thanks
