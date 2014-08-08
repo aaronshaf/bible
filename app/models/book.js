@@ -626,8 +626,27 @@ exports.findByPath = function(path) {
   })
 }
 
-exports.findPreviousChapter = function() {
+exports.findPreviousChapter = function(book,chapter) {
+  var chapterNumber = parseInt(chapter,10)
+  var newBook = book
+  var newChapter = chapterNumber - 1
+  var bookIndex = books.indexOf(book)
 
+  if(newChapter < 1) {
+    if(bookIndex > 0) {
+      newBook = books.get(bookIndex - 1)
+      newChapter = newBook.get('totalChapters')
+    }
+  }
+
+  if(newChapter < 1) {
+      newChapter = 1
+  }
+
+  return Immutable.Map({
+    book: newBook,
+    chapter: newChapter
+  })
 }
 
 exports.findNextChapter = function(book,chapter) {

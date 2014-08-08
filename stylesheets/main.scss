@@ -124,3 +124,20 @@ background-color: #FFFCF0;
   opacity: 0.1;
   margin: auto;
 }
+
+.bible-next,
+.bible-previous {
+  text-align: center;
+}
+
+.bible-previous-icon,
+.bible-next-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.1;
+}
+
+.bible-previous-icon:hover,
+.bible-next-icon:hover {
+  opacity: 0.2;
+}

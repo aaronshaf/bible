@@ -12,9 +12,22 @@ describe('models/book', function() {
     expect(BookModel.findByPath('revelation').get('osisID')).toBe('Rev')
   })
 
+  it('#findPreviousChapter', function() {
+    var BookModel = require('../../../app/models/book')
+
+    var matthew = BookModel.findByPath('matthew')
+    var mark = BookModel.findByPath('mark')
+
+    expect(BookModel.findPreviousChapter(mark,2).get('book').get('path')).toBe('mark')
+    expect(BookModel.findPreviousChapter(mark,2).get('chapter')).toBe(1)
+
+    expect(BookModel.findPreviousChapter(mark,1).get('book').get('path')).toBe('matthew')
+    expect(BookModel.findPreviousChapter(mark,1).get('chapter')).toBe(28)
+  })
+
   it('#findNextChapter', function() {
     var BookModel = require('../../../app/models/book')
-    
+
     var matthew = BookModel.findByPath('matthew')
     var mark = BookModel.findByPath('mark')
 

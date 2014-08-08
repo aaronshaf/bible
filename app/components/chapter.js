@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react')
+var Router = require('react-router')
 var Paragraph = require('./paragraph')
 var Immutable = require('immutable')
 var BookModel = require('../models/book')
@@ -41,22 +42,50 @@ module.exports = React.createClass({
       }.bind(this))
     }.bind(this))
 
-    // ChapterModel.findNextChapter(book,chapterNumber,function(err,res) {
-    //   if(err) return
-    //   // this.setState({
-    //   //   nextChapterLink: ...
-    //   // })
-    // })
+    window.addEventListener('keypress', this.handleKeyPress)
   },
 
-  handleClickNextChapter: function() {
+  componentWillUnmount: function() {
+    window.removeEventListener('keypress', this.handleKeyPress)
+  },
+
+  handleKeyPress: function(event) {
+    if(event.which === 91) { '['
+      this.transitionToPreviousChapter()
+    }
+
+    if(event.which === 93) { ']'
+      this.transitionToNextChapter()
+    }
+  },
+
+  transitionToPreviousChapter: function() {
     var book = BookModel.findByPath(this.props.params.book)
-    // var bookOsisId = book.get('osisID')
     var chapterNumber = this.props.params.chapter
 
-    BookModel.findNextChapter(book,chapterNumber, function() {
+    var result = BookModel.findPreviousChapter(book,chapterNumber)
+    Router.transitionTo(
+      'chapter', {
+        book: result.get('book').get('path'),
+        chapter: result.get('chapter')
+      }
+    )
 
-    })
+    return false
+  },
+
+  transitionToNextChapter: function() {
+    var book = BookModel.findByPath(this.props.params.book)
+    var chapterNumber = this.props.params.chapter
+
+    var result = BookModel.findNextChapter(book,chapterNumber)
+    Router.transitionTo(
+      'chapter', {
+        book: result.get('book').get('path'),
+        chapter: result.get('chapter')
+      }
+    )
+
     return false
   },
 
@@ -78,7 +107,19 @@ module.exports = React.createClass({
       return (
         <section className="bible-chapter-container">
           <article className="bible-chapter">
+            <div className="bible-previous">
+              <a href="#" onClick={this.transitionToPreviousChapter}>
+                <img src="/img/arrow-up.svg" className="bible-previous-icon" />
+              </a>
+            </div>
+
             {paragraphs}
+
+            <div className="bible-next">
+              <a href="#" onClick={this.transitionToNextChapter}>
+                <img src="/img/arrow-down.svg" className="bible-next-icon" />
+              </a>
+            </div>
           </article>
           <this.props.activeRouteHandler />
         </section>
