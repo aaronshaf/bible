@@ -27,7 +27,7 @@ module.exports = React.createClass({
 
   componentDidMount: function componentDidMount() {
     var book = BookModel.findByPath(this.props.params.book)
-    var bookOsisId = book.osisID
+    var bookOsisId = book.get('osisID')
     var chapterNumber = this.props.params.chapter
 
     // console.log(this.state.parseCategories.toJS())
