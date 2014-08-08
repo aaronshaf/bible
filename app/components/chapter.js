@@ -30,14 +30,14 @@ module.exports = React.createClass({
     ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
       if(err) return
       this.setState({
-        paragraphs: res.get('paragraphs').slice(0,1),
+        paragraphs: res.get('paragraphs').slice(0,2),
         verses: res.get('verses')
       }, function() {
         setTimeout(function() {
           this.setState({
             paragraphs: res.get('paragraphs')
           })
-        }.bind(this),20)
+        }.bind(this),10)
       }.bind(this))
     }.bind(this))
 
