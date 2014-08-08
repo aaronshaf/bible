@@ -14,11 +14,14 @@ describe('models/book', function() {
 
   it('#findNextChapter', function() {
     var BookModel = require('../../../app/models/book')
+    
+    var matthew = BookModel.findByPath('matthew')
+    var mark = BookModel.findByPath('mark')
 
-    // var jude = BookModel.findByPath('jude')
-    // expect(BookModel.findNextChapter(jude,1).get('chapter')).toBe(1)
+    expect(BookModel.findNextChapter(matthew,1).get('book')).toBe(matthew)
+    expect(BookModel.findNextChapter(matthew,1).get('chapter')).toBe(2)
 
-    // var romans = BookModel.findByPath('romans')
-    // expect(BookModel.findNextChapter(romans,1).get('book')).toBe(romans)
+    expect(BookModel.findNextChapter(matthew,28).get('book')).toBe(mark)
+    expect(BookModel.findNextChapter(matthew,28).get('chapter')).toBe(1)
   })
 })

@@ -630,17 +630,15 @@ exports.findPreviousChapter = function() {
 
 }
 
-/*
 exports.findNextChapter = function(book,chapter) {
   var chapterNumber = parseInt(chapter,10)
   var newBook = book
-  var newChapter
+  var newChapter = chapterNumber + 1
   var bookIndex
 
-  if(chapterNumber < book.get('totalChapters')) {
-    newChapter = chapterNumber + 1
-  } else {
-    bookIndex = books.findIndex(book)
+  if(newChapter > book.get('totalChapters')) {
+    newChapter = 1
+    bookIndex = books.indexOf(book)
     if(bookIndex + 1 < books.length) {
       newBook = books.get(bookIndex + 1)
     }
@@ -650,4 +648,3 @@ exports.findNextChapter = function(book,chapter) {
     chapter: newChapter
   })
 }
-*/
