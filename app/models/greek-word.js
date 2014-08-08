@@ -12,11 +12,9 @@ exports.findByLemma = function(word, callback) {
   var url = env.API_HOST + 'words/sblgnt/json/' + firstCharacter
       + '/' + unaccentedWord + '.json'
 
-  // var cachedResult
-
-  // if (cachedResult = cache.get([url])) {
-  //   return callback(null, Immutable.fromJS(cachedResult))
-  // }
+  if (cachedResult = cache.get([url])) {
+    return callback(null, Immutable.fromJS(cachedResult))
+  }
 
   this.req = request
     .get(url)
@@ -24,7 +22,7 @@ exports.findByLemma = function(word, callback) {
     .end(function (error, result) {
       if (error) return callback(error)
 
-      // cache.set([url], result.body)
+      cache.set([url], result.body)
       return callback(null, Immutable.fromJS(result.body))
     })
 }
