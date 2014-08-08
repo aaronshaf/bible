@@ -32,11 +32,12 @@ module.exports = React.createClass({
       if(err) return
       this.setState({
         paragraphs: res.get('paragraphs').slice(0,1),
-        verses: res.get('verses')
+        verses: res.get('verses').slice(0,1)
       }, function() {
         setTimeout(function() {
           this.setState({
-            paragraphs: res.get('paragraphs')
+            paragraphs: res.get('paragraphs'),
+            verses: res.get('verses')
           })
         }.bind(this),10)
       }.bind(this))
