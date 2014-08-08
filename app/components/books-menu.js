@@ -13,11 +13,10 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function componentDidMount() {
-    this.req = Book.findAll(function(err,res) {
-      this.setState({
-        books: res.get('books')
-      })
-    }.bind(this))
+    var books = Book.findAll()
+    this.setState({
+      books: books
+    })
   },
 
   render: function render() {

@@ -34,7 +34,11 @@ gulp.task('uglify', ['browserify'], function () {
   return gulp.src(['dist/main.js'])
     .pipe(uglify({
       output: {
-        beautify: true
+        // beautify: true
+      },
+      compress: {
+        dead_code: true,
+        unused: true
       }
     }))
     .pipe(gulp.dest('dist'))
@@ -45,7 +49,6 @@ gulp.task('assets', function () {
     .pipe(gulp.dest('dist'))
 })
 
-// See: https://github.com/sindresorhus/gulp-ruby-sass/issues/74
 gulp.task('sass', function() {
   return gulp.src('./stylesheets/main.scss')
     .pipe(sass())

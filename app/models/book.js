@@ -617,7 +617,7 @@ var books = Immutable.fromJS([
 exports.findAll = function(callback) {
   // We don't support the OT yet
   var newTestament = books.slice(39)
-  callback(null,Immutable.Map({books:newTestament}))
+  return newTestament
 }
 
 exports.findByPath = function(path) {
@@ -625,3 +625,29 @@ exports.findByPath = function(path) {
     return book.get('path') === path.toLowerCase()
   })
 }
+
+exports.findPreviousChapter = function() {
+
+}
+
+/*
+exports.findNextChapter = function(book,chapter) {
+  var chapterNumber = parseInt(chapter,10)
+  var newBook = book
+  var newChapter
+  var bookIndex
+
+  if(chapterNumber < book.get('totalChapters')) {
+    newChapter = chapterNumber + 1
+  } else {
+    bookIndex = books.findIndex(book)
+    if(bookIndex + 1 < books.length) {
+      newBook = books.get(bookIndex + 1)
+    }
+  }
+  return Immutable.Map({
+    book: newBook,
+    chapter: newChapter
+  })
+}
+*/

@@ -50,8 +50,14 @@ module.exports = React.createClass({
   },
 
   handleClickNextChapter: function() {
-    // var chapterNumber = this.props.params.chapter
-    // ChapterModel.findNextChapter()
+    var book = BookModel.findByPath(this.props.params.book)
+    // var bookOsisId = book.get('osisID')
+    var chapterNumber = this.props.params.chapter
+
+    BookModel.findNextChapter(book,chapterNumber, function() {
+
+    })
+    return false
   },
 
   render: function render() {

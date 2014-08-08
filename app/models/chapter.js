@@ -21,12 +21,3 @@ exports.findByBookAndChapterNumber = function(bookOsisId, number, callback) {
       return callback(null, Immutable.fromJS(result.body))
     })
 }
-
-exports.findPreviousChapter = function() {
-
-}
-
-exports.findNextChapter = function() {
-  
-  return false
-}
