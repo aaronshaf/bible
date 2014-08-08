@@ -115,3 +115,12 @@ background-color: #FFFCF0;
 .bible-books-menu a.active {
   color: white;
 }
+
+.bible-loading {
+  @extend %align-self-center;
+  @extend %align-content-center;
+  width: 28px;
+  height: 28px;
+  opacity: 0.1;
+  margin: auto;
+}

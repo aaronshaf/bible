@@ -57,13 +57,20 @@ module.exports = React.createClass({
       )
     }.bind(this)).toArray()
 
+    if(paragraphs.length) {
+      return (
+        <section className="bible-chapter-container">
+          <article className="bible-chapter">
+            {paragraphs}
+          </article>
+          <this.props.activeRouteHandler />
+        </section>
+      )
+    }
     return (
-      <section className="bible-chapter-container">
-        <article className="bible-chapter">
-          {paragraphs}
-        </article>
-        <this.props.activeRouteHandler />
-      </section>
+      <div className="bible-chapter-container">
+        <img src="/img/book.svg" className="bible-loading" />
+      </div>
     )
   }
 })
