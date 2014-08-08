@@ -27,5 +27,6 @@ exports.findPreviousChapter = function() {
 }
 
 exports.findNextChapter = function() {
-
+  
+  return false
 }

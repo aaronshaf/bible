@@ -1,6 +1,6 @@
-var find = require('lodash-node/modern/collections/find')
+var Immutable = require('immutable')
 
-var books = [
+var books = Immutable.fromJS([
   {
     "names": {
       "english": "Genesis"
@@ -612,14 +612,16 @@ var books = [
       "Re"
     ]
   }
-]
+])
 
 exports.findAll = function(callback) {
   // We don't support the OT yet
   var newTestament = books.slice(39)
-  callback(null,{books:newTestament});
+  callback(null,Immutable.Map({books:newTestament}))
 }
 
 exports.findByPath = function(path) {
-  return find(books,{path:path.toLowerCase()})
+  return books.find(function(book) {
+    return book.get('path') === path.toLowerCase()
+  })
 }

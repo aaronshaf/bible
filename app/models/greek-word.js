@@ -11,6 +11,7 @@ exports.findByLemma = function(word, callback) {
   var firstCharacter = unaccentedWord.substr(0,1)
   var url = env.API_HOST + 'words/sblgnt/json/' + firstCharacter
       + '/' + unaccentedWord + '.json'
+  var cachedResult
 
   if (cachedResult = cache.get([url])) {
     return callback(null, Immutable.fromJS(cachedResult))

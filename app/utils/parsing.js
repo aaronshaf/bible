@@ -1,7 +1,7 @@
 var Immutable = require('immutable')
 
 module.exports = Immutable.fromJS({
-  'partOfSpeech': {
+  partOfSpeech: {
     label: 'Part of speech',
     options: [
       {label: 'Noun', code: 'N-'},
@@ -39,15 +39,6 @@ module.exports = Immutable.fromJS({
     options: [
       {label: 'Singular', code: 'S'},
       {label: 'Plural', code: 'P'}
-    ]
-  },
-
-  person: {
-    label: 'Person',
-    options: [
-      {label: '1st person', code: '1'},
-      {label: '2nd person', code: '2'},
-      {label: '3rd person', code: '3'}
     ]
   },
 

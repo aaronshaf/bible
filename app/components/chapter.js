@@ -24,7 +24,7 @@ module.exports = React.createClass({
 
   componentDidMount: function componentDidMount() {
     var book = BookModel.findByPath(this.props.params.book)
-    var bookOsisId = book.osisID
+    var bookOsisId = book.get('osisID')
     var chapterNumber = this.props.params.chapter
 
     ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
@@ -41,12 +41,17 @@ module.exports = React.createClass({
       }.bind(this))
     }.bind(this))
 
-    ChapterModel.findNextChapter(book,chapterNumber,function(err,res) {
-      if(err) return
-      // this.setState({
-      //   nextChapterLink: ...
-      // })
-    })
+    // ChapterModel.findNextChapter(book,chapterNumber,function(err,res) {
+    //   if(err) return
+    //   // this.setState({
+    //   //   nextChapterLink: ...
+    //   // })
+    // })
+  },
+
+  handleClickNextChapter: function() {
+    // var chapterNumber = this.props.params.chapter
+    // ChapterModel.findNextChapter()
   },
 
   render: function render() {
