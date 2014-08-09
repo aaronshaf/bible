@@ -15,7 +15,7 @@ module.exports = React.createClass({
       // TODO: Without this, its breaks on Jude, etc. Why?
       if(!this.props.verses || this.props.verses.length < verseNumber) return null
 
-      var words = this.props.verses.get(verseNumber-1)
+      var words = this.props.verses.get(verseNumber - 1)
       if(!words) return
 
       return (

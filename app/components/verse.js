@@ -11,8 +11,8 @@ module.exports = React.createClass({
   },
 
   shouldComponentUpdate: function(nextProps) {
-    return nextProps.book !== this.props.book||
-            nextProps.chapter !== this.props.chapter||
+    return nextProps.book !== this.props.book ||
+            nextProps.chapter !== this.props.chapter ||
             nextProps.verseNumber !== this.props.verseNumber
   },
 
@@ -26,7 +26,7 @@ module.exports = React.createClass({
           chapter={this.props.chapter}
           verseNumber={this.props.verseNumber}
           word={word}
-          wordIndex={wordIndex+1}
+          wordIndex={wordIndex + 1}
         />
       )
     }.bind(this)).toArray()

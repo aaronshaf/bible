@@ -6,6 +6,7 @@ var ChapterModel = require('../models/chapter')
 var GreekWordModel = require('../models/greek-word')
 var Immutable = require('immutable')
 var Parsing = require('../utils/parsing')
+var VerbForms = require('./forms/verb')
 var morphCodesToCategories = require('../utils/morph-codes-to-categories')
 
 require('array.prototype.find')
@@ -114,8 +115,6 @@ module.exports = React.createClass({
 
             {parsingCategories}
           </div>
-
-          Forms: {this.state.forms.length}
         </div>
       </div>
     )
