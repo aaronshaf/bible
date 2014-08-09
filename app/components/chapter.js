@@ -36,7 +36,7 @@ module.exports = React.createClass({
           this.loadMoreVerses()
         }
       }.bind(this))
-    }.bind(this),10)
+    }.bind(this),1)
   },
 
   componentDidMount: function componentDidMount() {
@@ -116,39 +116,43 @@ module.exports = React.createClass({
       )
     }.bind(this)).toArray()
 
-    if(paragraphs.length) {
-      var downArrow
-      if(!this.state.unloadedVerses.length) {
-        downArrow = (
-          <div className="bible-next">
-            <a href="#" onClick={this.transitionToNextChapter}>
-              <img src="/img/arrow-down.svg" className="bible-next-icon" />
-            </a>
-          </div>
-        )
-      }
-
-      return (
-        <section className="bible-chapter-container">
-          <article className="bible-chapter">
-            <div className="bible-previous">
-              <a href="#" onClick={this.transitionToPreviousChapter}>
-                <img src="/img/arrow-up.svg" className="bible-previous-icon" />
-              </a>
-            </div>
-
-            {paragraphs}
-
-            {downArrow}
-          </article>
-          <this.props.activeRouteHandler />
-        </section>
+    var downArrow
+    if(this.state.paragraphs.length && !this.state.unloadedVerses.length) {
+      downArrow = (
+        <div className="bible-next">
+          <a href="#" onClick={this.transitionToNextChapter}>
+            <img src="/img/arrow-down.svg" className="bible-next-icon" />
+          </a>
+        </div>
       )
     }
+
+    var loading
+    if(!this.state.paragraphs.length) {
+      loading = (
+        <div className="bible-chapter-container">
+          <img src="/img/loading-spinning-bubbles.svg" className="bible-loading" />
+        </div>
+      )
+    }
+
     return (
-      <div className="bible-chapter-container">
-        <img src="/img/loading-spinning-bubbles.svg" className="bible-loading" />
-      </div>
+      <section className="bible-chapter-container">
+        <article className="bible-chapter">
+          <div className="bible-previous">
+            <a href="#" onClick={this.transitionToPreviousChapter}>
+              <img src="/img/arrow-up.svg" className="bible-previous-icon" />
+            </a>
+          </div>
+
+          {loading}
+
+          {paragraphs}
+
+          {downArrow}
+        </article>
+        <this.props.activeRouteHandler />
+      </section>
     )
   }
 })
