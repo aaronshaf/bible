@@ -128,7 +128,7 @@ module.exports = React.createClass({
     }
     return (
       <div className="bible-chapter-container">
-        <img src="/img/book.svg" className="bible-loading" />
+        <img src="/img/loading-spinning-bubbles.svg" className="bible-loading" />
       </div>
     )
   }
