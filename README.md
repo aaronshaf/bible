@@ -18,6 +18,7 @@ A heart-felt thanks to James Tauber, Bill Mounce, Logos Bible Software, and the 
 ## Development
 
 ```
+git clone https://github.com/aaronshaf/bible.git
 npm install
 npm run dev
 ```
@@ -25,6 +26,7 @@ npm run dev
 ## Production
 
 ```
+git clone https://github.com/aaronshaf/bible.git
 npm install
 npm run build
 npm start

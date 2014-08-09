@@ -1,6 +1,6 @@
 {
-  "name": "bible",
-  "version": "0.0.0",
+  "name": "aaronshaf-bible",
+  "version": "1.0.0",
   "description": "A tool for reading the Bible and studying its languages.",
   "main": "main.js",
   "scripts": {
