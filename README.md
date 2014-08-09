@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/aaronshaf/bible.svg?branch=master)](https://travis-ci.org/aaronshaf/bible) 
+[![Build Status](https://travis-ci.org/aaronshaf/bible.svg?branch=master)](https://travis-ci.org/aaronshaf/bible)
 
 
 A tool for reading the Bible and studying its languages.
@@ -15,14 +15,17 @@ This project depends on [aaronshaf/bible-data](https://github.com/aaronshaf/bibl
 
 A heart-felt thanks to James Tauber, Bill Mounce, Logos Bible Software, and the Society of Biblical Literature for laying a textual and data foundation for this project.
 
-## Installation Instructions
+## Development
 
 ```
 npm install
-bower install
-grunt
+npm run dev
 ```
 
+## Production
+
 ```
-s3cmd sync . --acl-public --guess-mime-type --delete-removed --add-header "Cache-Control: max-age=21600, public" --encoding UTF-8 --recursive s3://bible.yourdomain.com/
+npm install
+npm run build
+npm start
 ```
