@@ -119,10 +119,11 @@ background-color: #FFFCF0;
 .bible-loading {
   @extend %align-self-center;
   @extend %align-content-center;
-  width: 28px;
-  height: 28px;
-  // opacity: 0.1;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
   margin: auto;
+  margin-top: 24px;
 }
 
 .bible-next,

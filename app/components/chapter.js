@@ -48,8 +48,8 @@ module.exports = React.createClass({
       if(err) return
       this.setState({
         paragraphs: res.get('paragraphs'),
-        unloadedVerses: res.get('verses').slice(1),
-        verses: res.get('verses').slice(0,1)
+        unloadedVerses: res.get('verses').slice(3),
+        verses: res.get('verses').slice(0,3)
       }, function() {
         this.loadMoreVerses()
       }.bind(this))
