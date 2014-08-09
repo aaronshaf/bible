@@ -116,6 +116,17 @@ module.exports = React.createClass({
       )
     }.bind(this)).toArray()
 
+    var upArrow
+    if(this.props.params.book !== 'matthew' || this.props.params.chapter !== '1') {
+      upArrow = (
+        <div className="bible-previous">
+          <a href="#" onClick={this.transitionToPreviousChapter}>
+            <img src="/img/arrow-up.svg" className="bible-previous-icon" />
+          </a>
+        </div>
+      )
+    }
+
     var downArrow
     if(this.state.paragraphs.length && !this.state.unloadedVerses.length) {
       downArrow = (
@@ -139,11 +150,7 @@ module.exports = React.createClass({
     return (
       <section className="bible-chapter-container">
         <article className="bible-chapter">
-          <div className="bible-previous">
-            <a href="#" onClick={this.transitionToPreviousChapter}>
-              <img src="/img/arrow-up.svg" className="bible-previous-icon" />
-            </a>
-          </div>
+          {upArrow}
 
           {loading}
 
