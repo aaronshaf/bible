@@ -45,7 +45,7 @@ module.exports = React.createClass({
     var chapterNumber = this.props.params.chapter
 
     ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
-      if(err) return
+      if(err || !this.isMounted()) return
       this.setState({
         paragraphs: res.get('paragraphs'),
         unloadedVerses: res.get('verses').slice(3),

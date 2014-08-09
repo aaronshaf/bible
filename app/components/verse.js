@@ -20,6 +20,7 @@ module.exports = React.createClass({
     var words = this.props.words.map(function(word,wordIndex) {
       return (
         <Word
+          key={wordIndex}
           book={this.props.book}
           chapter={this.props.chapter}
           verseNumber={this.props.verseNumber}
