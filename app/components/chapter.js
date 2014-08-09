@@ -19,8 +19,24 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       verses: Immutable.Vector(),
-      paragraphs: Immutable.Vector()
+      paragraphs: Immutable.Vector(),
+      unloadedVerses: Immutable.Vector(),
+      versesLoaded: 0
     }
+  },
+
+  loadMoreVerses: function() {
+    setTimeout(function() {
+      if(!this.state.unloadedVerses.length || !this.isMounted()) return
+      this.setState({
+        verses: this.state.verses.toVector().concat(this.state.unloadedVerses.slice(0,6)),
+        unloadedVerses: this.state.unloadedVerses.slice(6)
+      }, function() {
+        if(this.state.unloadedVerses.length) {
+          this.loadMoreVerses()
+        }
+      }.bind(this))
+    }.bind(this),10)
   },
 
   componentDidMount: function componentDidMount() {
@@ -31,15 +47,11 @@ module.exports = React.createClass({
     ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
       if(err) return
       this.setState({
-        paragraphs: res.get('paragraphs').slice(0,1),
+        paragraphs: res.get('paragraphs'),
+        unloadedVerses: res.get('verses').slice(1),
         verses: res.get('verses').slice(0,1)
       }, function() {
-        setTimeout(function() {
-          this.setState({
-            paragraphs: res.get('paragraphs'),
-            verses: res.get('verses')
-          })
-        }.bind(this),10)
+        this.loadMoreVerses()
       }.bind(this))
     }.bind(this))
 
@@ -105,6 +117,17 @@ module.exports = React.createClass({
     }.bind(this)).toArray()
 
     if(paragraphs.length) {
+      var downArrow
+      if(!this.state.unloadedVerses.length) {
+        downArrow = (
+          <div className="bible-next">
+            <a href="#" onClick={this.transitionToNextChapter}>
+              <img src="/img/arrow-down.svg" className="bible-next-icon" />
+            </a>
+          </div>
+        )
+      }
+
       return (
         <section className="bible-chapter-container">
           <article className="bible-chapter">
@@ -116,11 +139,7 @@ module.exports = React.createClass({
 
             {paragraphs}
 
-            <div className="bible-next">
-              <a href="#" onClick={this.transitionToNextChapter}>
-                <img src="/img/arrow-down.svg" className="bible-next-icon" />
-              </a>
-            </div>
+            {downArrow}
           </article>
           <this.props.activeRouteHandler />
         </section>
