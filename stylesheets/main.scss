@@ -142,3 +142,20 @@ background-color: #FFFCF0;
 .bible-next-icon:hover {
   opacity: 0.4;
 }
+
+.bible-reference-count {
+  opacity: 0.2;
+}
+
+.bible-morph-category {
+  font-weight: bold;
+  margin-top: 14px;
+}
+
+.bible-morph-category > span {
+  text-transform:lowercase;
+}
+
+.bible-morph-category > span:first-of-type {
+  text-transform:capitalize;
+}

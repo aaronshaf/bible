@@ -9,14 +9,32 @@ module.exports = React.createClass({
     var moods = Parsing.get('mood').get('options').toArray().map(function(mood) {
       var voices = Parsing.get('voice').get('options').toArray().map(function(voice) {
         var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
+          var numberOfReferencesInGrammaticalNumber = 0
+
           var tenses = Parsing.get('tense').get('options').toArray().map(function(tense) {
             var forms = Parsing.get('person').get('options').toArray().map(function(person) {
-              var formCode = person.get('code') + tense.get('code') +
-                  voice.get('code') + mood.get('code') + '-' + number.get('code')
+              var formCode = 'V-' + person.get('code') + tense.get('code') +
+                  voice.get('code') + mood.get('code') + '-' +
+                  number.get('code') + '--'
+
+              var form
+              var numberOfReferences
+              var referenceCountLabel
+              if(this.props.forms.get(formCode)) {
+                form = this.props.forms.get(formCode).get('morph')
+                numberOfReferences = this.props.forms.get(formCode).get('references').length
+                referenceCountLabel = (
+                  <span className="bible-reference-count">
+                    ({numberOfReferences})
+                  </span>
+                )
+                numberOfReferencesInGrammaticalNumber += numberOfReferences
+              }
+
               return (
-                <td>{formCode}</td>
+                <td>{form} {referenceCountLabel}</td>
               )
-            })
+            }.bind(this))
 
             return (
               <tr>
@@ -24,15 +42,17 @@ module.exports = React.createClass({
                 {forms}
               </tr>
             )
-          })
+          }.bind(this))
+
+          if(!numberOfReferencesInGrammaticalNumber) return
 
           return (
             <div>
-              <strong>
-                {voice.get('label')}
-                {mood.get('label')}
-                {number.get('label')}
-              </strong>
+              <h2 className="bible-morph-category">
+                <span>{voice.get('label')} </span>
+                <span>{mood.get('label')} </span>
+                <span>{number.get('label')}</span>
+              </h2>
 
               <table>
                 <PersonsHeader />
@@ -42,19 +62,19 @@ module.exports = React.createClass({
               </table>
             </div>
           )
-        })
+        }.bind(this))
         return (
           <div>
             {numbers}
           </div>
         )
-      })
+      }.bind(this))
       return (
         <div>
           {voices}
         </div>
       )
-    })
+    }.bind(this))
 
     return (
       <div>{moods}</div>

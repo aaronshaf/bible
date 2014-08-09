@@ -96,6 +96,12 @@ module.exports = React.createClass({
       occurences = <span>({this.state.occurences})</span>
     }
 
+    var verbForms
+    if(this.state.partOfSpeech.get('label') === 'Verb' &&
+        this.state.forms.length) {
+      verbForms = <VerbForms forms={this.state.forms} />
+    }
+
     return (
       <div className="bible-word-info">
         <div className="bible-word-info-inner">
@@ -115,6 +121,8 @@ module.exports = React.createClass({
 
             {parsingCategories}
           </div>
+
+          {verbForms}
         </div>
       </div>
     )

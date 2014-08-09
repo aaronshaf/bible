@@ -8,3 +8,18 @@
   padding: 32px;
   margin: auto;
 }
+
+.bible-word-info-inner th,
+.bible-word-info-inner td {
+  padding: 3px;
+}
+
+.bible-word-info-inner th {
+  text-align: left;
+}
+
+/* TODO: flattent this out */
+.bible-word-info table {
+  font-size: .82rem;
+  width: 100%;
+}
