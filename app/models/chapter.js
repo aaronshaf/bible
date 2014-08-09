@@ -4,6 +4,8 @@ var Immutable = require('immutable')
 var cache = require('./cache')
 
 exports.findByBookAndChapterNumber = function(bookOsisId, number, callback) {
+  if(bookOsisId === 'Mal') return
+  
   var url = env.API_HOST + 'greek/sblgnt/json/' + bookOsisId + '/' + number + '.json'
   var cachedResult
 
