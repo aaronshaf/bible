@@ -159,3 +159,18 @@ background-color: #FFFCF0;
 .bible-morph-category > span:first-of-type {
   text-transform:capitalize;
 }
+
+.bible-license-credit {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-size: .7rem;
+  opacity: 0.3;
+  z-index: 1000;
+  text-decoration: none;
+  color: black;
+}
+
+.bible-license-credit:hover {
+  text-decoration: underline;
+}

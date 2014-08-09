@@ -13,7 +13,12 @@ This project depends on [aaronshaf/bible-data](https://github.com/aaronshaf/bibl
 * [billmounce/dictionary](https://github.com/billmounce/dictionary)
 * [billmounce/concordance](https://github.com/billmounce/concordance)
 
-A heart-felt thanks to James Tauber, Bill Mounce, Logos Bible Software, and the Society of Biblical Literature for laying a textual and data foundation for this project.
+The SBLGNT is © 2010 [Society of Biblical Literature](http://www.sbl-site.org/)
+and [Logos Bible Software](https://www.logos.com/).
+
+A heart-felt thanks also to [James Tauber](http://jtauber.github.io/),
+[Bill Mounce](http://www.billmounce.com/) for helping to lay a textual and
+data foundation for this project.
 
 ## Development
 
