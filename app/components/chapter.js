@@ -53,6 +53,9 @@ module.exports = React.createClass({
       }, function() {
         this.loadMoreVerses()
       }.bind(this))
+
+      this.preloadPreviousChapter()
+      this.preloadNextChapter()
     }.bind(this))
 
     window.addEventListener('keypress', this.handleKeyPress)
@@ -70,6 +73,30 @@ module.exports = React.createClass({
     if(event.which === 93) { ']'
       this.transitionToNextChapter()
     }
+  },
+
+  preloadPreviousChapter: function() {
+    var book = BookModel.findByPath(this.props.params.book)
+    var chapterNumber = this.props.params.chapter
+    var result = BookModel.findPreviousChapter(book,chapterNumber)
+
+    ChapterModel.findByBookAndChapterNumber(
+      result.get('book').get('osisID'),
+      result.get('chapter'),
+      function(){}
+    )
+  },
+
+  preloadNextChapter: function() {
+    var book = BookModel.findByPath(this.props.params.book)
+    var chapterNumber = this.props.params.chapter
+    var result = BookModel.findNextChapter(book,chapterNumber)
+
+    ChapterModel.findByBookAndChapterNumber(
+      result.get('book').get('osisID'),
+      result.get('chapter'),
+      function(){}
+    )
   },
 
   transitionToPreviousChapter: function() {
