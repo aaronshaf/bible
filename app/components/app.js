@@ -14,7 +14,7 @@ module.exports = React.createClass({
         <a
             href="https://github.com/aaronshaf/bible#heartfelt-thanks"
             className="bible-license-credit">
-          SBLGNT, Mounce, and Tauber
+          <span>SBLGNT, Mounce, and Tauber</span>
         </a>
       </div>
     )

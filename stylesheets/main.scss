@@ -161,14 +161,19 @@ background-color: #FFFCF0;
 }
 
 .bible-license-credit {
+  background-color: #FFFCF0;
   position: fixed;
-  bottom: 5px;
-  right: 5px;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
   font-size: .7rem;
-  opacity: 0.3;
   z-index: 1000;
   text-decoration: none;
   color: black;
+}
+
+.bible-license-credit span {
+  opacity: 0.3;
 }
 
 .bible-license-credit:hover {
