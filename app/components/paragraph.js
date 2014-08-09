@@ -13,7 +13,10 @@ module.exports = React.createClass({
   render: function() {
     var verses = this.props.verseNumbers.map(function(verseNumber) {
       // TODO: Without this, its breaks on Jude, etc. Why?
-      if(this.props.verses.length < verseNumber) return null
+      if(!this.props.verses || this.props.verses.length < verseNumber) return null
+
+      var words = this.props.verses.get(verseNumber-1)
+      if(!words) return
 
       return (
         <Verse
@@ -21,7 +24,7 @@ module.exports = React.createClass({
           book={this.props.book}
           chapter={this.props.chapter}
           verseNumber={verseNumber}
-          words={this.props.verses.get(verseNumber-1)}
+          words={words}
         />
       )
     }.bind(this)).toArray()

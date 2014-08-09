@@ -17,6 +17,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    if(!this.props.words.length) return
     var words = this.props.words.map(function(word,wordIndex) {
       return (
         <Word

@@ -131,6 +131,7 @@ module.exports = React.createClass({
 
   render: function render() {
     var paragraphKey = 0
+    if(!this.state.paragraphs) return null
     var paragraphs = this.state.paragraphs.map(function(verseNumbers) {
       return (
         <Paragraph
