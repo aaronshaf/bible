@@ -9,6 +9,16 @@
   margin: auto;
 }
 
+.bible-word-info-inner th {
+  text-align: left;
+  width: 16%;
+}
+
+.bible-word-info-inner td {
+  width: 28%;
+  text-align: left;
+}
+
 .bible-word-info-inner th,
 .bible-word-info-inner td {
   padding: 5px;
@@ -16,13 +26,9 @@
   margin: 0;
 }
 
-.bible-word-info-inner th {
-  text-align: left;
-}
-
 /* TODO: flattent this out */
 .bible-word-info table {
-  font-size: .82rem;
+  font-size: .80rem;
   width: 100%;
   border-collapse: collapse;
 }
