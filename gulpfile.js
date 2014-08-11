@@ -65,16 +65,7 @@ gulp.task('lint', function () {
 })
 
 gulp.task('server', function () {
-  var fileServer = new staticServer.Server('./dist')
-  require('http').createServer(function (request, response) {
-    request.addListener('end', function () {
-      fileServer.serve(request, response, function(err, res) {
-        if (err && (err.status === 404)) { // If the file wasn't found
-          fileServer.serveFile('/index.html', 200, {}, request, response);
-        }
-      })
-    }).resume()
-  }).listen(4200)
+  require('./main')
 })
 
 gulp.task('default', ['assets', 'sass', 'uglify'])
