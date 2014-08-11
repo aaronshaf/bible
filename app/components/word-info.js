@@ -96,10 +96,10 @@ module.exports = React.createClass({
       occurences = <span>({this.state.occurences})</span>
     }
 
-    var paradigms
+    var verbForms
     if(this.state.partOfSpeech.get('label') === 'Verb' &&
         this.state.forms.length) {
-      paradigms = <VerbForms forms={this.state.forms} />
+      verbForms = <VerbForms forms={this.state.forms} />
     }
 
     return (
@@ -122,7 +122,7 @@ module.exports = React.createClass({
             {parsingCategories}
           </div>
 
-          {paradigms}
+          {verbForms}
         </div>
       </div>
     )
