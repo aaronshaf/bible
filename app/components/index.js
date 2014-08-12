@@ -1,8 +1,23 @@
 /** @jsx React.DOM */
 
 var React = require('react')
+var Router = require('react-router')
 
 module.exports = React.createClass({
+  componentDidMount: function componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown)
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('keydown', this.handleKeyDown)
+  },
+
+  handleKeyDown: function(event) {
+    if(event.shiftKey && event.which === 39) { '→'
+      Router.transitionTo('/matthew/1')
+    }
+  },
+
   render: function render() {
     return (
       <section className="bible-main-right-section">
