@@ -32,7 +32,7 @@ module.exports = React.createClass({
     }.bind(this)).toArray()
 
     return (
-      <span className="bible-verse" >
+      <span className="bible-verse" id={this.props.verseNumber}>
         <span className="bible-verse-number">{this.props.verseNumber} </span>
         {words}
       </span>
