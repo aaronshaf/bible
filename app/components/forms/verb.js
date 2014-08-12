@@ -48,9 +48,8 @@ module.exports = React.createClass({
 
           return (
             <div>
-
               <table>
-                <caption className="bible-morph-category">
+                <caption className="bible-panel-heading bible-morph-category">
                   <h2>
                     <span>{voice.get('label')} </span>
                     <span>{mood.get('label')} </span>
@@ -79,7 +78,7 @@ module.exports = React.createClass({
     }.bind(this))
 
     return (
-      <div>{moods}</div>
+      <div className="bible-paradigms">{moods}</div>
     )
   }
 })

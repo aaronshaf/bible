@@ -105,9 +105,18 @@ module.exports = React.createClass({
     return (
       <div className="bible-word-info">
         <div className="bible-word-info-inner">
-          <h1>{this.state.lemma} {occurences}</h1>
-
-          {definition}
+          <table className="bible-definition">
+            <caption className="bible-panel-heading bible-morph-category">
+              <h2>
+                {this.state.lemma} {occurences}
+              </h2>
+            </caption>
+            <tbody>
+              <tr>
+                <td>{definition}</td>
+              </tr>
+            </tbody>
+          </table>
 
           <div className="bible-parsing-categories">
             <div className="bible-parsing-category">

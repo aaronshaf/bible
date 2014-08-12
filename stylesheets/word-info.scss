@@ -46,12 +46,15 @@ $borderColor: #D4D1C8;
 
 /* TODO: flattent this out */
 .bible-word-info table {
-  font-size: .80rem;
   width: 100%;
   border-collapse: collapse;
 }
 
-.bible-morph-category {
+.bible-paradigms table {
+  font-size: .80rem;
+}
+
+.bible-panel-heading {
   font-weight: bold;
   margin-top: 14px;
   background-color: #F0EDE2;
@@ -70,4 +73,8 @@ $borderColor: #D4D1C8;
 
 .bible-morph-category > span:first-of-type {
   text-transform:capitalize;
+}
+
+.bible-definition td {
+  padding: 8px;
 }
