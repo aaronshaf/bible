@@ -71,11 +71,11 @@ module.exports = React.createClass({
       }
       value = this.state.parseCategories.get(key).get('label')
       return (
-        <div className="parsingCategory">
-          <div className="parsingCategoryLabel">
+        <div className="bible-parsing-category">
+          <div className="bible-parsing-category-label">
             {category.get('label')}
           </div>
-          <div className="parsingCategoryValue">
+          <div className="bible-parsing-category-value">
             {value}
           </div>
         </div>
@@ -96,10 +96,10 @@ module.exports = React.createClass({
       occurences = <span>({this.state.occurences})</span>
     }
 
-    var verbForms
+    var paradigms
     if(this.state.partOfSpeech.get('label') === 'Verb' &&
         this.state.forms.length) {
-      verbForms = <VerbForms forms={this.state.forms} />
+      paradigms = <VerbForms forms={this.state.forms} />
     }
 
     return (
@@ -109,9 +109,9 @@ module.exports = React.createClass({
 
           {definition}
 
-          <div className="parsingCategories">
-            <div className="parsingCategory">
-              <div className="parsingCategoryLabel">
+          <div className="bible-parsing-categories">
+            <div className="bible-parsing-category">
+              <div className="bible-parsing-category-label">
                 Part of speech
               </div>
               <div className="parsingCategoryValue">
@@ -122,7 +122,7 @@ module.exports = React.createClass({
             {parsingCategories}
           </div>
 
-          {verbForms}
+          {paradigms}
         </div>
       </div>
     )
