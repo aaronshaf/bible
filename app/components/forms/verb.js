@@ -48,13 +48,15 @@ module.exports = React.createClass({
 
           return (
             <div>
-              <h2 className="bible-morph-category">
-                <span>{voice.get('label')} </span>
-                <span>{mood.get('label')} </span>
-                <span>{number.get('label')}</span>
-              </h2>
 
               <table>
+                <caption className="bible-morph-category">
+                  <h2>
+                    <span>{voice.get('label')} </span>
+                    <span>{mood.get('label')} </span>
+                    <span>{number.get('label')}</span>
+                  </h2>
+                </caption>
                 <PersonsHeader />
                 <tbody>
                   {tenses}

@@ -1,6 +1,8 @@
+$borderColor: #D4D1C8;
+
 .bible-word-info {
   @extend %flex-2;
-  border-top: 1px solid #D4D1C8;
+  border-top: 1px solid $borderColor;
   overflow-y: auto;
 }
 
@@ -12,7 +14,6 @@
 .bible-word-info-inner th {
   text-align: left;
   width: 16%;
-  background-color: #F0EBDC;
 }
 
 .bible-word-info-inner td {
@@ -23,7 +24,7 @@
 .bible-word-info-inner th,
 .bible-word-info-inner td {
   padding: 5px;
-  border: 1px solid #D4D1C8;
+  border: 1px solid $borderColor;
   margin: 0;
 }
 
@@ -35,9 +36,38 @@
   border-right-width: 2px
 }
 
+.bible-word-info-inner tr:last-of-type th:first-of-type {
+  border-bottom-left-radius: 4px;
+}
+
+.bible-word-info-inner tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 4px;
+}
+
 /* TODO: flattent this out */
 .bible-word-info table {
   font-size: .80rem;
   width: 100%;
   border-collapse: collapse;
+}
+
+.bible-morph-category {
+  font-weight: bold;
+  margin-top: 14px;
+  background-color: #F0EDE2;
+  text-align: left;
+  font-weight: normal;
+  padding: 8px;
+  border: 1px solid $borderColor;
+  border-bottom: 0 none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.bible-morph-category > span {
+  text-transform:lowercase;
+}
+
+.bible-morph-category > span:first-of-type {
+  text-transform:capitalize;
 }
