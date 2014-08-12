@@ -71,14 +71,14 @@ module.exports = React.createClass({
       }
       value = this.state.parseCategories.get(key).get('label')
       return (
-        <div className="bible-parsing-category">
-          <div className="bible-parsing-category-label">
+        <tr>
+          <th>
             {category.get('label')}
-          </div>
-          <div className="bible-parsing-category-value">
+          </th>
+          <td>
             {value}
-          </div>
-        </div>
+          </td>
+        </tr>
       )
     }.bind(this)).toVector().toArray()
 
@@ -118,18 +118,24 @@ module.exports = React.createClass({
             </tbody>
           </table>
 
-          <div className="bible-parsing-categories">
-            <div className="bible-parsing-category">
-              <div className="bible-parsing-category-label">
-                Part of speech
-              </div>
-              <div className="parsingCategoryValue">
-                {this.state.partOfSpeech.get('label')}
-              </div>
-            </div>
-
-            {parsingCategories}
-          </div>
+          <table>
+            <caption className="bible-panel-heading bible-morph-category">
+              <h2>
+                Morphology
+              </h2>
+            </caption>
+            <tbody>
+              <tr>
+                <th>
+                  Part of speech
+                </th>
+                <td>
+                  {this.state.partOfSpeech.get('label')}
+                </td>
+              </tr>
+              {parsingCategories}
+            </tbody>
+          </table>
 
           {paradigms}
         </div>

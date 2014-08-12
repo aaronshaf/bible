@@ -1,7 +1,8 @@
 $borderColor: #D4D1C8;
 
 .bible-word-info {
-  @extend %flex-2;
+  @extend %flex-3;
+  min-width: 450px;
   border-top: 1px solid $borderColor;
   overflow-y: auto;
 }
