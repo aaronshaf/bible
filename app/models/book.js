@@ -649,6 +649,21 @@ exports.findPreviousChapter = function(book,chapter) {
   })
 }
 
+exports.findPreviousBook = function(book) {
+  var newBook = book
+  var newChapter = 1
+  var bookIndex = books.indexOf(book)
+
+  if(bookIndex > 39) {
+    newBook = books.get(bookIndex - 1)
+  }
+
+  return Immutable.Map({
+    book: newBook,
+    chapter: newChapter
+  })
+}
+
 exports.findNextChapter = function(book,chapter) {
   var chapterNumber = parseInt(chapter,10)
   var newBook = book
@@ -662,6 +677,21 @@ exports.findNextChapter = function(book,chapter) {
       newBook = books.get(bookIndex + 1)
     }
   }
+  return Immutable.Map({
+    book: newBook,
+    chapter: newChapter
+  })
+}
+
+exports.findNextBook = function(book) {
+  var newBook = book
+  var newChapter = 1
+  var bookIndex = books.indexOf(book)
+
+  if(bookIndex < 65) {
+    newBook = books.get(bookIndex + 1)
+  }
+
   return Immutable.Map({
     book: newBook,
     chapter: newChapter

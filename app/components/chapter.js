@@ -58,19 +58,23 @@ module.exports = React.createClass({
       this.preloadNextChapter()
     }.bind(this))
 
-    window.addEventListener('keypress', this.handleKeyPress)
+    window.addEventListener('keydown', this.handleKeyDown)
   },
 
   componentWillUnmount: function() {
-    window.removeEventListener('keypress', this.handleKeyPress)
+    window.removeEventListener('keydown', this.handleKeyDown)
   },
 
-  handleKeyPress: function(event) {
-    if(event.which === 91) { '['
+  handleKeyDown: function(event) {
+    if(event.shiftKey && event.altKey && event.which === 37) { '←'
+      this.transitionToPreviousBook()
+    } else if(event.shiftKey && event.which === 37) {
       this.transitionToPreviousChapter()
     }
 
-    if(event.which === 93) { ']'
+    if(event.shiftKey && event.altKey && event.which === 39) { '→'
+      this.transitionToNextBook()
+    } else if(event.shiftKey && event.which === 39) {
       this.transitionToNextChapter()
     }
   },
@@ -114,6 +118,20 @@ module.exports = React.createClass({
     return false
   },
 
+  transitionToPreviousBook: function() {
+    var book = BookModel.findByPath(this.props.params.book)
+
+    var result = BookModel.findPreviousBook(book)
+    Router.transitionTo(
+      'chapter', {
+        book: result.get('book').get('path'),
+        chapter: 1
+      }
+    )
+
+    return false
+  },
+
   transitionToNextChapter: function() {
     var book = BookModel.findByPath(this.props.params.book)
     var chapterNumber = this.props.params.chapter
@@ -123,6 +141,20 @@ module.exports = React.createClass({
       'chapter', {
         book: result.get('book').get('path'),
         chapter: result.get('chapter')
+      }
+    )
+
+    return false
+  },
+
+  transitionToNextBook: function() {
+    var book = BookModel.findByPath(this.props.params.book)
+
+    var result = BookModel.findNextBook(book)
+    Router.transitionTo(
+      'chapter', {
+        book: result.get('book').get('path'),
+        chapter: 1
       }
     )
 

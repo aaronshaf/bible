@@ -1,6 +1,7 @@
 @import "reset";
 @import "native";
 @import "x-flex";
+@import "palette";
 
 @import "word-info";
 @import "parsing";
@@ -27,6 +28,26 @@ background-color: #FFFCF0;
 
 .bible-main {
   @extend %flex;
+}
+
+.bible-keyboard-instructions {
+  @extend %flex;
+  @extend %flex-1;
+}
+
+.bible-keyboard-instructions-inner {
+  margin: auto;
+}
+
+.bible-keyboard-instructions-key {
+  background-color: #F0EDE2;
+  min-width: 30px;
+  margin: 5px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px 8px;
+  text-align: center;
+  display: inline-block;
 }
 
 .bible-chapter-container {
