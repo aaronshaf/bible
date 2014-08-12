@@ -633,7 +633,7 @@ exports.findPreviousChapter = function(book,chapter) {
   var bookIndex = books.indexOf(book)
 
   if(newChapter < 1) {
-    if(bookIndex > 0) {
+    if(bookIndex > 39) {
       newBook = books.get(bookIndex - 1)
       newChapter = newBook.get('totalChapters')
     }
