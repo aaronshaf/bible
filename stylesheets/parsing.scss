@@ -1,4 +1,6 @@
-.parsingCategories {
+.bible-parsing-categories {
+  @extend %inline-flex;
+  @extend %flex-wrap;
   // -webkit-column-count: 3; /* Chrome, Safari, Opera */
   // -moz-column-count: 3; /* Firefox */
   // column-count: 3;
@@ -7,6 +9,8 @@
 .bible-parsing-category {
   margin-top: 12px;
   margin-bottom: 12px;
+  min-width: 27%;
+  margin-right: 20px;
 }
 
 .bible-parsing-category-label {
