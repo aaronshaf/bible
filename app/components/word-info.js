@@ -7,6 +7,7 @@ var GreekWordModel = require('../models/greek-word')
 var Immutable = require('immutable')
 var Parsing = require('../utils/parsing')
 var VerbForms = require('./forms/verb')
+var Article = require('./forms/article')
 var morphCodesToCategories = require('../utils/morph-codes-to-categories')
 
 require('array.prototype.find')
@@ -100,6 +101,8 @@ module.exports = React.createClass({
     if(this.state.partOfSpeech.get('label') === 'Verb' &&
         this.state.forms.length) {
       paradigms = <VerbForms forms={this.state.forms} />
+    } else if (this.state.partOfSpeech.get('label') === 'Article') {
+      paradigms = <Article forms={this.state.forms} />
     }
 
     return (
