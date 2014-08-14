@@ -86,9 +86,22 @@ module.exports = React.createClass({
     var definition = null
     if(this.state.definitions.get('mounce')) {
       definition = (
-        <p className="bible-word-info-definition">
-          {this.state.definitions.get('mounce')} (Mounce)
-        </p>
+        <table className="bible-definition">
+          <caption className="bible-panel-heading bible-morph-category">
+            <h2>
+              {this.state.lemma} {occurences}
+            </h2>
+          </caption>
+          <tbody>
+            <tr>
+              <td>
+                <p className="bible-word-info-definition">
+                  {this.state.definitions.get('mounce')} (Mounce)
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       )
     }
 
@@ -105,40 +118,36 @@ module.exports = React.createClass({
       paradigms = <Article forms={this.state.forms} />
     }
 
+    var partOfSpeech
+    if(this.state.partOfSpeech.get('label')) {
+      partOfSpeech = (
+        <table>
+          <caption className="bible-panel-heading bible-morph-category">
+            <h2>
+              Morphology
+            </h2>
+          </caption>
+          <tbody>
+            <tr>
+              <th>
+                Part of speech
+              </th>
+              <td>
+                {this.state.partOfSpeech.get('label')}
+              </td>
+            </tr>
+            {parsingCategories}
+          </tbody>
+        </table>
+      )
+    }
+
     return (
       <div className="bible-word-info">
         <div className="bible-word-info-inner">
-          <table className="bible-definition">
-            <caption className="bible-panel-heading bible-morph-category">
-              <h2>
-                {this.state.lemma} {occurences}
-              </h2>
-            </caption>
-            <tbody>
-              <tr>
-                <td>{definition}</td>
-              </tr>
-            </tbody>
-          </table>
+          {definition}
 
-          <table>
-            <caption className="bible-panel-heading bible-morph-category">
-              <h2>
-                Morphology
-              </h2>
-            </caption>
-            <tbody>
-              <tr>
-                <th>
-                  Part of speech
-                </th>
-                <td>
-                  {this.state.partOfSpeech.get('label')}
-                </td>
-              </tr>
-              {parsingCategories}
-            </tbody>
-          </table>
+          {partOfSpeech}
 
           {paradigms}
         </div>
