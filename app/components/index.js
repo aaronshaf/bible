@@ -54,6 +54,11 @@ module.exports = React.createClass({
               <div className="bible-keyboard-instructions-key">→</div>
               Next book
             </div>
+
+            <div>
+              <div className="bible-keyboard-instructions-key">esc</div>
+              Back to current chapter
+            </div>
           </div>
         </div>
       </section>

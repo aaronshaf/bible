@@ -66,16 +66,20 @@ module.exports = React.createClass({
   },
 
   handleKeyDown: function(event) {
-    if(event.shiftKey && event.altKey && event.which === 37) { '←'
-      this.transitionToPreviousBook()
+    if(event.shiftKey && event.altKey && event.which === 37) { // ←
+      return this.transitionToPreviousBook()
     } else if(event.shiftKey && event.which === 37) {
-      this.transitionToPreviousChapter()
+      return this.transitionToPreviousChapter()
     }
 
-    if(event.shiftKey && event.altKey && event.which === 39) { '→'
-      this.transitionToNextBook()
+    if(event.shiftKey && event.altKey && event.which === 39) { // →
+      return this.transitionToNextBook()
     } else if(event.shiftKey && event.which === 39) {
-      this.transitionToNextChapter()
+      return this.transitionToNextChapter()
+    }
+
+    if(event.which === 27) { // esc
+      return this.transitionToCurrentChapter()
     }
   },
 
@@ -101,6 +105,17 @@ module.exports = React.createClass({
       result.get('chapter'),
       function(){}
     )
+  },
+
+  transitionToCurrentChapter: function() {
+    Router.transitionTo(
+      'chapter', {
+        book: this.props.params.book,
+        chapter: this.props.params.chapter
+      }
+    )
+
+    return false
   },
 
   transitionToPreviousChapter: function() {
