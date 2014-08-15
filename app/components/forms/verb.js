@@ -5,6 +5,11 @@ var Parsing = require('../../utils/parsing')
 var PersonsHeader = require('./persons-header')
 
 module.exports = React.createClass({
+  propTypes: {
+    forms: React.PropTypes.any.isRequired,
+    parseCategories: React.PropTypes.any.isRequired
+  },
+
   render: function() {
     var moods = Parsing.get('mood').get('options').toArray().map(function(mood) {
       var voices = Parsing.get('voice').get('options').toArray().map(function(voice) {
@@ -31,8 +36,19 @@ module.exports = React.createClass({
                 numberOfReferencesInGrammaticalNumber += numberOfReferences
               }
 
+              var sameMood = this.props.parseCategories.get('mood').get('code') == mood.get('code')
+              var sameVoice = this.props.parseCategories.get('voice').get('code') === voice.get('code')
+              var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
+              var sameTense = this.props.parseCategories.get('tense').get('code') === tense.get('code')
+              var samePerson = this.props.parseCategories.get('person').get('code') === person.get('code')
+
+              var className = ''
+              if(sameMood && sameVoice && sameNumber && sameTense && samePerson) {
+                className = 'bible-form-highlighted'
+              }
+
               return (
-                <td>{form} {referenceCountLabel}</td>
+                <td className={className}>{form} {referenceCountLabel}</td>
               )
             }.bind(this))
 

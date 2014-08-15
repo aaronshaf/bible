@@ -120,7 +120,11 @@ module.exports = React.createClass({
     var paradigms
     if(this.state.partOfSpeech.get('label') === 'Verb' &&
         this.state.forms.length) {
-      paradigms = <VerbForms forms={this.state.forms} />
+      paradigms = (
+        <VerbForms
+            forms={this.state.forms}
+            parseCategories={this.state.parseCategories} />
+      )
     } else if (this.state.partOfSpeech.get('label') === 'Article') {
       paradigms = (
         <Article

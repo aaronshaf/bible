@@ -5,6 +5,11 @@ var Parsing = require('../../utils/parsing')
 var GendersHeader = require('./genders-header')
 
 module.exports = React.createClass({
+  propTypes: {
+    forms: React.PropTypes.any.isRequired,
+    parseCategories: React.PropTypes.any.isRequired
+  },
+  
   render: function() {
     var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
       var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
