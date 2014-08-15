@@ -3,6 +3,7 @@
 var React = require('react')
 var Link = require('react-router').Link
 var unaccented = require('../utils/unaccented')
+var GreekWordModel = require('../models/greek-word')
 
 module.exports = React.createClass({
   propTypes: {
@@ -22,11 +23,16 @@ module.exports = React.createClass({
     this.refs.link.getDOMNode().focus()
   },
 
+  handleMouseEnter: function() {
+    var word = unaccented(this.props.word.get(5))
+    GreekWordModel.findByLemma(word,function() {})
+  },
+
   render: function() {
     var displayWord = this.props.word.get(2)
 
     return (
-      <span onClick={this.handleClick}>
+      <span onClick={this.handleClick} onMouseEnter={this.handleMouseEnter}>
         <Link
             ref="link"
             to="verse"

@@ -90,6 +90,11 @@ module.exports = React.createClass({
       )
     }.bind(this)).toVector().toArray()
 
+    var occurences = null
+    if(this.state.occurences) {
+      occurences = <span>({this.state.occurences})</span>
+    }
+
     var definition = null
     if(this.state.definitions.get('mounce')) {
       definition = (
@@ -110,11 +115,6 @@ module.exports = React.createClass({
           </tbody>
         </table>
       )
-    }
-
-    var occurences = null
-    if(this.state.occurences) {
-      occurences = <span>({this.state.occurences})</span>
     }
 
     var paradigms
