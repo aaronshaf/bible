@@ -32,7 +32,9 @@ module.exports = React.createClass({
     var displayWord = this.props.word.get(2)
 
     return (
-      <span onClick={this.handleClick} onMouseEnter={this.handleMouseEnter}>
+      <span onClick={this.handleClick}
+          onMouseEnter={this.handleMouseEnter}
+          onFocus={this.handleMouseEnter}>
         <Link
             ref="link"
             to="verse"
