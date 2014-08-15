@@ -79,7 +79,7 @@ module.exports = React.createClass({
       }
       value = this.state.parseCategories.get(key).get('label')
       return (
-        <tr>
+        <tr key={category.get('label')}>
           <th>
             {category.get('label')}
           </th>

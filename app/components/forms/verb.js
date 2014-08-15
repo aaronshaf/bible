@@ -3,6 +3,7 @@
 var React = require('react')
 var Parsing = require('../../utils/parsing')
 var PersonsHeader = require('./persons-header')
+var Immutable = require('immutable')
 
 module.exports = React.createClass({
   propTypes: {
@@ -10,13 +11,27 @@ module.exports = React.createClass({
     parseCategories: React.PropTypes.any.isRequired
   },
 
+  shouldComponentUpdate: function(nextProps) {
+    var sameForms = Immutable.is(this.props.forms, nextProps.forms)
+    var sameParseCategories = Immutable.is(this.props.parseCategories, nextProps.parseCategories)
+    return !sameForms || !sameParseCategories
+  },
+
   render: function() {
+    if(!this.props.parseCategories) return null
+
     var moods = Parsing.get('mood').get('options').toArray().map(function(mood) {
+      if(!this.props.parseCategories.get('mood')) return
+
       var voices = Parsing.get('voice').get('options').toArray().map(function(voice) {
+        if(!this.props.parseCategories.get('voice')) return
+
         var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
           var numberOfReferencesInGrammaticalNumber = 0
 
           var tenses = Parsing.get('tense').get('options').toArray().map(function(tense) {
+            if(!this.props.parseCategories.get('person')) return
+
             var forms = Parsing.get('person').get('options').toArray().map(function(person) {
               var formCode = 'V-' + person.get('code') + tense.get('code') +
                   voice.get('code') + mood.get('code') + '-' +
@@ -25,6 +40,7 @@ module.exports = React.createClass({
               var form
               var numberOfReferences
               var referenceCountLabel
+
               if(this.props.forms.get(formCode)) {
                 form = this.props.forms.get(formCode).get('morph')
                 numberOfReferences = this.props.forms.get(formCode).get('references').length
@@ -36,24 +52,28 @@ module.exports = React.createClass({
                 numberOfReferencesInGrammaticalNumber += numberOfReferences
               }
 
-              var sameMood = this.props.parseCategories.get('mood').get('code') == mood.get('code')
-              var sameVoice = this.props.parseCategories.get('voice').get('code') === voice.get('code')
-              var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
-              var sameTense = this.props.parseCategories.get('tense').get('code') === tense.get('code')
-              var samePerson = this.props.parseCategories.get('person').get('code') === person.get('code')
-
               var className = ''
-              if(sameMood && sameVoice && sameNumber && sameTense && samePerson) {
-                className = 'bible-form-highlighted'
+              if(this.props.parseCategories && this.props.parseCategories.length) {
+                var sameMood = this.props.parseCategories.get('mood').get('code') === mood.get('code')
+                var sameVoice = this.props.parseCategories.get('voice').get('code') === voice.get('code')
+                var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
+                var sameTense = this.props.parseCategories.get('tense').get('code') === tense.get('code')
+                var samePerson = this.props.parseCategories.get('person').get('code') === person.get('code')
+
+                if(sameMood && sameVoice && sameNumber && sameTense && samePerson) {
+                  className = 'bible-form-highlighted'
+                }
               }
 
               return (
-                <td className={className}>{form} {referenceCountLabel}</td>
+                <td key={formCode} className={className}>
+                  {form} {referenceCountLabel}
+                </td>
               )
             }.bind(this))
 
             return (
-              <tr>
+              <tr key={tense.get('label')}>
                 <th>{tense.get('label')}</th>
                 {forms}
               </tr>
@@ -63,7 +83,7 @@ module.exports = React.createClass({
           if(!numberOfReferencesInGrammaticalNumber) return
 
           return (
-            <div>
+            <div key={number.get('label')}>
               <table>
                 <caption className="bible-panel-heading bible-morph-category">
                   <h2>
@@ -81,13 +101,13 @@ module.exports = React.createClass({
           )
         }.bind(this))
         return (
-          <div>
+          <div key={voice.get('label')}>
             {numbers}
           </div>
         )
       }.bind(this))
       return (
-        <div>
+        <div key={mood.get('label')}>
           {voices}
         </div>
       )
