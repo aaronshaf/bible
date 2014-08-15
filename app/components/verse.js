@@ -7,7 +7,8 @@ module.exports = React.createClass({
   propTypes: {
     book: React.PropTypes.any.isRequired,
     chapter: React.PropTypes.any.isRequired,
-    verseNumber: React.PropTypes.any.isRequired
+    verseNumber: React.PropTypes.any.isRequired,
+    words: React.PropTypes.any.isRequired
   },
 
   shouldComponentUpdate: function(nextProps) {
@@ -17,7 +18,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    if(!this.props.words.length) return
     var words = this.props.words.map(function(word,wordIndex) {
       return (
         <Word

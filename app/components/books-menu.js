@@ -13,19 +13,12 @@ module.exports = React.createClass({
     }
   },
 
-  componentDidMount: function componentDidMount() {
-    var books = BookModel.findAll()
-    this.setState({
-      books: books
-    })
-  },
-
   handleLinkMouseEnter: function(book) {
     ChapterModel.findByBookAndChapterNumber(book.get('osisID'),1,function(){})
   },
 
   render: function render() {
-    var books = this.state.books.toArray().map(function(book) {
+    var books = BookModel.findAll().toArray().map(function(book) {
       return (
         <li key={'bible-books-menu-' + book.get('osisID')}>
           <Link to="chapter" book={book.get('path')} chapter="1"

@@ -165,13 +165,23 @@ module.exports = React.createClass({
     var paragraphKey = 0
     if(!this.state.paragraphs) return null
     var paragraphs = this.state.paragraphs.map(function(verseNumbers) {
+      var verses = verseNumbers
+        .filter(function(verseNumber) {
+          return this.state.verses.get(verseNumber - 1)
+        }.bind(this))
+        .map(function(verseNumber) {
+          return Immutable.Map({
+            number: verseNumber,
+            words: this.state.verses.get(verseNumber - 1)
+          })
+        }.bind(this)).toVector()
+
       return (
         <Paragraph
           key={'paragraph-' + paragraphKey++}
           book={this.props.params.book}
           chapter={this.props.params.chapter}
-          verseNumbers={verseNumbers}
-          verses={this.state.verses}
+          verses={verses}
         />
       )
     }.bind(this)).toArray()

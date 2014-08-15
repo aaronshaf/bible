@@ -2,25 +2,30 @@
 
 var React = require('react')
 var Verse = require('./verse')
+var Immutable = require('immutable')
 
 module.exports = React.createClass({
   propTypes: {
     book: React.PropTypes.any.isRequired,
-    verseNumbers: React.PropTypes.any.isRequired,
+    chapter: React.PropTypes.any.isRequired,
     verses: React.PropTypes.any.isRequired
   },
 
-  render: function() {
-    var verses = this.props.verseNumbers.map(function(verseNumber) {
-      // TODO: Without this, its breaks on Jude, etc. Why?
-      if(!this.props.verses || this.props.verses.length < verseNumber) return null
+  shouldComponentUpdate: function(nextProps) {
+    var sameBook = this.props.book === nextProps.book
+    var sameChapter = this.props.chapter === nextProps.chapter
 
-      var words = this.props.verses.get(verseNumber - 1)
-      if(!words) return
+    return !(sameBook && sameChapter && Immutable.is(this.props.verses,nextProps.verses))
+  },
+
+  render: function() {
+    var verses = this.props.verses.map(function(verse) {
+      var verseNumber = verse.get('number')
+      var words = verse.get('words')
 
       return (
         <Verse
-          key={'verse-' + this.props.book + '-' + this.props.chapter + '-' + verseNumber}
+          key={verseNumber}
           book={this.props.book}
           chapter={this.props.chapter}
           verseNumber={verseNumber}
