@@ -23,6 +23,9 @@ module.exports = React.createClass({
       wordData: Immutable.Map(),
       parseCategories: Immutable.Map(),
       partOfSpeech: Immutable.Map(),
+      textIncludingPunctuation: '',
+      wordWithPunctuationStripped: '',
+      normalizedWord: '',
       lemma: ''
     }
   },
@@ -31,8 +34,6 @@ module.exports = React.createClass({
     var book = BookModel.findByPath(this.props.params.book)
     var bookOsisId = book.get('osisID')
     var chapterNumber = this.props.params.chapter
-
-    // console.log(this.state.parseCategories.toJS())
 
     ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
       if(err || !res) return
@@ -43,11 +44,14 @@ module.exports = React.createClass({
         .get(this.props.params.wordIndex - 1)
 
       this.setState({
-        wordData: wordData,
+        // wordData: wordData,
         partOfSpeech: Parsing.get('partOfSpeech').get('options').find(function(partOfSpeech) {
           return partOfSpeech.get('code') === wordData.get(0)
         }),
         parseCategories: morphCodesToCategories(wordData.get(1)),
+        // textIncludingPunctuation: wordData.get(2),
+        // wordWithPunctuationStripped: wordData.get(3),
+        // normalizedWord: wordData.get(4),
         lemma: wordData.get(5)
       })
     }.bind(this))
@@ -64,6 +68,9 @@ module.exports = React.createClass({
   },
 
   render: function () {
+    if(!this.state.partOfSpeech) {
+      return null
+    }
     var parsingCategories = Parsing.map(function(category,key) {
       var value
       if(!this.state.parseCategories.length
@@ -115,12 +122,16 @@ module.exports = React.createClass({
         this.state.forms.length) {
       paradigms = <VerbForms forms={this.state.forms} />
     } else if (this.state.partOfSpeech.get('label') === 'Article') {
-      paradigms = <Article forms={this.state.forms} />
+      paradigms = (
+        <Article
+            forms={this.state.forms}
+            parseCategories={this.state.parseCategories} />
+      )
     }
 
-    var partOfSpeech
-    if(this.state.partOfSpeech.get('label')) {
-      partOfSpeech = (
+    var morphology
+    if(this.state.partOfSpeech.get('label') && this.state.partOfSpeech.get('label') !== 'Article') {
+      morphology = (
         <table>
           <caption className="bible-panel-heading bible-morph-category">
             <h2>
@@ -145,9 +156,10 @@ module.exports = React.createClass({
     return (
       <div className="bible-word-info">
         <div className="bible-word-info-inner">
+
           {definition}
 
-          {partOfSpeech}
+          {morphology}
 
           {paradigms}
         </div>

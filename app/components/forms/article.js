@@ -2,7 +2,7 @@
 //
 var React = require('react')
 var Parsing = require('../../utils/parsing')
-var PersonsHeader = require('./persons-header')
+var GendersHeader = require('./genders-header')
 
 module.exports = React.createClass({
   render: function() {
@@ -11,30 +11,43 @@ module.exports = React.createClass({
         if(_case.get('label') === 'Vocative') return
         var forms = Parsing.get('gender').get('options').toArray().map(function(gender) {
           var formCode = 'RA----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
-          var form = this.props.forms.get(formCode).get('morph')
-          
+          if(!this.props.forms || !this.props.forms.get) return
+          var form = this.props.forms.get(formCode)
+
+          if(!form || !form.get) return
+          var morph = form.get('morph')
+
+          var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
+          var sameCase = this.props.parseCategories.get('case').get('code') === _case.get('code')
+          var sameGender = this.props.parseCategories.get('gender').get('code') === gender.get('code')
+
+          var className = ''
+          if(sameNumber && sameCase && sameGender) {
+            className = 'bible-form-highlighted'
+          }
+
           return (
-            <td>
-              {form}
+            <td key={gender.get('code')} className={className}>
+              {morph}
             </td>
           )
         }.bind(this))
 
         return (
-          <tr>
+          <tr key={_case.get('code')}>
             <th>{_case.get('label')}</th>
             {forms}
           </tr>
         )
       }.bind(this))
       return (
-        <table>
+        <table key={number.get('code')}>
           <caption className="bible-panel-heading bible-morph-category">
             <h2>
               <span>{number.get('label')} articles</span>
             </h2>
           </caption>
-          <PersonsHeader />
+          <GendersHeader />
           {cases}
         </table>
       )
