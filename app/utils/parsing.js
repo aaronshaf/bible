@@ -12,7 +12,8 @@ module.exports = Immutable.fromJS({
       {label: 'Adverb', code: 'D-'},
       {label: 'Preposition', code: 'P-'},
       {label: 'Relative Pronoun', code: 'RP'},
-      {label: 'Indefinite Pronoun', code: 'RI'}
+      {label: 'Demonstrative Pronoun', code: 'RD'},
+      {label: 'Indefinite Dronoun', code: 'RI'}
     ]
   },
 
