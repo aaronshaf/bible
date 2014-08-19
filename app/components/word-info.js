@@ -8,6 +8,7 @@ var Immutable = require('immutable')
 var Parsing = require('../utils/parsing')
 var VerbForms = require('./forms/verb')
 var Article = require('./forms/article')
+var RelativePronoun = require('./forms/relative-pronoun')
 var morphCodesToCategories = require('../utils/morph-codes-to-categories')
 
 require('array.prototype.find')
@@ -128,6 +129,12 @@ module.exports = React.createClass({
     } else if (this.state.partOfSpeech.get('label') === 'Article') {
       paradigms = (
         <Article
+            forms={this.state.forms}
+            parseCategories={this.state.parseCategories} />
+      )
+    } else if (this.state.partOfSpeech.get('label') === 'Relative Pronoun') {
+      paradigms = (
+        <RelativePronoun
             forms={this.state.forms}
             parseCategories={this.state.parseCategories} />
       )
