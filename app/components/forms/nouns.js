@@ -3,6 +3,7 @@
 var React = require('react')
 var Parsing = require('../../utils/parsing')
 var NumbersHeader = require('./numbers-header')
+var unique = require('lodash-node/modern/arrays/uniq')
 
 module.exports = React.createClass({
   propTypes: {
@@ -25,7 +26,7 @@ module.exports = React.createClass({
         morphs = morphs.filter(function(morph){ return morph !== null })
         if(!morphs.length) return <td></td>
 
-        morphs = morphs.join(', ')
+        morphs = unique(morphs).join(', ')
 
         var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
         var sameCase = this.props.parseCategories.get('case').get('code') === _case.get('code')
