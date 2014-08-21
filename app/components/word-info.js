@@ -7,6 +7,7 @@ var GreekWordModel = require('../models/greek-word')
 var Immutable = require('immutable')
 var Parsing = require('../utils/parsing')
 var VerbForms = require('./forms/verb')
+var NounForms = require('./forms/nouns')
 var Article = require('./forms/article')
 var RelativePronoun = require('./forms/relative-pronoun')
 var DemonstrativePronoun = require('./forms/demonstrative-pronoun')
@@ -120,7 +121,14 @@ module.exports = React.createClass({
     }
 
     var paradigms
-    if(this.state.partOfSpeech.get('label') === 'Verb' &&
+    if(this.state.partOfSpeech.get('label') === 'Noun' &&
+        this.state.forms.length) {
+      paradigms = (
+        <NounForms
+            forms={this.state.forms}
+            parseCategories={this.state.parseCategories} />
+      )
+    } else if (this.state.partOfSpeech.get('label') === 'Verb' &&
         this.state.forms.length) {
       paradigms = (
         <VerbForms
