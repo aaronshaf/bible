@@ -17,38 +17,12 @@ module.exports = Immutable.fromJS({
     ]
   },
 
-  voice: {
-    label: 'Voice',
-    options: [
-      {label: 'Active', code: 'A'},
-      {label: 'Middle', code: 'M'},
-      {label: 'Passive', code: 'P'}
-    ]
-  },
-
   person: {
     label: 'Person',
     options: [
       {label: '1st person', code: '1'},
       {label: '2nd person', code: '2'},
       {label: '3rd person', code: '3'}
-    ]
-  },
-
-  number: {
-    label: 'Number',
-    options: [
-      {label: 'Singular', code: 'S'},
-      {label: 'Plural', code: 'P'}
-    ]
-  },
-
-  gender: {
-    label: 'Gender',
-    options: [
-      {label: 'Masculine', code: 'M'},
-      {label: 'Feminine', code: 'F'},
-      {label: 'Neuter', code: 'N'}
     ]
   },
 
@@ -61,6 +35,15 @@ module.exports = Immutable.fromJS({
       {label: 'Future', code: 'F'},
       {label: 'Perfect', code: 'X'},
       {label: 'Pluperfect', code: 'Y'}
+    ]
+  },
+
+  voice: {
+    label: 'Voice',
+    options: [
+      {label: 'Active', code: 'A'},
+      {label: 'Middle', code: 'M'},
+      {label: 'Passive', code: 'P'}
     ]
   },
 
@@ -84,6 +67,23 @@ module.exports = Immutable.fromJS({
       {label: 'Dative', code: 'D'},
       {label: 'Accusative', code: 'A'},
       {label: 'Vocative', code: 'V'}
+    ]
+  },
+
+  number: {
+    label: 'Number',
+    options: [
+      {label: 'Singular', code: 'S'},
+      {label: 'Plural', code: 'P'}
+    ]
+  },
+
+  gender: {
+    label: 'Gender',
+    options: [
+      {label: 'Masculine', code: 'M'},
+      {label: 'Feminine', code: 'F'},
+      {label: 'Neuter', code: 'N'}
     ]
   },
 
