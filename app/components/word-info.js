@@ -47,7 +47,7 @@ module.exports = React.createClass({
         .get(this.props.params.wordIndex - 1)
 
       this.setState({
-        // wordData: wordData,
+        wordData: wordData,
         partOfSpeech: Parsing.get('partOfSpeech').get('options').find(function(partOfSpeech) {
           return partOfSpeech.get('code') === wordData.get(0)
         }),
@@ -161,7 +161,7 @@ module.exports = React.createClass({
         <table>
           <caption className="bible-panel-heading bible-morph-category">
             <h2>
-              Morphology
+              Morphology {/* this.state.wordData.get(1) */}
             </h2>
           </caption>
           <tbody>
