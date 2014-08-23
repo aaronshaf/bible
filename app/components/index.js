@@ -13,7 +13,7 @@ module.exports = React.createClass({
   },
 
   handleKeyDown: function(event) {
-    if(event.shiftKey && event.which === 39) { '→'
+    if(event.which === 75 || event.which === 75) { 'l'
       Router.transitionTo('/matthew/1')
     }
   },
@@ -24,34 +24,22 @@ module.exports = React.createClass({
         <div className="bible-keyboard-instructions">
           <div className="bible-keyboard-instructions-inner">
             <div>
-              <div className="bible-keyboard-instructions-key">shift</div>
-              +
-              <div className="bible-keyboard-instructions-key">alt</div>
-              +
-              <div className="bible-keyboard-instructions-key">←</div>
+              <div className="bible-keyboard-instructions-key">h</div>
               Previous book
             </div>
 
             <div>
-              <div className="bible-keyboard-instructions-key">shift</div>
-              +
-              <div className="bible-keyboard-instructions-key">←</div>
+              <div className="bible-keyboard-instructions-key">j</div>
               Previous chapter
             </div>
 
             <div>
-              <div className="bible-keyboard-instructions-key">shift</div>
-              +
-              <div className="bible-keyboard-instructions-key">→</div>
+              <div className="bible-keyboard-instructions-key">k</div>
               Next chapter
             </div>
 
             <div>
-              <div className="bible-keyboard-instructions-key">shift</div>
-              +
-              <div className="bible-keyboard-instructions-key">alt</div>
-              +
-              <div className="bible-keyboard-instructions-key">→</div>
+              <div className="bible-keyboard-instructions-key">l</div>
               Next book
             </div>
 

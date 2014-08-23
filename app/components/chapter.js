@@ -66,16 +66,20 @@ module.exports = React.createClass({
   },
 
   handleKeyDown: function(event) {
-    if(event.shiftKey && event.altKey && event.which === 37) { // ←
+    if(event.which === 72) { // h
       return this.transitionToPreviousBook()
-    } else if(event.shiftKey && event.which === 37) {
+    }
+
+    if(event.which === 74) { // j
       return this.transitionToPreviousChapter()
     }
 
-    if(event.shiftKey && event.altKey && event.which === 39) { // →
-      return this.transitionToNextBook()
-    } else if(event.shiftKey && event.which === 39) {
+    if(event.which === 75) { // k
       return this.transitionToNextChapter()
+    }
+
+    if(event.which === 76) { // l
+      return this.transitionToNextBook()
     }
 
     if(event.which === 27) { // esc
