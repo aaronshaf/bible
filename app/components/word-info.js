@@ -9,6 +9,7 @@ var Parsing = require('../utils/parsing')
 var VerbForms = require('./forms/verb')
 var NounForms = require('./forms/nouns')
 var Article = require('./forms/article')
+var AdjectiveForms = require('./forms/adjective')
 var RelativePronoun = require('./forms/relative-pronoun')
 var DemonstrativePronoun = require('./forms/demonstrative-pronoun')
 var morphCodesToCategories = require('../utils/morph-codes-to-categories')
@@ -138,6 +139,12 @@ module.exports = React.createClass({
     } else if (this.state.partOfSpeech.get('label') === 'Article') {
       paradigms = (
         <Article
+            forms={this.state.forms}
+            parseCategories={this.state.parseCategories} />
+      )
+    } else if (this.state.partOfSpeech.get('label') === 'Adjective') {
+      paradigms = (
+        <AdjectiveForms
             forms={this.state.forms}
             parseCategories={this.state.parseCategories} />
       )

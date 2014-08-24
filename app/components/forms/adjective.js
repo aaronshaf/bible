@@ -15,7 +15,7 @@ module.exports = React.createClass({
       var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
         if(_case.get('label') === 'Vocative') return
         var forms = Parsing.get('gender').get('options').toArray().map(function(gender) {
-          var formCode = 'RA----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
+          var formCode = 'A-----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
           if(!this.props.forms || !this.props.forms.get) return <td></td>
           var form = this.props.forms.get(formCode)
 
@@ -49,7 +49,7 @@ module.exports = React.createClass({
         <table key={number.get('code')}>
           <caption className="bible-panel-heading bible-morph-category">
             <h2>
-              <span>{number.get('label')} articles</span>
+              <span>{number.get('label')} adjectives</span>
             </h2>
           </caption>
           <GendersHeader />
