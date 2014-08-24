@@ -16,7 +16,7 @@ module.exports = React.createClass({
     var secondaryKeyPressed = event.altGraphKey || event.altKey ||
         event.ctrlKey || event.metaKey || event.shiftKey
 
-    if(secondaryKeyPressed && (event.which === 75 || event.which === 76)) { 'k' or 'l'
+    if(secondaryKeyPressed && (event.which === 75 || event.which === 76)) { // 'k' or 'l'
       Router.transitionTo('/matthew/1')
     }
   },
