@@ -13,7 +13,10 @@ module.exports = React.createClass({
   },
 
   handleKeyDown: function(event) {
-    if(event.which === 75 || event.which === 75) { 'l'
+    var secondaryKeyPressed = event.altGraphKey || event.altKey ||
+        event.ctrlKey || event.metaKey || event.shiftKey
+
+    if(secondaryKeyPressed && (event.which === 75 || event.which === 76)) { 'k' or 'l'
       Router.transitionTo('/matthew/1')
     }
   },
