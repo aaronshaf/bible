@@ -12,6 +12,8 @@ module.exports = React.createClass({
 
   render: function() {
     var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
+      var numberOfReferencesInGrammaticalNumber = 0
+
       var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
         var forms = Parsing.get('gender').get('options').toArray().map(function(gender) {
           var formCode = 'A-----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
@@ -28,10 +30,8 @@ module.exports = React.createClass({
                 ({numberOfReferences})
               </span>
             )
-            // numberOfReferencesInGrammaticalNumber += numberOfReferences
+            numberOfReferencesInGrammaticalNumber += numberOfReferences
           }
-
-          // if(!form || !form.get) return <td></td>
 
           var className = ''
           if(this.props.parseCategories && this.props.parseCategories.length) {
@@ -58,6 +58,9 @@ module.exports = React.createClass({
           </tr>
         )
       }.bind(this))
+
+      if(!numberOfReferencesInGrammaticalNumber) return
+
       return (
         <table key={number.get('code')}>
           <caption className="bible-panel-heading bible-morph-category">
