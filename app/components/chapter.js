@@ -69,19 +69,19 @@ module.exports = React.createClass({
     var secondaryKeyPressed = event.altGraphKey || event.altKey ||
         event.ctrlKey || event.metaKey || event.shiftKey
 
-    if(!secondaryKeyPressed || event.which === 72) { // h
+    if(!secondaryKeyPressed && event.which === 72) { // h
       return this.transitionToPreviousBook()
     }
 
-    if(!secondaryKeyPressed || event.which === 74) { // j
+    if(!secondaryKeyPressed && event.which === 74) { // j
       return this.transitionToPreviousChapter()
     }
 
-    if(!secondaryKeyPressed || event.which === 75) { // k
+    if(!secondaryKeyPressed && event.which === 75) { // k
       return this.transitionToNextChapter()
     }
 
-    if(!secondaryKeyPressed || event.which === 76) { // l
+    if(!secondaryKeyPressed && event.which === 76) { // l
       return this.transitionToNextBook()
     }
 
