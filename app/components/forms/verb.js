@@ -22,10 +22,6 @@ module.exports = React.createClass({
     if(!this.props.parseCategories) return null
 
     var moods = Parsing.get('mood').get('options').toArray().map(function(mood) {
-      if(!this.props.parseCategories.get('mood')) return
-      if(!this.props.parseCategories.get('voice')) return
-      if(!this.props.parseCategories.get('person')) return
-
       var voices = Parsing.get('voice').get('options').toArray().map(function(voice) {
         var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
           var numberOfReferencesInGrammaticalNumber = 0
@@ -53,11 +49,11 @@ module.exports = React.createClass({
 
               var className = ''
               if(this.props.parseCategories && this.props.parseCategories.length) {
-                var sameMood = this.props.parseCategories.get('mood').get('code') === mood.get('code')
-                var sameVoice = this.props.parseCategories.get('voice').get('code') === voice.get('code')
-                var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
-                var sameTense = this.props.parseCategories.get('tense').get('code') === tense.get('code')
-                var samePerson = this.props.parseCategories.get('person').get('code') === person.get('code')
+                var sameMood = this.props.parseCategories.get('mood') && this.props.parseCategories.get('mood').get('code') === mood.get('code')
+                var sameVoice = this.props.parseCategories.get('voice') && this.props.parseCategories.get('voice').get('code') === voice.get('code')
+                var sameNumber = this.props.parseCategories.get('number') && this.props.parseCategories.get('number').get('code') === number.get('code')
+                var sameTense = this.props.parseCategories.get('tense') && this.props.parseCategories.get('tense').get('code') === tense.get('code')
+                var samePerson = this.props.parseCategories.get('person') && this.props.parseCategories.get('person').get('code') === person.get('code')
 
                 if(sameMood && sameVoice && sameNumber && sameTense && samePerson) {
                   className = 'bible-form-highlighted'
@@ -113,11 +109,6 @@ module.exports = React.createClass({
     }.bind(this))
 
     var participles = Parsing.get('tense').get('options').toArray().map(function(tense) {
-      if(!this.props.parseCategories.get('voice')) return
-      if(!this.props.parseCategories.get('number')) return
-      if(!this.props.parseCategories.get('case')) return
-      if(!this.props.parseCategories.get('gender')) return
-
       var voices = Parsing.get('voice').get('options').toArray().map(function(voice) {
         var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
           var numberOfReferencesInGrammaticalNumber = 0
@@ -145,11 +136,11 @@ module.exports = React.createClass({
 
               var className = ''
               if(this.props.parseCategories && this.props.parseCategories.length) {
-                var sameTense = this.props.parseCategories.get('tense').get('code') === tense.get('code')
-                var sameVoice = this.props.parseCategories.get('voice').get('code') === voice.get('code')
-                var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
-                var sameCase = this.props.parseCategories.get('case').get('code') === _case.get('code')
-                var sameGender = this.props.parseCategories.get('gender').get('code') === gender.get('code')
+                var sameTense = this.props.parseCategories.get('tense') && this.props.parseCategories.get('tense').get('code') === tense.get('code')
+                var sameVoice = this.props.parseCategories.get('voice') && this.props.parseCategories.get('voice').get('code') === voice.get('code')
+                var sameNumber = this.props.parseCategories.get('number') && this.props.parseCategories.get('number').get('code') === number.get('code')
+                var sameCase = this.props.parseCategories.get('case') && this.props.parseCategories.get('case').get('code') === _case.get('code')
+                var sameGender = this.props.parseCategories.get('gender') && this.props.parseCategories.get('gender').get('code') === gender.get('code')
 
                 if(sameTense && sameVoice && sameNumber && sameCase && sameGender) {
                   className = 'bible-form-highlighted'
