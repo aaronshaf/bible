@@ -13,27 +13,40 @@ module.exports = React.createClass({
   render: function() {
     var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
       var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
-        if(_case.get('label') === 'Vocative') return
         var forms = Parsing.get('gender').get('options').toArray().map(function(gender) {
           var formCode = 'A-----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
-          if(!this.props.forms || !this.props.forms.get) return <td></td>
-          var form = this.props.forms.get(formCode)
 
-          if(!form || !form.get) return <td></td>
-          var morph = form.get('morph')
+          var form
+          var numberOfReferences
+          var referenceCountLabel
 
-          var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
-          var sameCase = this.props.parseCategories.get('case').get('code') === _case.get('code')
-          var sameGender = this.props.parseCategories.get('gender').get('code') === gender.get('code')
+          if(this.props.forms.get(formCode)) {
+            form = this.props.forms.get(formCode).get('morph')
+            numberOfReferences = this.props.forms.get(formCode).get('references').length
+            referenceCountLabel = (
+              <span className="bible-reference-count">
+                ({numberOfReferences})
+              </span>
+            )
+            // numberOfReferencesInGrammaticalNumber += numberOfReferences
+          }
+
+          // if(!form || !form.get) return <td></td>
 
           var className = ''
-          if(sameNumber && sameCase && sameGender) {
-            className = 'bible-form-highlighted'
+          if(this.props.parseCategories && this.props.parseCategories.length) {
+            var sameNumber = this.props.parseCategories.get('number') && this.props.parseCategories.get('number').get('code') === number.get('code')
+            var sameCase = this.props.parseCategories.get('case') && this.props.parseCategories.get('case').get('code') === _case.get('code')
+            var sameGender = this.props.parseCategories.get('gender') && this.props.parseCategories.get('gender').get('code') === gender.get('code')
+
+            if(sameNumber && sameCase && sameGender) {
+              className = 'bible-form-highlighted'
+            }
           }
 
           return (
-            <td key={gender.get('code')} className={className}>
-              {morph}
+            <td key={formCode} className={className}>
+              {form} {referenceCountLabel}
             </td>
           )
         }.bind(this))
