@@ -16,24 +16,43 @@ module.exports = React.createClass({
 
     var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
       var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
-        var morphs = Parsing.get('gender').get('options').toArray().map(function(gender) {
+        var morphs = {}
+
+        Parsing.get('gender').get('options').toArray().map(function(gender) {
           var formCode = 'N-----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
           var form = this.props.forms.get(formCode)
           if(!form || !form.get) return null
-          return form.get('morph')
+          var text = form.get('morph')
+          if(!morphs[text]) {
+            morphs[text] = {
+              numberOfReferences: 0
+            }
+          }
+          morphs[text].numberOfReferences += this.props.forms.get(formCode).get('references').length
         }.bind(this))
 
-        morphs = morphs.filter(function(morph){ return morph !== null })
+        // Later: use "for of"
+        morphs = Object.keys(morphs).map(function(text) {
+          return (
+            <div>
+              <span>{text} </span>
+              <span className="bible-reference-count">
+                ({morphs[text].numberOfReferences})
+              </span>
+            </div>
+          )
+        })
+
         if(!morphs.length) return <td></td>
 
-        morphs = unique(morphs).join(', ')
-
-        var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
-        var sameCase = this.props.parseCategories.get('case').get('code') === _case.get('code')
-
         var className = ''
-        if(sameNumber && sameCase) {
-          className = 'bible-form-highlighted'
+        if(this.props.parseCategories && this.props.parseCategories.length) {
+          var sameNumber = this.props.parseCategories.get('number') && this.props.parseCategories.get('number').get('code') === number.get('code')
+          var sameCase = this.props.parseCategories.get('case') && this.props.parseCategories.get('case').get('code') === _case.get('code')
+
+          if(sameNumber && sameCase) {
+            className = 'bible-form-highlighted'
+          }
         }
 
         return (
