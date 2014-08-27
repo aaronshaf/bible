@@ -14,11 +14,11 @@ module.exports = React.createClass({
   render: function() {
     if(!this.props.forms || !this.props.forms.get) return null
 
-    var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
-      var numbers = Parsing.get('number').get('options').toArray().map(function(number) {
+    var cases = Parsing.get('case').get('options').map(function(_case) {
+      var numbers = Parsing.get('number').get('options').map(function(number) {
         var morphs = {}
 
-        Parsing.get('gender').get('options').toArray().map(function(gender) {
+        Parsing.get('gender').get('options').forEach(function(gender) {
           var formCode = 'N-----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
           var form = this.props.forms.get(formCode)
           if(!form || !form.get) return null
@@ -60,7 +60,7 @@ module.exports = React.createClass({
             {morphs}
           </td>
         )
-      }.bind(this))
+      }.bind(this)).toArray()
 
       return (
         <tr key={_case.get('code')}>
@@ -68,7 +68,7 @@ module.exports = React.createClass({
           {numbers}
         </tr>
       )
-    }.bind(this))
+    }.bind(this)).toArray()
 
     return (
       <div className="bible-paradigms">
