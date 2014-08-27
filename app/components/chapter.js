@@ -44,6 +44,8 @@ module.exports = React.createClass({
     var bookOsisId = book.get('osisID')
     var chapterNumber = this.props.params.chapter
 
+    document.title = book.get('names').get('english') + ' ' + chapterNumber
+
     ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
       if(err || !this.isMounted()) return
       this.setState({

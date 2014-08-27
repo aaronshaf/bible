@@ -5,6 +5,7 @@ $borderColor: #D4D1C8;
   min-width: 450px;
   border-top: 1px solid $borderColor;
   overflow-y: auto;
+  will-change: display, flex;
 }
 
 .bible-word-info-inner {

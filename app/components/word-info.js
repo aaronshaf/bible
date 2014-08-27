@@ -47,6 +47,8 @@ module.exports = React.createClass({
         .get(this.props.params.verse - 1)
         .get(this.props.params.wordIndex - 1)
 
+      document.title = wordData.get(4) + ' in ' + book.get('names').get('english') + ' ' + chapterNumber + ':' + this.props.params.verse
+
       this.setState({
         wordData: wordData,
         partOfSpeech: Parsing.get('partOfSpeech').get('options').find(function(partOfSpeech) {
