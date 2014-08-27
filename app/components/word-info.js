@@ -57,17 +57,17 @@ module.exports = React.createClass({
         // wordWithPunctuationStripped: wordData.get(3),
         // normalizedWord: wordData.get(4),
         lemma: wordData.get(5)
-      })
-    }.bind(this))
+      }, function() {
+        GreekWordModel.findByLemma(wordData.get(5),function(err,res) {
+          if(err) return
 
-    GreekWordModel.findByLemma(this.props.params.word,function(err,res) {
-      if(err) return
-
-      this.setState({
-        forms: res.get('forms') || Immutable.Map(),
-        occurences: res.get('occurences'),
-        definitions: res.get('definitions') || Immutable.Map()
-      })
+          this.setState({
+            forms: res.get('forms') || Immutable.Map(),
+            occurences: res.get('occurences'),
+            definitions: res.get('definitions') || Immutable.Map()
+          })
+        }.bind(this))
+      }.bind(this))
     }.bind(this))
   },
 
