@@ -42,7 +42,7 @@ module.exports = React.createClass({
             chapter={this.props.chapter}
             verse={this.props.verseNumber}
             wordIndex={this.props.wordIndex}
-            word={this.props.word.get(4)}
+            word={this.props.word.get(3)}
             className="bible-word">{displayWord}</Link>
         <span className="bible-word-divider"> </span>
       </span>
