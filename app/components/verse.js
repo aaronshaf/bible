@@ -12,9 +12,11 @@ module.exports = React.createClass({
   },
 
   shouldComponentUpdate: function(nextProps) {
-    return nextProps.book !== this.props.book ||
+    var shouldUpdate = nextProps.book !== this.props.book ||
             nextProps.chapter !== this.props.chapter ||
             nextProps.verseNumber !== this.props.verseNumber
+
+    return shouldUpdate
   },
 
   render: function() {

@@ -19,9 +19,13 @@ module.exports = React.createClass({
 
   render: function render() {
     var books = BookModel.findAll().toArray().map(function(book) {
+      var params = {
+        book: book.get('path'),
+        chapter: "1"
+      }
       return (
         <li key={'bible-books-menu-' + book.get('osisID')}>
-          <Link to="chapter" book={book.get('path')} chapter="1"
+          <Link to="chapter" params={params}
               onMouseEnter={this.handleLinkMouseEnter.bind(null,book)}>
             {book.get('names').get('english')}
           </Link>

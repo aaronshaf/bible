@@ -15,7 +15,8 @@ module.exports = React.createClass({
     var sameBook = this.props.book === nextProps.book
     var sameChapter = this.props.chapter === nextProps.chapter
 
-    return !(sameBook && sameChapter && Immutable.is(this.props.verses,nextProps.verses))
+    var shouldUpdate = !(sameBook && sameChapter && Immutable.is(this.props.verses,nextProps.verses))
+    return shouldUpdate
   },
 
   render: function() {

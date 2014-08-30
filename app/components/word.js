@@ -14,9 +14,11 @@ module.exports = React.createClass({
 
   shouldComponentUpdate: function(nextProps) {
     // nextProps.word.get(5) !== this.props.word.get(5)
-    return nextProps.book !== this.props.book ||
+    var shouldUpdate = nextProps.book !== this.props.book ||
         nextProps.chapter !== this.props.chapter ||
         nextProps.verseNumber !== this.props.verseNumber
+
+    return shouldUpdate
   },
 
   handleClick: function() {
@@ -31,6 +33,14 @@ module.exports = React.createClass({
   render: function() {
     var displayWord = this.props.word.get(2)
 
+    var params = {
+      book: this.props.book,
+      chapter: this.props.chapter,
+      verse: this.props.verseNumber,
+      wordIndex: this.props.wordIndex,
+      word: this.props.word.get(3)
+    }
+
     return (
       <span onClick={this.handleClick}
           onMouseEnter={this.handleMouseEnter}
@@ -38,11 +48,7 @@ module.exports = React.createClass({
         <Link
             ref="link"
             to="verse"
-            book={this.props.book}
-            chapter={this.props.chapter}
-            verse={this.props.verseNumber}
-            wordIndex={this.props.wordIndex}
-            word={this.props.word.get(3)}
+            params={params}
             className="bible-word">{displayWord}</Link>
         <span className="bible-word-divider"> </span>
       </span>

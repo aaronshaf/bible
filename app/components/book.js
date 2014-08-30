@@ -9,6 +9,8 @@ module.exports = React.createClass({
   //   }
   // },
 
+  displayName: 'Book',
+
   render: function render() {
     return (
       <section className="bible-main-right-section">
