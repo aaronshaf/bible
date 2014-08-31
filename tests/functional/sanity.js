@@ -75,8 +75,6 @@ describe('Greek New Testament', function() {
        .waitForElementByLinkText('Βίβλος')
        .click()
        .waitForElementByClassName('bible-word-info', asserters.textInclude('the inner bark'))
-       .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλος'))
-       .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλου'))
        .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλῳ'))
        .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλους'))
 
@@ -89,9 +87,19 @@ describe('Greek New Testament', function() {
        .waitForElementByClassName('bible-word')
        .waitForElementByLinkText('ἐγέννησεν')
        .click()
-       .waitForElementByClassName('bible-word-info', asserters.textInclude('to beget, generate'))
-       .waitForElementByClassName('bible-word-info', asserters.textInclude('ἐγέννησα'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('to beget'))
        .waitForElementByClassName('bible-word-info', asserters.textInclude('γεννηθῇ'))
+
+    return browser
+  })
+
+  it("should show article information", function() {
+     browser = browser.get(HOST + "matthew/1")
+       .waitForElementByClassName('bible-word')
+       .waitForElementByLinkText('τὸν')
+       .click()
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('τῆς'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('ταῖς'))
 
     return browser
   })
