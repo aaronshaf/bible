@@ -225,7 +225,7 @@ module.exports = React.createClass({
     if(this.state.paragraphs.length && !this.state.unloadedVerses.length) {
       downArrow = (
         <div className="bible-next">
-          <a href="#" onClick={this.transitionToNextChapter}>
+          <a className="bible-next-link" href="#" onClick={this.transitionToNextChapter}>
             <img src="/img/arrow-down.svg" className="bible-next-icon" />
           </a>
         </div>

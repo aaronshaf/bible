@@ -6,3 +6,8 @@ deployment:
     branch: master
     commands:
       - ssh $PRODUCTION_USER@$PRODUCTION_HOST './deploy.sh'
+dependencies:
+  post:
+    - wget https://selenium.googlecode.com/files/selenium-server-standalone-2.42.2.jar
+    - java -jar selenium-server-standalone-2.42.2.jar:
+        background: true      
