@@ -24,7 +24,7 @@ describe('sanity test', function() {
     browser.on('http', function(meth, path, data) {
       // console.log(' > ' + meth.magenta, path, (data || '').grey)
     })
-    return browser.init({browserName:'chrome'})
+    return browser.init({browserName:'firefox'})
   })
 
   after(function() {
