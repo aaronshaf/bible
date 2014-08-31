@@ -1,4 +1,8 @@
+var PORT = 4201
+process.env.PORT = PORT
+var HOST = 'http://localhost:' + PORT + '/'
 require('../../main')
+
 require('colors')
 var chai = require("chai")
 var chaiAsPromised = require("chai-as-promised")
@@ -32,7 +36,7 @@ describe('sanity test', function() {
   }
 
   it("should traverse all the chapters of Matthew", function() {
-    browser = browser.get("http://localhost:4200/matthew/1")
+    browser = browser.get(HOST + "matthew/1")
       //.saveScreenshot(screenshotPath + '/sanity.png')
       .title().should.become("Matthew 1")
       .waitForElementByClassName('bible-word')

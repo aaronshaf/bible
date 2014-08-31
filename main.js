@@ -1,6 +1,6 @@
 var express = require('express')
 var app = express()
-const PORT = process.env.NODE_ENV === 'production' ? 80 : 4200
+const PORT = process.env.NODE_ENV === 'production' ? 80 : (process.env.PORT || 4200)
 app.use(function(req, res, next) {
   if (/.*\.json/.test(req.path)) {
     res.set({ 'content-type': 'application/json; charset=utf-8' })
