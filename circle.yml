@@ -8,6 +8,6 @@ deployment:
       - ssh $PRODUCTION_USER@$PRODUCTION_HOST './deploy.sh'
 dependencies:
   post:
-    - wget https://selenium.googlecode.com/files/selenium-server-standalone-2.42.2.jar
+    - wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.2.jar 
     - java -jar selenium-server-standalone-2.42.2.jar:
         background: true      
