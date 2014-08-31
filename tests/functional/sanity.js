@@ -9,6 +9,8 @@ chai.should()
 var wd = require('wd')
 chaiAsPromised.transferPromiseness = wd.transferPromiseness
 
+var screenshotPath = process.env.CIRCLE_ARTIFACTS || 'tests/functional/screenshots/' 
+
 describe('sanity test', function() {
   this.timeout(30000)
   var browser
@@ -40,6 +42,7 @@ describe('sanity test', function() {
 
   it("should traverse all the chapters of Matthew", function() {
     browser = browser.get("http://localhost:4200/matthew/1")
+      .saveScreenshot(screenshotPath + '/sanity.png')
       .title().should.become("Matthew 1")
       .waitForElementByClassName('bible-word')
       .hasElementByLinkText('Βίβλος').should.become(true)
