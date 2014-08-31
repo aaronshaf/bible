@@ -3,7 +3,6 @@ process.env.PORT = PORT
 var HOST = 'http://localhost:' + PORT + '/'
 require('../../main')
 
-require('colors')
 var chai = require("chai")
 var chaiAsPromised = require("chai-as-promised")
 var range = require('lodash-node/modern/arrays/range')
@@ -11,11 +10,12 @@ chai.use(chaiAsPromised)
 chai.should()
 
 var wd = require('wd')
+var asserters = wd.asserters
 chaiAsPromised.transferPromiseness = wd.transferPromiseness
 
 var screenshotPath = process.env.CIRCLE_ARTIFACTS || 'tests/functional/screenshots/' 
 
-describe('sanity test', function() {
+describe('Greek New Testament', function() {
   this.timeout(40000)
   var browser
 
@@ -35,21 +35,64 @@ describe('sanity test', function() {
       .title().should.become("Matthew " + chapter)
   }
 
-  it("should traverse all the chapters of Matthew", function() {
+  it("should forward-traverse chapters in Matthew", function() {
     browser = browser.get(HOST + "matthew/1")
       //.saveScreenshot(screenshotPath + '/sanity.png')
       .title().should.become("Matthew 1")
-      .waitForElementByClassName('bible-word')
-      .hasElementByLinkText('Βίβλος').should.become(true)
-      .hasElementByLinkText('παρέλαβεν').should.become(true)
-      .waitForElementByClassName('bible-next-icon')
+      .waitForElementByClassName('bible-word', asserters.isDisplayed, 500, 10)
+      .hasElementByLinkText('Βίβλος')
+        .should.become(true)
+      .hasElementByLinkText('παρέλαβεν')
+        .should.become(true)
+      .waitForElementByClassName('bible-next-icon', asserters.isDisplayed, 500, 10)
 
-    range(2,27).forEach(function(chapter) {
+    range(2,4).forEach(function(chapter) {
       browser = browser
-        .waitForElementByClassName('bible-next-icon').click()
+        .waitForElementByClassName('bible-next-icon', asserters.isDisplayed, 500, 10)
+          .click()
         .title().should.become("Matthew " + chapter)
     })
 
     return browser
   })
-})
+
+  it("should backward-traverse chapters in Matthew", function() {
+    browser = browser.get(HOST + "matthew/5")
+      .waitForElementByClassName('bible-word')
+    
+    range(4,1, -1).forEach(function(chapter) {
+      browser = browser
+        .waitForElementByClassName('bible-previous-icon').click()
+        .title().should.become("Matthew " + chapter)
+    })
+
+    return browser
+  })
+
+  it("should show noun information", function() {
+     browser = browser.get(HOST + "matthew/1")
+       .waitForElementByClassName('bible-word')
+       .waitForElementByLinkText('Βίβλος')
+       .click()
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('the inner bark'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλος'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλου'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλῳ'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('βίβλους'))
+
+    return browser
+  })
+
+
+  it("should show verb information", function() {
+     browser = browser.get(HOST + "matthew/1")
+       .waitForElementByClassName('bible-word')
+       .waitForElementByLinkText('ἐγέννησεν')
+       .click()
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('to beget, generate'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('ἐγέννησα'))
+       .waitForElementByClassName('bible-word-info', asserters.textInclude('γεννηθῇ'))
+
+    return browser
+  })
+ })
