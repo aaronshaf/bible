@@ -16,15 +16,15 @@ describe('sanity test', function() {
   before(function() {
     browser = wd.promiseChainRemote()
     browser.on('status', function(info) {
-      // console.log(info.cyan)
+      console.log(info.cyan)
     })
     browser.on('command', function(eventType, command, response) {
-      // console.log(' > ' + eventType.cyan, command, (response || '').grey)
+      console.log(' > ' + eventType.cyan, command, (response || '').grey)
     })
     browser.on('http', function(meth, path, data) {
-      // console.log(' > ' + meth.magenta, path, (data || '').grey)
+      console.log(' > ' + meth.magenta, path, (data || '').grey)
     })
-    return browser.init({browserName:'firefox'})
+    return browser.init({browserName:'chrome'})
   })
 
   after(function() {
