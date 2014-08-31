@@ -12,20 +12,11 @@ chaiAsPromised.transferPromiseness = wd.transferPromiseness
 var screenshotPath = process.env.CIRCLE_ARTIFACTS || 'tests/functional/screenshots/' 
 
 describe('sanity test', function() {
-  this.timeout(30000)
+  this.timeout(40000)
   var browser
 
   before(function() {
     browser = wd.promiseChainRemote()
-    browser.on('status', function(info) {
-      console.log(info.cyan)
-    })
-    browser.on('command', function(eventType, command, response) {
-      console.log(' > ' + eventType.cyan, command, (response || '').grey)
-    })
-    browser.on('http', function(meth, path, data) {
-      console.log(' > ' + meth.magenta, path, (data || '').grey)
-    })
     return browser.init({browserName:'chrome'})
   })
 
@@ -42,7 +33,7 @@ describe('sanity test', function() {
 
   it("should traverse all the chapters of Matthew", function() {
     browser = browser.get("http://localhost:4200/matthew/1")
-      .saveScreenshot(screenshotPath + '/sanity.png')
+      //.saveScreenshot(screenshotPath + '/sanity.png')
       .title().should.become("Matthew 1")
       .waitForElementByClassName('bible-word')
       .hasElementByLinkText('Βίβλος').should.become(true)

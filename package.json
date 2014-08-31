@@ -7,7 +7,7 @@
     "start": "node main.js",
     "dev": "node_modules/gulp/bin/gulp.js dev",
     "build": "node_modules/gulp/bin/gulp.js",
-    "test": "jest && node_modules/.bin/mocha tests/functional/",
+    "test": "node_modules/.bin/jest",
     "test-functional": "node_modules/.bin/mocha tests/functional/"
   },
   "engines": {
