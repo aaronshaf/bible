@@ -12,6 +12,7 @@ var Article = require('./forms/article')
 var AdjectiveForms = require('./forms/adjective')
 var RelativePronoun = require('./forms/relative-pronoun')
 var Prepositions = require('./forms/prepositions')
+var Conjunctions = require('./forms/conjunctions')
 var DemonstrativePronoun = require('./forms/demonstrative-pronoun')
 var morphCodesToCategories = require('../utils/morph-codes-to-categories')
 
@@ -166,6 +167,10 @@ module.exports = React.createClass({
     } else if (this.state.partOfSpeech.get('label') === 'Preposition') {
       paradigms = (
         <Prepositions forms={this.state.forms} />
+      )
+    } else if (this.state.partOfSpeech.get('label') === 'Conjunction') {
+      paradigms = (
+        <Conjunctions forms={this.state.forms} />
       )
     }
 
