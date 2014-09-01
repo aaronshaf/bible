@@ -21,11 +21,12 @@
     ]
   },
   "devDependencies": {
-    "aaronshaf-bible-data": "^2.0.1",
+    "aaronshaf-bible-data": "^2.1.1",
     "array.prototype.find": "^1.0.0",
     "browserify": "^5.11.0",
     "chai": "^1.9.1",
     "chai-as-promised": "^4.1.1",
+    "chunk": "0.0.1",
     "colors": "^0.6.2",
     "exorcist": "^0.1.6",
     "express": "^4.8.6",

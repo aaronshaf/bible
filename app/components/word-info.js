@@ -11,6 +11,7 @@ var NounForms = require('./forms/nouns')
 var Article = require('./forms/article')
 var AdjectiveForms = require('./forms/adjective')
 var RelativePronoun = require('./forms/relative-pronoun')
+var Prepositions = require('./forms/prepositions')
 var DemonstrativePronoun = require('./forms/demonstrative-pronoun')
 var morphCodesToCategories = require('../utils/morph-codes-to-categories')
 
@@ -22,7 +23,7 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       forms: Immutable.Map(),
-      occurences: 0,
+      occurrences: 0,
       definitions: Immutable.Map(),
       wordData: Immutable.Map(),
       parseCategories: Immutable.Map(),
@@ -65,7 +66,7 @@ module.exports = React.createClass({
 
           this.setState({
             forms: res.get('forms') || Immutable.Map(),
-            occurences: res.get('occurences'),
+            occurrences: res.get('occurrences'),
             definitions: res.get('definitions') || Immutable.Map()
           })
         }.bind(this))
@@ -96,9 +97,9 @@ module.exports = React.createClass({
       )
     }.bind(this)).toVector().toArray()
 
-    var occurences = null
-    if(this.state.occurences) {
-      occurences = <span>({this.state.occurences})</span>
+    var occurrences = null
+    if(this.state.occurrences) {
+      occurrences = <span>({this.state.occurrences})</span>
     }
 
     var definition = null
@@ -107,7 +108,7 @@ module.exports = React.createClass({
         <table className="bible-definition">
           <caption className="bible-panel-heading bible-morph-category">
             <h2>
-              {this.state.lemma} {occurences}
+              {this.state.lemma} {occurrences}
             </h2>
           </caption>
           <tbody>
@@ -161,6 +162,10 @@ module.exports = React.createClass({
         <DemonstrativePronoun
             forms={this.state.forms}
             parseCategories={this.state.parseCategories} />
+      )
+    } else if (this.state.partOfSpeech.get('label') === 'Preposition') {
+      paradigms = (
+        <Prepositions forms={this.state.forms} />
       )
     }
 
