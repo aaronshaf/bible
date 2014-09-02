@@ -1,8 +1,9 @@
-$borderColor: #D4D1C8;
+$borderColor: darken(#eee,5);
 
 .bible-word-info {
   @extend %flex-3;
   min-width: 450px;
+  background-color: #fafafa;
   border-top: 1px solid $borderColor;
   overflow-y: auto;
   will-change: display, flex;
@@ -16,11 +17,13 @@ $borderColor: #D4D1C8;
 .bible-word-info-inner th {
   text-align: left;
   width: 16%;
+  background-color: white;
 }
 
-.bible-word-info-inner td {
+.bible-word-info-inner td:not(.bible-form-highlighted) {
   width: 28%;
   text-align: left;
+  background-color: white;
 }
 
 .bible-word-info-inner th,
@@ -59,7 +62,7 @@ $borderColor: #D4D1C8;
 .bible-panel-heading {
   font-weight: bold;
   margin-top: 14px;
-  background-color: #F0EDE2;
+  background-color: darken(#FAFAFA,4);
   text-align: left;
   font-weight: normal;
   padding: 8px;
