@@ -20,9 +20,12 @@ $borderColor: darken(#eee,5);
   background-color: white;
 }
 
-.bible-word-info-inner td:not(.bible-form-highlighted) {
+.bible-word-info-inner td {
   width: 28%;
   text-align: left;
+}
+
+.bible-word-info-inner td:not(.bible-form-highlighted) {
   background-color: white;
 }
 
@@ -84,7 +87,7 @@ $borderColor: darken(#eee,5);
   padding: 8px;
 }
 
-.bible-prepositions td ,
+.bible-word-info .bible-prepositions td,
 .bible-conjunctions td {
   width: 25%;
 }
