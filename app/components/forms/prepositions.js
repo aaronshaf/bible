@@ -41,8 +41,6 @@ module.exports = React.createClass({
   render: function() {
     if(!this.props.forms || !this.props.forms.get) return null
 
-    
-
     var prepositions = chunkedPrepositions.map(function(chunk) {
       var cells = chunk.map(this.renderPrepositionCell)
       return (

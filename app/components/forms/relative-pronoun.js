@@ -12,65 +12,11 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var cases = Parsing.get('case').get('options').map(function(_case) {
-      var numbers = Parsing.get('number').get('options').map(function(number) {
-        var formCode = 'RP----' + _case.get('code') + number.get('code') + '--'
-        if(!this.props.forms || !this.props.forms.get) return <td></td>
-        var form = this.props.forms.get(formCode)
-
-        if(!form || !form.get) return <td></td>
-        var morph = form.get('morph')
-
-        var numberOfReferences
-        var referenceCountLabel
-
-        if(this.props.forms.get(formCode)) {
-          form = this.props.forms.get(formCode).get('morph')
-          numberOfReferences = this.props.forms.get(formCode).get('references').length
-          referenceCountLabel = (
-            <span className="bible-reference-count">
-              ({numberOfReferences})
-            </span>
-          )
-        }
-
-        var className = ''
-        //if(sameNumber && sameCase && sameGender) {
-        //  className = 'bible-form-highlighted'
-        //}
-
-        return (
-          <td key={number.get('code')} className={className}>
-            {morph} {referenceCountLabel}
-          </td>
-        )
-      }.bind(this)).toArray()
-
-      return (
-        <tr key={_case.get('code')}>
-          <th>{_case.get('label')}</th>
-          {numbers}
-        </tr>
-      )
-    }.bind(this)).toArray()
-
-    var firstOrSecondPersonPronouns = (
-      <table>
-        <caption className="bible-panel-heading bible-morph-category">
-          <h2>
-            <span>Pronouns</span>
-          </h2>
-        </caption>
-        <NumbersHeader />
-        {cases}
-      </table>
-    )
-
     var numbers = Parsing.get('number').get('options').map(function(number) {
       var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
         if(_case.get('label') === 'Vocative') return
         var forms = Parsing.get('gender').get('options').toArray().map(function(gender) {
-          var formCode = 'RP----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
+          var formCode = 'RR----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
           if(!this.props.forms || !this.props.forms.get) return <td></td>
           var form = this.props.forms.get(formCode)
 
@@ -129,7 +75,6 @@ module.exports = React.createClass({
     return (
       <div>
         <div className="bible-paradigms">{numbers}</div>
-        <div className="bible-paradigms">{firstOrSecondPersonPronouns}</div>
       </div>
     )
   }
