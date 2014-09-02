@@ -6,6 +6,8 @@ var NumbersHeader = require('./numbers-header')
 var unique = require('lodash-node/modern/arrays/uniq')
 
 module.exports = React.createClass({
+  displayName: 'Nouns',
+
   propTypes: {
     forms: React.PropTypes.any.isRequired,
     parseCategories: React.PropTypes.any.isRequired

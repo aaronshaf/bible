@@ -7,6 +7,8 @@ var GendersHeader = require('./genders-header')
 var Immutable = require('immutable')
 
 module.exports = React.createClass({
+  displayName: 'Verbs',
+
   propTypes: {
     forms: React.PropTypes.any.isRequired,
     parseCategories: React.PropTypes.any.isRequired

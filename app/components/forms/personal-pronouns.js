@@ -7,6 +7,8 @@ var SecondPersonPersonalPronouns = require('./personal-pronouns/second-person')
 var ThirdPersonPersonalPronouns = require('./personal-pronouns/third-person')
 
 module.exports = React.createClass({
+  displayName: 'PersonalPronouns',
+
   propTypes: {
     forms: React.PropTypes.any.isRequired,
     parseCategories: React.PropTypes.any.isRequired,

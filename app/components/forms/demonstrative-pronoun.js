@@ -5,6 +5,8 @@ var Parsing = require('../../utils/parsing')
 var GendersHeader = require('./genders-header')
 
 module.exports = React.createClass({
+  displayName: 'DemonstrativePronouns',
+
   propTypes: {
     forms: React.PropTypes.any.isRequired,
     parseCategories: React.PropTypes.any.isRequired

@@ -6,6 +6,8 @@ var NumbersHeader = require('./numbers-header')
 var GendersHeader = require('./genders-header')
 
 module.exports = React.createClass({
+  displayName: 'RelativePronouns',
+
   propTypes: {
     forms: React.PropTypes.any.isRequired,
     parseCategories: React.PropTypes.any.isRequired
