@@ -75,6 +75,7 @@ module.exports = React.createClass({
             <span>1st person personal pronouns</span>
           </h2>
         </caption>
+        <NumbersHeader />
         {caseRows}
       </table>
     )

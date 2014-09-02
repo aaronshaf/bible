@@ -4,6 +4,7 @@ var React = require('react')
 var Parsing = require('../../utils/parsing')
 var FirstPersonPersonalPronouns = require('./personal-pronouns/first-person')
 var SecondPersonPersonalPronouns = require('./personal-pronouns/second-person')
+var ThirdPersonPersonalPronouns = require('./personal-pronouns/third-person')
 
 module.exports = React.createClass({
   propTypes: {
@@ -35,6 +36,11 @@ module.exports = React.createClass({
           lemma={this.props.lemma} />
 
         <SecondPersonPersonalPronouns
+          forms={this.props.forms}
+          parseCategories={this.props.parseCategories}
+          lemma={this.props.lemma} />
+        
+        <ThirdPersonPersonalPronouns
           forms={this.props.forms}
           parseCategories={this.props.parseCategories}
           lemma={this.props.lemma} />

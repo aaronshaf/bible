@@ -9,7 +9,7 @@ var NumbersHeader = require('../numbers-header')
 var GreekWordModel = require('../../../models/greek-word')
 
 module.exports = React.createClass({
-  displayName: 'FirstPersonPersonalPronouns',
+  displayName: 'SecondPersonPersonalPronouns',
 
   propTypes: {
     forms: React.PropTypes.any.isRequired,
@@ -75,6 +75,7 @@ module.exports = React.createClass({
             <span>2nd person personal pronouns</span>
           </h2>
         </caption>
+        <NumbersHeader />
         {caseRows}
       </table>
     )
