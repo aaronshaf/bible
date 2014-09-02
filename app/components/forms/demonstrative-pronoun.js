@@ -64,7 +64,7 @@ module.exports = React.createClass({
         <table key={number.get('code')}>
           <caption className="bible-panel-heading bible-morph-category">
             <h2>
-              <span>{number.get('label')} articles</span>
+              <span>{number.get('label')} demonstrative pronouns</span>
             </h2>
           </caption>
           <GendersHeader />

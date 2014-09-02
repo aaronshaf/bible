@@ -169,7 +169,7 @@ module.exports = React.createClass({
             forms={this.state.forms}
             parseCategories={this.state.parseCategories} />
       )
-    } else if (this.state.partOfSpeech.get('label') === 'Demonstrative Pronoun') {
+    } else if (this.state.partOfSpeech.get('label') === 'Demonstrative Pronoun (or Adjective)') {
       paradigms = (
         <DemonstrativePronoun
             forms={this.state.forms}
