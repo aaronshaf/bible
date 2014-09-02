@@ -61,6 +61,7 @@ module.exports = React.createClass({
           return (
             <td className={className}>
               {morph}
+              <span className="bible-reference-count"> ({form.get("references").length})</span>            
             </td>
           )
         }.bind(this)).toArray()
