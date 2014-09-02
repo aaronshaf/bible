@@ -81,7 +81,9 @@ module.exports = React.createClass({
             </h2>
           </caption>
           <GendersHeader />
-          {caseRows}
+          <tbody>
+            {caseRows}
+          </tbody>
         </table>
       )
     }.bind(this)).toArray()

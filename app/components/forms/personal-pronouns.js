@@ -29,7 +29,7 @@ module.exports = React.createClass({
     }.bind(this)).toArray()
 
     return (
-      <div>
+      <div className="bible-paradigms">
         <FirstPersonPersonalPronouns
           forms={this.props.forms}
           parseCategories={this.props.parseCategories}

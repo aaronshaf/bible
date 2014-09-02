@@ -76,7 +76,9 @@ module.exports = React.createClass({
           </h2>
         </caption>
         <NumbersHeader />
-        {caseRows}
+        <tbody>
+          {caseRows}
+        </tbody>
       </table>
     )
   }
