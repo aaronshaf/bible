@@ -7,6 +7,7 @@ describe('models/book', function() {
     expect(BookModel.findAll().length).toBe(27)
   })
 
+  /*
   it('#findByPath', function() {
     var BookModel = require('../../../app/models/book')
     expect(BookModel.findByPath('revelation').get('osisID')).toBe('Rev')
@@ -37,4 +38,5 @@ describe('models/book', function() {
     expect(BookModel.findNextChapter(matthew,28).get('book')).toBe(mark)
     expect(BookModel.findNextChapter(matthew,28).get('chapter')).toBe(1)
   })
+ */
 })
