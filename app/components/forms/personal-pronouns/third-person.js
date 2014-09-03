@@ -37,7 +37,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var sameLemma = this.props.lemma === 'αὐτός'
+    // var sameLemma = this.props.lemma === 'αὐτός'
 
     if(!this.props.parseCategories) return null
 

@@ -2,7 +2,6 @@
 //
 var React = require('react')
 var Parsing = require('../../utils/parsing')
-var NumbersHeader = require('./numbers-header')
 var GendersHeader = require('./genders-header')
 
 module.exports = React.createClass({

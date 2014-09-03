@@ -4,6 +4,8 @@
     "node": true
   },
   "rules": {
+    "consistent-return": 0,
+    "eol-last": 0,
     "semi": 0,
     "quotes": 0,
     "curly": 0,

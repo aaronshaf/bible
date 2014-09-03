@@ -2,7 +2,6 @@
 
 var React = require('react')
 var chunk = require('chunk')
-var sortBy = require('lodash-node/modern/collections/sortBy')
 var conjunctions = require('aaronshaf-bible-data/words/sblgnt/json/conjunctions.json')
 
 var conjunctionArray = Object.keys(conjunctions).map(function(conjunction) {
@@ -11,9 +10,9 @@ var conjunctionArray = Object.keys(conjunctions).map(function(conjunction) {
     occurrences: conjunctions[conjunction].occurrences
   } 
 })
-var sortedConjunctions = conjunctionArray.sort(function(a,b) {
-  return a.occurrences > b.occurrences ? -1 : 1
-})
+// var sortedConjunctions = conjunctionArray.sort(function(a,b) {
+//  return a.occurrences > b.occurrences ? -1 : 1
+//})
 var chunkedConjunctions = chunk(conjunctionArray,4)
 
 module.exports = React.createClass({

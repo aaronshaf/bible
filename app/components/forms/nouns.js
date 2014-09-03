@@ -3,7 +3,6 @@
 var React = require('react')
 var Parsing = require('../../utils/parsing')
 var NumbersHeader = require('./numbers-header')
-var unique = require('lodash-node/modern/arrays/uniq')
 
 module.exports = React.createClass({
   displayName: 'Nouns',
