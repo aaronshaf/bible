@@ -315,8 +315,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Matthew",
+      "english": "The Gospel of Matthew",
       "greek": "ΚΑΤΑ ΜΑΘΘΑΙΟΝ"
+    },
+    "shortNames": {
+      "english": "Matthew",
+      "greek": "μαθθαιος"
     },
     "path": "matthew",
     "osisID": "Matt",
@@ -327,8 +331,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Mark",
+      "english": "The Gospel of Mark",
       "greek": "ΚΑΤΑ ΜΑΡΚΟΝ"
+    },
+    "shortNames": {
+      "english": "Mark",
+      "greek": "μαρκος"
     },
     "path": "mark",
     "osisID": "Mark",
@@ -339,8 +347,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Luke",
+      "english": "The Gospel of Luke",
       "greek": "ΚΑΤΑ ΛΟΥΚΑΝ"
+    },
+    "shortNames": {
+      "english": "Luke",
+      "greek": "λουκας"
     },
     "path": "luke",
     "osisID": "Luke",
@@ -351,8 +363,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "John",
+      "english": "The Gospel of John",
       "greek": "ΚΑΤΑ ΙΩΑΝΝΗΝ"
+    },
+    "shortNames": {
+      "english": "John",
+      "greek": "ιωαννης"
     },
     "path": "john",
     "osisID": "John",
@@ -363,8 +379,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Acts",
+      "english": "The Acts of the Apostles",
       "greek": "ΠΡΑΞΕΙΣ ΤΩΝ ΑΠΟΣΤΟΛΩΝ"
+    },
+    "shortNames": {
+      "english": "Acts",
+      "greek": "πραξεις"
     },
     "path": "acts",
     "osisID": "Acts",
@@ -375,8 +395,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Romans",
+      "english": "Epistle to the Romans",
       "greek": "ΠΡΟΣ ΡΩΜΑΙΟΥΣ"
+    },
+    "shortNames": { 
+      "english": "Romans",
+      "greek": "ρωμαιους"
     },
     "path": "romans",
     "osisID": "Rom",
@@ -387,8 +411,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "1 Corinthians",
+      "english": "The First Epistle to the Corinthians",
       "greek": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Α΄"
+    },
+    "shortNames": {
+      "english": "1 Corinthians",
+      "greek": "κορινθιους α"
     },
     "path": "1corinthians",
     "osisID": "1Cor",
@@ -400,8 +428,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "2 Corinthians",
+      "english": "The Second Epistle to the Corinthians",
       "greek": "ΠΡΟΣ ΚΟΡΙΝΘΙΟΥΣ Β΄"
+    },
+    "shortNames": {
+      "english": "2 Corinthians",
+      "greek": "κορινθιους β"
     },
     "path": "2corinthians",
     "osisID": "2Cor",
@@ -412,8 +444,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Galatians",
+      "english": "The Epistle to the Galatians",
       "greek": "ΠΡΟΣ ΓΑΛΑΤΑΣ"
+    },
+    "shortNames": {
+      "english": "Galatians",
+      "greek": "γαλατας"
     },
     "path": "galatians",
     "osisID": "Gal",
@@ -424,8 +460,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Ephesians",
+      "english": "The Epistle to the Ephesians",
       "greek": "ΠΡΟΣ ΕΦΕΣΙΟΥΣ"
+    },
+    "shortNames": {
+      "english": "Ephesians",
+      "greek": "φιλιππησιους"
     },
     "path": "ephesians",
     "osisID": "Eph",
@@ -436,8 +476,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Philippians",
+      "english": "The Epistle to the Philippians",
       "greek": "ΠΡΟΣ ΦΙΛΙΠΠΗΣΙΟΥΣ"
+    },
+    "shortNames": {
+      "english": "Philippians",
+      "greek": "φιλιππησιους"
     },
     "path": "philippians",
     "osisID": "Phil",
@@ -448,8 +492,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Colossians",
+      "english": "The Epistle to the Colossians",
       "greek": "ΠΡΟΣ ΚΟΛΟΣΣΑΕΙΣ"
+    },
+    "shortNames": {
+      "english": "Colossians",
+      "greek": "κολοσσαεις"
     },
     "path": "colossians",
     "osisID": "Col",
@@ -460,8 +508,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "1 Thessalonians",
+      "english": "The First Epistle to the Thessalonians",
       "greek": "ΠΡΟΣ ΘΕΣΣΑΛΟΝΙΚΕΙΣ Α΄"
+    },
+    "shortNames": {
+      "english": "1 Thessalonians",
+      "greek": "θεσσαλονικεις α"
     },
     "path": "1thessalonians",
     "osisID": "1Thess",
@@ -472,8 +524,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "2 Thessalonians",
+      "english": "The Second Epistle to the Thessalonians",
       "greek": "ΠΡΟΣ ΘΕΣΣΑΛΟΝΙΚΕΙΣ Β΄"
+    },
+    "shortNames": {
+      "english": "2 Thessalonians",
+      "greek": "θεσσαλονικεις β"
     },
     "path": "2thessalonians",
     "osisID": "2Thess",
@@ -484,8 +540,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "1 Timothy",
+      "english": "The First Epistle to Timothy",
       "greek": "ΠΡΟΣ ΤΙΜΟΘΕΟΝ Α΄"
+    },
+    "shortNames": {
+      "english": "1 Timothy",
+      "greek": "τιμοθεος α"
     },
     "path": "1timothy",
     "osisID": "1Tim",
@@ -499,6 +559,10 @@ var books = Immutable.fromJS([
       "english": "2 Timothy",
       "greek": "ΠΡΟΣ ΤΙΜΟΘΕΟΝ Β΄"
     },
+    "shortNames": {
+      "english": "2 Timothy",
+      "greek": "τιμοθεος β"
+    },
     "path": "2timothy",
     "osisID": "2Tim",
     "totalChapters": 4,
@@ -508,8 +572,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Titus",
+      "english": "The Epistle to Titus",
       "greek": "ΠΡΟΣ ΤΙΤΟΝ"
+    },
+    "shortNames": {
+      "english": "Titus",
+      "greek": "τιτος"
     },
     "path": "titus",
     "osisID": "Titus",
@@ -520,8 +588,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Philemon",
+      "english": "The Epistle to Philemon",
       "greek": "ΠΡΟΣ ΦΙΛΗΜΟΝΑ"
+    },
+    "shortNames": {
+      "english": "Philemon",
+      "greek": "φιλημων"
     },
     "path": "philemon",
     "osisID": "Phlm",
@@ -532,8 +604,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Hebrews",
+      "english": "The Epistle to the Hebrews",
       "greek": "ΠΡΟΣ ΕΒΡΑΙΟΥΣ"
+    },
+    "shortNames": {
+      "english": "Hebrews",
+      "greek": "εβραιους"
     },
     "path": "hebrews",
     "osisID": "Heb",
@@ -544,8 +620,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "James",
+      "english": "The Epistle of James",
       "greek": "ΙΑΚΩΒΟΥ"
+    },
+    "shortNames": {
+      "english": "James",
+      "greek": "ιακωβος"
     },
     "path": "james",
     "osisID": "Jas",
@@ -556,8 +636,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "1 Peter",
+      "english": "The First Epistle of Peter",
       "greek": "ΠΕΤΡΟΥ Α΄"
+    },
+    "shortNames": {
+      "english": "1 Peter",
+      "greek": "πετρος α"
     },
     "path": "1peter",
     "osisID": "1Pet",
@@ -568,8 +652,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "2 Peter",
+      "english": "The Second Epistle of Peter",
       "greek": "ΠΕΤΡΟΥ Β΄"
+    },
+    "shortNames": {
+      "english": "2 Peter",
+      "greek": "πετρος β"
     },
     "path": "2peter",
     "osisID": "2Pet",
@@ -580,8 +668,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "1 John",
+      "english": "The First Epistle of John",
       "greek": "ΙΩΑΝΝΟΥ Α΄"
+    },
+    "shortNames": {
+      "english": "1 John",
+      "greek": "ιωαννου α"
     },
     "path": "1john",
     "osisID": "1John",
@@ -592,8 +684,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "2 John",
+      "english": "The Second Epistle of John",
       "greek": "ΙΩΑΝΝΟΥ Β΄"
+    },
+    "shortNames": {
+      "english": "2 John",
+      "greek": "ιωαννου β"
     },
     "path": "2john",
     "osisID": "2John",
@@ -604,8 +700,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "3 John",
+      "english": "The Third Epistle of John",
       "greek": "ΙΩΑΝΝΟΥ Γ΄"
+    },
+    "shortNames": {
+      "english": "3 John",
+      "greek": "ιωαννου γ"
     },
     "path": "3john",
     "osisID": "3John",
@@ -616,8 +716,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Jude",
+      "english": "The Epistle of Jude",
       "greek": "ΙΟΥΔΑ"
+    },
+    "shortNames": {
+      "english": "Jude",
+      "greek": "ιουδα"
     },
     "path": "jude",
     "osisID": "Jude",
@@ -628,8 +732,12 @@ var books = Immutable.fromJS([
   },
   {
     "names": {
-      "english": "Revelation",
+      "english": "The Book of Revelation",
       "greek": "ΑΠΟΚΑΛΥΨΙΣ ΙΩΑΝΝΟΥ"
+    },
+    "shortNames": {
+      "english": "Revelation",
+      "greek": "αποκαλυψις"
     },
     "path": "revelation",
     "osisID": "Rev",
@@ -639,6 +747,7 @@ var books = Immutable.fromJS([
     ]
   }
 ])
+
 
 exports.findAll = function() {
   // We don't support the OT yet

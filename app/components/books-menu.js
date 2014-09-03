@@ -23,13 +23,14 @@ module.exports = React.createClass({
         book: book.get('path'),
         chapter: "1"
       }
+
       return (
         <li key={'bible-books-menu-' + book.get('osisID')}>
           <Link to="chapter" params={params}
               onMouseEnter={this.handleLinkMouseEnter.bind(null,book)}
               title={book.get('names').get('english')}
               >
-            {book.get('names').get('greek') || book.get('names').get('english')}
+            {book.get('shortNames').get('english')}
           </Link>
         </li>
       )
