@@ -72,19 +72,19 @@ module.exports = React.createClass({
         event.ctrlKey || event.metaKey || event.shiftKey
 
     if(!secondaryKeyPressed && event.which === 72) { // h
-      return this.transitionToPreviousBook()
-    }
-
-    if(!secondaryKeyPressed && event.which === 74) { // j
       return this.transitionToPreviousChapter()
     }
 
+    if(!secondaryKeyPressed && event.which === 74) { // j
+      return this.transitionToPreviousWord()
+    }
+
     if(!secondaryKeyPressed && event.which === 75) { // k
-      return this.transitionToNextChapter()
+      return this.transitionToNextWord()
     }
 
     if(!secondaryKeyPressed && event.which === 76) { // l
-      return this.transitionToNextBook()
+      return this.transitionToNextChapter()
     }
 
     if(event.which === 27) { // esc
@@ -114,6 +114,26 @@ module.exports = React.createClass({
       result.get('chapter'),
       function(){}
     )
+  },
+
+  transitionToPreviousWord: function() {
+    // TODO: Refactor to not access the DOM?
+    var activeWord = document.querySelector('.bible-word.active')
+    var allWords = document.querySelectorAll('.bible-word')
+    var index = Array.prototype.indexOf.call(allWords,activeWord)
+    if(index > 0) {
+      allWords[index - 1].click()
+    }
+  },
+
+  transitionToNextWord: function() {
+    // TODO: Refactor to not access the DOM?
+    var activeWord = document.querySelector('.bible-word.active')
+    var allWords = document.querySelectorAll('.bible-word')
+    var index = Array.prototype.indexOf.call(allWords,activeWord)
+    if(index < allWords.length - 1) {
+      allWords[index + 1].click()
+    }
   },
 
   transitionToCurrentChapter: function() {

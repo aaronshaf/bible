@@ -28,22 +28,22 @@ module.exports = React.createClass({
           <div className="bible-keyboard-instructions-inner">
             <div>
               <div className="bible-keyboard-instructions-key">h</div>
-              Previous book
-            </div>
-
-            <div>
-              <div className="bible-keyboard-instructions-key">j</div>
               Previous chapter
             </div>
 
             <div>
+              <div className="bible-keyboard-instructions-key">j</div>
+              Previous word
+            </div>
+
+            <div>
               <div className="bible-keyboard-instructions-key">k</div>
-              Next chapter
+              Next word
             </div>
 
             <div>
               <div className="bible-keyboard-instructions-key">l</div>
-              Next book
+              Next chapter
             </div>
 
             <div>
