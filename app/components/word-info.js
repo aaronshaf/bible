@@ -12,6 +12,7 @@ var Article = require('./forms/article')
 var AdjectiveForms = require('./forms/adjective')
 var PersonalPronouns = require('./forms/personal-pronouns')
 var RelativePronoun = require('./forms/relative-pronoun')
+var ReflexivePronouns = require('./forms/reflexive-pronouns')
 var Prepositions = require('./forms/prepositions')
 var Conjunctions = require('./forms/conjunctions')
 var DemonstrativePronoun = require('./forms/demonstrative-pronoun')
@@ -155,9 +156,17 @@ module.exports = React.createClass({
       )
     } else if (this.state.partOfSpeech.get('label') === 'Personal or Reflexive Pronoun') {
       var isPersonalPronoun = ['ἐγώ','σύ','αὐτός'].indexOf(this.state.lemma) !== -1
+      var isReflexivePronoun = ['ἑαυτοῦ'].indexOf(this.state.lemma) !== -1
       if(isPersonalPronoun) {
         paradigms = (
           <PersonalPronouns
+              forms={this.state.forms}
+              parseCategories={this.state.parseCategories}
+              lemma={this.state.lemma} />
+        )
+      } else if(isReflexivePronoun) {
+        paradigms = (
+          <ReflexivePronouns
               forms={this.state.forms}
               parseCategories={this.state.parseCategories}
               lemma={this.state.lemma} />
