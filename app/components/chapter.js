@@ -124,6 +124,7 @@ module.exports = React.createClass({
     if(index > 0) {
       allWords[index - 1].click()
       allWords[index - 1].classList.add('active')
+      activeWord.classList.remove('active')
     }
 
     if(index > 1) {
@@ -141,6 +142,7 @@ module.exports = React.createClass({
     if(index < allWords.length - 1) {
       allWords[index + 1].click()
       allWords[index + 1].classList.add('active')
+      activeWord.classList.remove('active')
     }
 
     if(index < allWords.length - 2) {
