@@ -119,7 +119,9 @@ module.exports = React.createClass({
   transitionToPreviousWord: function() {
     // TODO: Refactor to not access the DOM?
     var activeWord = document.querySelector('.bible-word.active')
-    activeWord.classList.remove('active')
+    if(activeWord) {
+      activeWord.classList.remove('active')
+    }
     var allWords = document.querySelectorAll('.bible-word')
     var index = Array.prototype.indexOf.call(allWords,activeWord)
     if(index > 0) {
@@ -137,7 +139,9 @@ module.exports = React.createClass({
   transitionToNextWord: function() {
     // TODO: Refactor to not access the DOM?
     var activeWord = document.querySelector('.bible-word.active')
-    activeWord.classList.remove('active')
+    if(activeWord) {
+      activeWord.classList.remove('active')
+    }
     var allWords = document.querySelectorAll('.bible-word')
     var index = Array.prototype.indexOf.call(allWords,activeWord)
     if(index < allWords.length - 1) {
