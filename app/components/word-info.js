@@ -44,7 +44,7 @@ module.exports = React.createClass({
     var chapterNumber = this.props.params.chapter
 
     ChapterModel.findByBookAndChapterNumber(bookOsisId,chapterNumber,function(err,res) {
-      if(err || !res) return
+      if(err || !res || !this.isMounted()) return
 
       var wordData = res
         .get('verses')
@@ -65,7 +65,7 @@ module.exports = React.createClass({
         lemma: wordData.get(5)
       }, function() {
         GreekWordModel.findByLemma(wordData.get(5),function(err,res) {
-          if(err) return
+          if(err || !res || !this.isMounted()) return
 
           this.setState({
             forms: res.get('forms') || Immutable.Map(),
