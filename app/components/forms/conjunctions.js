@@ -40,8 +40,6 @@ module.exports = React.createClass({
   render: function() {
     if(!this.props.forms || !this.props.forms.get) return null
 
-    
-
     var conjunctions = chunkedConjunctions.map(function(chunk) {
       var cells = chunk.map(this.renderConjunctionCell)
       return (

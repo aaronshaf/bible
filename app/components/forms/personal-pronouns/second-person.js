@@ -25,7 +25,7 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     GreekWordModel.findByLemma('σύ',function(err,res) {
-      if(err) return
+      if(err || !this.isMounted()) return
 
       this.setState({
         forms: res.get('forms') || Immutable.Map(),
