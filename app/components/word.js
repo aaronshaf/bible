@@ -42,10 +42,11 @@ module.exports = React.createClass({
     }
 
     return (
-      <span onClick={this.handleClick}
-          onMouseEnter={this.handleMouseEnter}
-          onFocus={this.handleMouseEnter}>
+      <span>
         <Link
+            onClick={this.handleClick}
+            onMouseEnter={this.handleMouseEnter}
+            onFocus={this.handleMouseEnter}
             ref="link"
             to="verse"
             params={params}

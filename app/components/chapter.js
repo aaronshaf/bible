@@ -123,6 +123,13 @@ module.exports = React.createClass({
     var index = Array.prototype.indexOf.call(allWords,activeWord)
     if(index > 0) {
       allWords[index - 1].click()
+      allWords[index - 1].classList.add('active')
+    }
+
+    if(index > 1) {
+      var event = document.createEvent('Event')
+      event.initEvent('mouseover', true, true)
+      allWords[index - 2].dispatchEvent(event)
     }
   },
 
@@ -133,6 +140,13 @@ module.exports = React.createClass({
     var index = Array.prototype.indexOf.call(allWords,activeWord)
     if(index < allWords.length - 1) {
       allWords[index + 1].click()
+      allWords[index + 1].classList.add('active')
+    }
+
+    if(index < allWords.length - 2) {
+      var event = document.createEvent('Event')
+      event.initEvent('mouseover', true, true)
+      allWords[index + 2].dispatchEvent(event)
     }
   },
 
