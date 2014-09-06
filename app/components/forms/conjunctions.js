@@ -10,9 +10,6 @@ var conjunctionArray = Object.keys(conjunctions).map(function(conjunction) {
     occurrences: conjunctions[conjunction].occurrences
   } 
 })
-// var sortedConjunctions = conjunctionArray.sort(function(a,b) {
-//  return a.occurrences > b.occurrences ? -1 : 1
-//})
 var chunkedConjunctions = chunk(conjunctionArray,4)
 
 module.exports = React.createClass({

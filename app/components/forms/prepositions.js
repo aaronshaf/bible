@@ -10,9 +10,6 @@ var prepositionArray = Object.keys(prepositions).map(function(preposition) {
     occurrences: prepositions[preposition].occurrences
   } 
 })
-//var sortedPrepositions = prepositionArray.sort(function(a,b) {
-//  return a.occurrences > b.occurrences ? -1 : 1
-//})
 var chunkedPrepositions = chunk(prepositionArray,4)
 
 module.exports = React.createClass({
