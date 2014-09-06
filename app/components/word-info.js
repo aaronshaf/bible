@@ -9,6 +9,7 @@ var Parsing = require('../utils/parsing')
 var VerbForms = require('./forms/verb')
 var NounForms = require('./forms/nouns')
 var Article = require('./forms/article')
+var Adverbs = require('./forms/adverbs')
 var AdjectiveForms = require('./forms/adjective')
 var PersonalPronouns = require('./forms/personal-pronouns')
 var RelativePronoun = require('./forms/relative-pronoun')
@@ -154,6 +155,12 @@ module.exports = React.createClass({
             forms={this.state.forms}
             parseCategories={this.state.parseCategories} />
       )
+    } else if(this.state.partOfSpeech.get('label') === 'Adverb') {
+      paradigms = (
+        <Adverbs
+            forms={this.state.forms}
+            parseCategories={this.state.parseCategories} />
+      ) 
     } else if (this.state.partOfSpeech.get('label') === 'Personal or Reflexive Pronoun') {
       var isPersonalPronoun = ['ἐγώ','σύ','αὐτός'].indexOf(this.state.lemma) !== -1
       var isReflexivePronoun = ['ἑαυτοῦ'].indexOf(this.state.lemma) !== -1
