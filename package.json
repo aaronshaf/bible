@@ -21,7 +21,7 @@
     ]
   },
   "devDependencies": {
-    "aaronshaf-bible-data": "^2.1.4",
+    "aaronshaf-bible-data": "^2.2.0",
     "array.prototype.find": "^1.0.0",
     "browserify": "^5.11.0",
     "chai": "^1.9.1",
