@@ -116,6 +116,7 @@ module.exports = React.createClass({
           var numberOfReferencesInGrammaticalNumber = 0
 
           var cases = Parsing.get('case').get('options').toArray().map(function(_case) {
+            var hasMorphsInCase = false
             var genders = Parsing.get('gender').get('options').toArray().map(function(gender) {
               var formCode = 'V--' + tense.get('code') + voice.get('code') +
                   'P' + _case.get('code') + number.get('code') +
@@ -134,6 +135,7 @@ module.exports = React.createClass({
                   </span>
                 )
                 numberOfReferencesInGrammaticalNumber += numberOfReferences
+                hasMorphsInCase = true
               }
 
               var className = ''
@@ -155,6 +157,10 @@ module.exports = React.createClass({
                 </td>
               )
             }.bind(this))
+
+            if(_case.get('label') === 'Vocative' && !hasMorphsInCase) {
+              return null
+            }
 
             return (
               <tr key={_case.get('label')}>
