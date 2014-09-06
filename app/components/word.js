@@ -32,6 +32,12 @@ module.exports = React.createClass({
 
   render: function() {
     var displayWord = this.props.word.get(2)
+    
+    // TODO: Only do this in Chrome and IE Windows
+    displayWord = displayWord
+      .replace('⸀','')
+      .replace('⸂','')
+      .replace('⸃','')
 
     var params = {
       book: this.props.book,

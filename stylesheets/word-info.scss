@@ -2,7 +2,8 @@ $borderColor: darken(#eee,5);
 
 .bible-word-info {
   @extend %flex-3;
-  min-width: 450px;
+  min-width: 350px;
+  max-width: 550px;
   background-color: #fafafa;
   border-top: 1px solid $borderColor;
   overflow-y: auto;
