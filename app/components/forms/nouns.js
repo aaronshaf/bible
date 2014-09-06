@@ -16,6 +16,8 @@ module.exports = React.createClass({
     if(!this.props.forms || !this.props.forms.get) return null
 
     var cases = Parsing.get('case').get('options').map(function(_case) {
+      var hasMorphsInCase = false
+
       var numbers = Parsing.get('number').get('options').map(function(number) {
         var morphs = {}
 
@@ -45,6 +47,7 @@ module.exports = React.createClass({
         })
 
         if(!morphs.length) return <td></td>
+        hasMorphsInCase = true
 
         var className = ''
         if(this.props.parseCategories && this.props.parseCategories.length) {
@@ -62,6 +65,10 @@ module.exports = React.createClass({
           </td>
         )
       }.bind(this)).toArray()
+
+      if(_case.get('label') === 'Vocative' && !hasMorphsInCase) {
+        return null
+      }
 
       return (
         <tr key={_case.get('code')}>

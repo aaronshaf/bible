@@ -43,10 +43,12 @@ module.exports = React.createClass({
 
     var numberTables = numbers.map(function(number) {
       var caseRows = cases.map(function(_case) {
+        var hasMorphsInCase = false
         var cells = genders.map(function(gender) {
           var formCode = 'RP----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
           var form = this.state.forms.get(formCode)
           if(!form || !form.get) return <td></td>
+          var hasMorphsInCase = true
           var morph = form.get('morph')
 
           var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
@@ -65,6 +67,10 @@ module.exports = React.createClass({
             </td>
           )
         }.bind(this)).toArray()
+
+        if(_case.get('label') === 'Vocative' && !hasMorphsInCase) {
+          return null
+        }
 
         return (
           <tr>
