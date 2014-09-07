@@ -2,8 +2,11 @@
 
 var React = require('react')
 var Router = require('react-router')
+var TrackedRoute = require('../common/tracked-route')
 
 module.exports = React.createClass({
+  mixins: [ TrackedRoute ],
+
   componentDidMount: function componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown)
   },

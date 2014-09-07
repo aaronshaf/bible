@@ -21,6 +21,7 @@ gulp.task('jsx', function() {
 gulp.task('browserify', ['jsx'], function() {
   return browserify({
       entries: ['./tmp/jsx/main.js'],
+      transform: ['envify'],
       debug: true
     })
     .bundle()

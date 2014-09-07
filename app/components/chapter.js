@@ -6,7 +6,7 @@ var Paragraph = require('./paragraph')
 var Immutable = require('immutable')
 var BookModel = require('../models/book')
 var ChapterModel = require('../models/chapter')
-// var Link = require('react-router').Link
+var TrackedRoute = require('../common/tracked-route')
 
 module.exports = React.createClass({
   // propTypes: {
@@ -14,7 +14,9 @@ module.exports = React.createClass({
   //   chapter: React.PropTypes.any.isRequired,
   //   paragraphs: React.PropTypes.any.isRequired,
   //   verses: React.PropTypes.any.isRequired
-  // },
+  // }
+  
+  mixins: [ TrackedRoute ],
 
   getInitialState: function() {
     return {

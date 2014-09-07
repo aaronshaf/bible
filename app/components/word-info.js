@@ -18,10 +18,13 @@ var Prepositions = require('./forms/prepositions')
 var Conjunctions = require('./forms/conjunctions')
 var DemonstrativePronoun = require('./forms/demonstrative-pronoun')
 var morphCodesToCategories = require('../utils/morph-codes-to-categories')
+var TrackedRoute = require('../common/tracked-route')
 
 require('array.prototype.find')
 
 module.exports = React.createClass({
+  mixins: [ TrackedRoute ],
+  
   propTypes: {},
 
   getInitialState: function() {
