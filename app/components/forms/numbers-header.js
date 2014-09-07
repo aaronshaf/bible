@@ -9,7 +9,7 @@ module.exports = React.createClass({
   render: function() {
     var numberLabels = Parsing.get('number').get('options').toArray().map(function(number) {
       return (
-        <th>{number.get('label')}</th>
+        <th key={number.get('label')}>{number.get('label')}</th>
       )
     })
 

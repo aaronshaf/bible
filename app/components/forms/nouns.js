@@ -37,7 +37,7 @@ module.exports = React.createClass({
         // Later: use "for of"
         morphs = Object.keys(morphs).map(function(text) {
           return (
-            <div>
+            <div key={text}>
               <span>{text} </span>
               <span className="bible-reference-count">
                 ({morphs[text].numberOfReferences})
@@ -46,7 +46,7 @@ module.exports = React.createClass({
           )
         })
 
-        if(!morphs.length) return <td></td>
+        if(!morphs.length) return <td key={number.get('label')}></td>
         hasMorphsInCase = true
 
         var className = ''

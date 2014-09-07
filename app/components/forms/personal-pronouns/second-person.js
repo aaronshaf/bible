@@ -43,7 +43,7 @@ module.exports = React.createClass({
       var cells = numbers.map(function(number) {
         var formCode = 'RP----' + _case.get('code') + number.get('code') + '--'
         var form = this.state.forms.get(formCode)
-        if(!form || !form.get) return <td></td>
+        if(!form || !form.get) return <td key={number.get('label')}></td>
         hasMorphsInCase = true
         var morph = form.get('morph')
 
@@ -56,7 +56,7 @@ module.exports = React.createClass({
         }
 
         return (
-          <td className={className}>
+          <td key={number.get('label')} className={className}>
             {morph}
             <span className="bible-reference-count"> ({form.get("references").length})</span>            
           </td>
@@ -68,7 +68,7 @@ module.exports = React.createClass({
       }
       
       return (
-        <tr>
+        <tr key={_case.get('label')}>
           <th>{_case.get('label')}</th>
           {cells} 
         </tr>

@@ -9,7 +9,7 @@ module.exports = React.createClass({
   render: function() {
     var personLabels = Parsing.get('person').get('options').toArray().map(function(person) {
       return (
-        <th>{person.get('label')}</th>
+        <th key={person.get('label')}>{person.get('label')}</th>
       )
     })
     

@@ -27,7 +27,7 @@ module.exports = React.createClass({
       className = 'bible-form-highlighted'
     }
     return (
-      <td className={className}>
+      <td key={data.preposition} className={className}>
         {data.preposition} 
         <span className="bible-reference-count"> ({data.occurrences})</span>
       </td>
@@ -37,10 +37,11 @@ module.exports = React.createClass({
   render: function() {
     if(!this.props.forms || !this.props.forms.get) return null
 
+    var row = 0
     var prepositions = chunkedPrepositions.map(function(chunk) {
       var cells = chunk.map(this.renderPrepositionCell)
       return (
-        <tr>
+        <tr key={row++}>
           {cells}
         </tr>
       )

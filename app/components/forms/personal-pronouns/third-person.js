@@ -47,7 +47,7 @@ module.exports = React.createClass({
         var cells = genders.map(function(gender) {
           var formCode = 'RP----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
           var form = this.state.forms.get(formCode)
-          if(!form || !form.get) return <td></td>
+          if(!form || !form.get) return <td key={gender.get('code')}></td>
           var hasMorphsInCase = true
           var morph = form.get('morph')
 
@@ -61,7 +61,7 @@ module.exports = React.createClass({
           }
 
           return (
-            <td className={className}>
+            <td key={gender.get('label')} className={className}>
               {morph}
               <span className="bible-reference-count"> ({form.get("references").length})</span>            
             </td>
@@ -73,7 +73,7 @@ module.exports = React.createClass({
         }
 
         return (
-          <tr>
+          <tr key={_case.get('label')}>
             <th>{_case.get('label')}</th>
             {cells} 
           </tr>
@@ -81,7 +81,7 @@ module.exports = React.createClass({
       }.bind(this)).toArray()
 
       return (
-        <table>
+        <table key={number.get('label')}>
           <caption className="bible-panel-heading bible-morph-category">
             <h2>
               <span>3rd person {number.get('label').toLowerCase()} personal pronouns</span>

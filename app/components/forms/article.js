@@ -18,10 +18,10 @@ module.exports = React.createClass({
         if(_case.get('label') === 'Vocative') return
         var forms = Parsing.get('gender').get('options').toArray().map(function(gender) {
           var formCode = 'RA----' + _case.get('code') + number.get('code') + gender.get('code') + '-'
-          if(!this.props.forms || !this.props.forms.get) return <td></td>
+          if(!this.props.forms || !this.props.forms.get) return <td key={gender.get('code')}></td>
           var form = this.props.forms.get(formCode)
 
-          if(!form || !form.get) return <td></td>
+          if(!form || !form.get) return <td key={gender.get('code')}></td>
           var morph = form.get('morph')
 
           var sameNumber = this.props.parseCategories.get('number').get('code') === number.get('code')
