@@ -22,7 +22,7 @@ module.exports = React.createClass({
   renderAdverbCell: function(data) {
     var className = ''
     if(!this.props.forms || !this.props.forms.length) return null
-    var morph = this.props.forms.get('C---------').get('morph')
+    var morph = this.props.forms.get('D---------').get('morph')
     if(morph === data.adverb) {
       className = 'bible-form-highlighted'
     }
