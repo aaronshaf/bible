@@ -4,6 +4,7 @@ var React = require('react')
 var Parsing = require('../../utils/parsing')
 var PersonsHeader = require('./persons-header')
 var GendersHeader = require('./genders-header')
+var VoicesHeader = require('./headers/voices')
 var Immutable = require('immutable')
 
 module.exports = React.createClass({
@@ -206,10 +207,89 @@ module.exports = React.createClass({
       )
     }.bind(this))
 
+    var numberOfInfinitiveForms = 0
+    var infinitiveTenses = Parsing.get('tense').get('options').toArray().map(function(tense) {
+      var whitelist = ['Present','Aorist','Perfect','Future']
+      if(whitelist.indexOf(tense.get('label')) === -1) {
+        return null
+      }
+
+      var numberOfReferencesInTense = 0
+      
+      var voices = Parsing.get('voice').get('options').toArray().map(function(voice) {
+        var formCode = 'V-' + '-' + tense.get('code') + voice.get('code') + 'N----'
+
+        var form
+        var numberOfReferences
+        var referenceCountLabel
+
+        if(this.props.forms.get(formCode)) {
+          form = this.props.forms.get(formCode).get('morph')
+          numberOfReferences = this.props.forms.get(formCode).get('references').length
+          referenceCountLabel = (
+            <span className="bible-reference-count">
+              ({numberOfReferences})
+            </span>
+          )
+          numberOfReferencesInTense += numberOfReferences
+          numberOfInfinitiveForms += numberOfReferences
+        }
+
+        var className = ''
+        if(this.props.parseCategories && this.props.parseCategories.length) {
+          var sameVoice = this.props.parseCategories.get('voice') && this.props.parseCategories.get('voice').get('code') === voice.get('code')
+          var sameTense = this.props.parseCategories.get('tense') && this.props.parseCategories.get('tense').get('code') === tense.get('code')
+          var sameMood = this.props.parseCategories.get('mood') && this.props.parseCategories.get('mood').get('code') === 'N'
+
+          if(sameVoice && sameTense && sameMood) {
+            className = 'bible-form-highlighted'
+          }
+        }
+
+        return (
+          <td key={formCode} className={className}>
+            {form} {referenceCountLabel}
+          </td>
+        )
+      }.bind(this))
+
+      if(!numberOfReferencesInTense && tense.get('label') === 'Future') {
+        return null
+      }
+
+      return (
+        <tr>
+          <th>{tense.get('label')}</th>
+          {voices}
+        </tr>
+      )
+    }.bind(this))
+
+    var infinitives
+    if(!numberOfInfinitiveForms) {
+      infinitives = null
+    } else {
+      infinitives = (
+        <table>
+          <caption className="bible-panel-heading bible-morph-category">
+            <h2>
+              <span>Infinitives</span>
+            </h2>
+          </caption>
+          <tbody>
+            <VoicesHeader />
+            {infinitiveTenses}
+          </tbody>
+        </table>
+      )
+    }
+
+
     return (
       <div>
         <div className="bible-paradigms">{moods}</div>
         <div className="bible-paradigms">{participles}</div>
+        <div className="bible-paradigms">{infinitives}</div>
       </div>
     )
   }
