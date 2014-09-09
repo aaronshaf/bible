@@ -239,10 +239,7 @@ module.exports = React.createClass({
     return (
       <div className="bible-word-info">
         <div className="bible-word-info-inner">
-
           {definition}
-
-          {morphology}
 
           {paradigms}
         </div>
