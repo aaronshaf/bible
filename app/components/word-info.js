@@ -14,6 +14,7 @@ var AdjectiveForms = require('./forms/adjective')
 var PersonalPronouns = require('./forms/personal-pronouns')
 var RelativePronoun = require('./forms/relative-pronoun')
 var ReflexivePronouns = require('./forms/reflexive-pronouns')
+var Interrogatives = require('./forms/interrogatives')
 var Prepositions = require('./forms/prepositions')
 var Conjunctions = require('./forms/conjunctions')
 var DemonstrativePronoun = require('./forms/demonstrative-pronoun')
@@ -182,6 +183,13 @@ module.exports = React.createClass({
               lemma={this.state.lemma} />
         )
       }
+    } else if (this.state.partOfSpeech.get('label') === 'Interrogative or Indefinite Pronoun (or Adjective)') {
+      paradigms = (
+        <Interrogatives
+          forms={this.state.forms}
+          parseCategories={this.state.parseCategories}
+          lemma={this.state.lemma} />
+      )
     } else if (this.state.partOfSpeech.get('label') === 'Relative Pronoun') {
       paradigms = (
         <RelativePronoun
