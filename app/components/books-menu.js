@@ -18,7 +18,6 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    console.log(this.props.params)
     var books = BookModel.findAll().toArray().map(function(book) {
       var params = {
         book: book.get('path'),
