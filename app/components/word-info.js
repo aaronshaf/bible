@@ -167,7 +167,7 @@ module.exports = React.createClass({
       ) 
     } else if (this.state.partOfSpeech.get('label') === 'Personal or Reflexive Pronoun') {
       var isPersonalPronoun = ['ἐγώ','σύ','αὐτός'].indexOf(this.state.lemma) !== -1
-      var isReflexivePronoun = ['ἑαυτοῦ','σεαυτὸν'].indexOf(this.state.lemma) !== -1
+      var isReflexivePronoun = ['ἑαυτοῦ','σεαυτοῦ'].indexOf(this.state.lemma) !== -1
       if(isPersonalPronoun) {
         paradigms = (
           <PersonalPronouns
