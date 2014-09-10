@@ -16,7 +16,7 @@ module.exports = React.createClass({
     return (
       <div>
         <main className="main">
-          <BooksMenu />
+          <BooksMenu activeBookPath={this.props.params.book} />
           <section className="bible-main-right-section">
             <this.props.activeRouteHandler />
           </section>

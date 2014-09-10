@@ -23,12 +23,15 @@ module.exports = React.createClass({
         book: book.get('path'),
         chapter: "1"
       }
+      var className = this.props.activeBookPath === book.get('path') ? 'active' : ''
 
       return (
         <li key={'bible-books-menu-' + book.get('osisID')}>
-          <Link to="chapter" params={params}
+          <Link to="chapter"
+              params={params}
               onMouseEnter={this.handleLinkMouseEnter.bind(null,book)}
               title={book.get('names').get('english')}
+              className={className}
               >
             {book.get('shortNames').get('english')}
           </Link>
