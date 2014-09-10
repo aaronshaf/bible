@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react')
+var BooksMenu = require('./books-menu')
 
 module.exports = React.createClass({
   // getDefaultProps: function() {
@@ -13,9 +14,19 @@ module.exports = React.createClass({
 
   render: function render() {
     return (
-      <section className="bible-main-right-section">
-        <this.props.activeRouteHandler />
-      </section>
+      <div>
+        <main className="main">
+          <BooksMenu />
+          <section className="bible-main-right-section">
+            <this.props.activeRouteHandler />
+          </section>
+        </main>
+        <a
+            href="https://github.com/aaronshaf/bible#heartfelt-thanks"
+            className="bible-license-credit">
+          <span>SBLGNT &amp; Mounce</span>
+        </a>
+      </div>
     )
   }
 })

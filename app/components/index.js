@@ -3,6 +3,7 @@
 var React = require('react')
 var Router = require('react-router')
 var TrackedRoute = require('../common/tracked-route')
+var BooksMenu = require('./books-menu')
 
 module.exports = React.createClass({
   mixins: [ TrackedRoute ],
@@ -26,36 +27,41 @@ module.exports = React.createClass({
 
   render: function render() {
     return (
-      <section className="bible-main-right-section">
-        <div className="bible-keyboard-instructions">
-          <div className="bible-keyboard-instructions-inner">
-            <div>
-              <div className="bible-keyboard-instructions-key">h</div>
-              Previous chapter
-            </div>
+      <div>
+        <main className="main">
+          <BooksMenu />
+          <section className="bible-main-right-section">
+            <div className="bible-keyboard-instructions">
+              <div className="bible-keyboard-instructions-inner">
+                <div>
+                  <div className="bible-keyboard-instructions-key">h</div>
+                  Previous chapter
+                </div>
 
-            <div>
-              <div className="bible-keyboard-instructions-key">j</div>
-              Previous word
-            </div>
+                <div>
+                  <div className="bible-keyboard-instructions-key">j</div>
+                  Previous word
+                </div>
 
-            <div>
-              <div className="bible-keyboard-instructions-key">k</div>
-              Next word
-            </div>
+                <div>
+                  <div className="bible-keyboard-instructions-key">k</div>
+                  Next word
+                </div>
 
-            <div>
-              <div className="bible-keyboard-instructions-key">l</div>
-              Next chapter
-            </div>
+                <div>
+                  <div className="bible-keyboard-instructions-key">l</div>
+                  Next chapter
+                </div>
 
-            <div>
-              <div className="bible-keyboard-instructions-key">esc</div>
-              Back to current chapter
+                <div>
+                  <div className="bible-keyboard-instructions-key">esc</div>
+                  Back to current chapter
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </main>
+      </div>
     )
   }
 })
