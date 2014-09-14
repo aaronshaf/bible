@@ -7,6 +7,7 @@
     "start": "node main.js",
     "dev": "node_modules/gulp/bin/gulp.js dev",
     "build": "node_modules/gulp/bin/gulp.js",
+    "postinstall": "npm run build",
     "test": "node_modules/.bin/jest",
     "test-functional": "node_modules/.bin/mocha tests/functional/"
   },
@@ -20,7 +21,7 @@
       "../node_modules/react"
     ]
   },
-  "devDependencies": {
+  "dependencies": {
     "aaronshaf-bible-data": "^2.2.0",
     "array.prototype.find": "^1.0.0",
     "browserify": "^5.11.0",
